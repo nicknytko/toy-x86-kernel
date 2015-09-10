@@ -20,8 +20,14 @@ _screen_clear_loop:
 	ret
 
 screen_setCursor:
-	mov ebx, [esp+4]	;get cursor x
-	mov ecx, [esp+8]	;get cursor y
+	pop edx 		;pop return value
+	pop ebx			;pop cursor x
+	pop ecx			;pop cursor y
+	push edx		;push the return value back on
+
+	mov dword [VGA_CURSOR_X], ebx
+	mov dword [VGA_CURSOR_Y], ecx
+	
 	mov ax, cx		;set ax to cursor y
 	imul ax, 80		;multiply cursor y by rows (80)
 	add ax, bx		;add cursor x
@@ -46,4 +52,15 @@ screen_setCursor:
 	mov al, bl
 	out dx, al
 	
+	ret
+
+screen_printString:
+	pop eax
+	pop esi
+	push eax
+
+	mov eax, dword [VGA_CURSOR_Y]
+	imul eax, 80
+	add eax, dword [VGA_CURSOR_X]
+
 	ret
