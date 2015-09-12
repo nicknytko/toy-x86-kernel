@@ -1,8 +1,8 @@
 SOURCES=boot.o main.o video.o
 
-CFLAGS=-m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector
+CFLAGS=-g -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector
 LDFLAGS=-melf_i386 -Tlink.ld
-ASFLAGS=-felf
+ASFLAGS=-felf -F dwarf -g
 
 all: $(SOURCES) link
 
