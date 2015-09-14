@@ -1,4 +1,4 @@
-SOURCES=boot.o main.o video.o
+SOURCES=boot.o main.o video.o gdt.o
 
 CFLAGS=-g -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector
 LDFLAGS=-melf_i386 -Tlink.ld

@@ -9,8 +9,8 @@
 	VGA_OFFSET	equ	0xB8000
 	VGA_END		equ	VGA_OFFSET + (VGA_WIDTH*VGA_HEIGHT)*2
 	
-VGA_CURSOR_X:		dd 	0
-VGA_CURSOR_Y:		dd	0
+VGA_CURSOR_X:		dd 	1
+VGA_CURSOR_Y:		dd	1
 	
 screen_clear:
 	mov eax, VGA_OFFSET
