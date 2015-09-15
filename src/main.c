@@ -2,9 +2,10 @@
 
 int main( void *pMBHeader )
 {
-    gdt_init();
+    gdt_init( );
+    idt_init( );
 
-    screen_clear();
+    screen_clear( );
     screen_setCursor( 0, 0 );
 
     screen_printString( "hello\t" );
