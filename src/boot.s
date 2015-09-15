@@ -1,45 +1,60 @@
-	;;
-	;;  boot.s -- Kernel start location. Also defines multiboot header.
-	;;  Based on Bran's kernel development tutorial file start.asm
-	;;
+[BITS 32]
 
-	MBOOT_PAGE_ALIGN    equ 1<<0 ; Load kernel and modules on a page boundary
-	MBOOT_MEM_INFO      equ 1<<1 ; Provide your kernel with memory info
-	MBOOT_HEADER_MAGIC  equ 0x1BADB002 ; Multiboot Magic value
-	;;  NOTE: We do not use MBOOT_AOUT_KLUDGE. It means that GRUB does not
-	;;  pass us a symbol table.
-	MBOOT_HEADER_FLAGS  equ MBOOT_PAGE_ALIGN | MBOOT_MEM_INFO
-	MBOOT_CHECKSUM      equ -(MBOOT_HEADER_MAGIC + MBOOT_HEADER_FLAGS)
+[GLOBAL start]
+[EXTERN code]
+[EXTERN bss]
+[EXTERN end]
+[EXTERN main]
 
+;; Multiboot constants
 
-	[BITS 32]		; All instructions should be 32-bit.
-
-	[GLOBAL mboot]		; Make 'mboot' accessible from C.
-	[EXTERN code]		; Start of the '.text' section.
-	[EXTERN bss]		; Start of the .bss section.
-	[EXTERN end]		; End of the last loadable section.
+	MULTIBOOT_SEARCH 		equ 8192
+	MULTIBOOT_HEADER_MAGIC 		equ 0x1BADB002
+	MULTIBOOT_BOOTLOADER_MAGIC 	equ 0x2BADB002
+	MULTIBOOT_UNSUPPORTED 		equ 0x0000fffc
+	MULTIBOOT_MOD_ALIGN 		equ 0x00001000
+	MULTIBOOT_INFO_ALIGN 		equ 0x00000004
 	
-mboot:
-	dd  MBOOT_HEADER_MAGIC ; GRUB will search for this value on each
-	;;  4-byte boundary in your kernel file
-	dd  MBOOT_HEADER_FLAGS ; How GRUB should load your file / settings
-	dd  MBOOT_CHECKSUM   ; To ensure that the above values are correct
+;; Flags for multiboot header
 
-	dd  mboot		; Location of this descriptor
-	dd  code		; Start of kernel '.text' (code) section.
-	dd  bss		; End of kernel '.data' section.
-	dd  end	; End of kernel.
-	dd  start		; Kernel entry point (initial EIP).
+	MULTIBOOT_PAGE_ALIGN            equ 0x00000001
+	MULTIBOOT_MEMORY_INFO           equ 0x00000002
+	MULTIBOOT_VIDEO_MODE            equ 0x00000004
+	MULTIBOOT_AOUT_KLUDGE           equ 0x00010000
 
-	[GLOBAL start]		; Kernel entry point.
-	[EXTERN main]		; This is the entry point of our C code
+;; Flags for multiboot info
+
+	MULTIBOOT_INFO_MEMORY 		equ 0x00000001
+	MULTIBOOT_INFO_BOOTDEV 		equ 0x00000002
+	MULTIBOOT_INFO_CMDLINE 		equ 0x00000004
+	MULTIBOOT_INFO_MODS             equ 0x00000008
+	MULTIBOOT_INFO_AOUT_SYMS 	equ 0x00000010
+	MULTIBOOT_INFO_ELF_SHDR 	equ 0X00000020
+	MULTIBOOT_INFO_MEM_MAP 		equ 0x00000040
+	MULTIBOOT_INFO_DRIVE_INFO 	equ 0x00000080
+	MULTIBOOT_INFO_CONFIG_TABLE 	equ 0x00000100
+	MULTIBOOT_INFO_BOOT_LOADER_NAME equ 0x00000200
+	MULTIBOOT_INFO_APM_TABLE 	equ 0x00000400
+	MULTIBOOT_INFO_VIDEO_INFO 	equ 0x00000800
+
+;; Configuration
+	MULTIBOOT_FLAGS                 equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO
+	MULTIBOOT_CHECKSUM              equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_FLAGS)
+
+MULTIBOOT_HEADER:
+	dd MULTIBOOT_HEADER_MAGIC
+	dd MULTIBOOT_FLAGS
+	dd MULTIBOOT_CHECKSUM
+
+	dd MULTIBOOT_HEADER
+	dd code
+	dd bss
+	dd end
+	dd start
 
 start:
-	push    ebx		; Load multiboot header location
+	push ebx
 
-	;;  Execute the kernel:
-	cli			; Disable interrupts.
-	call main		; call our main() function.
-	jmp $			; Enter an infinite loop, to stop the processor
-	;;  executing whatever rubbish is in the memory
-	;;  after our kernel!
+	cli
+	call main
+	jmp $

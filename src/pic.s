@@ -1,4 +1,4 @@
-[GLOBAL pic_remap]
+[GLOBAL pic_remap]0
 
 	PIC1_BASE equ 0x20
 	PIC2_BASE equ 0xA0

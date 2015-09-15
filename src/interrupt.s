@@ -26,6 +26,14 @@ ISR_%1:
 	jmp isr_stub
 %endmacro
 	
+%macro IRQ 1
+IRQ_%1:
+	cli
+	push byte 0
+	push byte %1
+	jmp irq_stub
+%endmacro
+
 IDT_TABLE: times (IDT_TABLE_ENTRIES*IDT_ENTRY_SIZE) db 0
 
 ;;; structure of idt entry
@@ -73,6 +81,11 @@ ISR_NO_ERROR 30
 ISR_NO_ERROR 31
 
 isr_stub:
+	add esp, 8
+	sti
+	iret
+
+irq_stub:
 	add esp, 8
 	sti
 	iret
@@ -134,5 +147,7 @@ idt_init:
 	
 	mov eax, IDT_PTR
 	lidt [eax]
+
+	int 0x3
 
 	ret
