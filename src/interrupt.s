@@ -1,14 +1,14 @@
-	[GLOBAL idt_init]
+[GLOBAL idt_init]
+[EXTERN pic_remap]
 
 	IDT_ENTRY_SIZE		equ 8
-	IDT_TABLE_ENTRIES	equ 32
+	IDT_TABLE_ENTRIES	equ 48
 	IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
 
 %macro IDT_CALL_SET 1
-	push %1
-	push ISR_%1
+	mov eax, %1
+	mov ebx, ISR_%1
 	call idt_set
-	add esi, 8
 %endmacro
 
 %macro ISR_NO_ERROR 1
@@ -77,27 +77,28 @@ isr_stub:
 	sti
 	iret
 	
-idt_set: 			;esi+8 - index, esi+4 - ptr
-	mov eax, [esp+8]	;get index
+idt_set: 			;eax - index in idt table, ebx - pointer to isr
 	imul eax, IDT_ENTRY_SIZE
 	add eax, IDT_TABLE
 
-	mov ebx, [esp+4]
-	and ebx, 0xFFFF
+	mov ecx, ebx
+	and ecx, 0xFFFF
 
-	mov word [eax], bx
+	mov word [eax], cx
 	mov word [eax+2], 0x08
 	mov byte [eax+5], 0x8E
 
-	mov ebx, [esp+4]
-	and ebx, 0xFFFF0000
-	shr ebx, 16
+	mov ecx, ebx
+	and ecx, 0xFFFF0000
+	shr ecx, 16
 
-	mov word [eax+6], bx
+	mov word [eax+6], cx
 	
 	ret
 	
 idt_init:
+	call pic_remap
+	
 	IDT_CALL_SET 0
 	IDT_CALL_SET 1
 	IDT_CALL_SET 2

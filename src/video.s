@@ -1,8 +1,7 @@
 	[GLOBAL screen_clear]
 	[GLOBAL screen_setCursor]
 	[GLOBAL screen_printString]
-	[GLOBAL screen_debugGetCursorXY]
-	
+
 	VGA_WIDTH	equ	80
 	VGA_HEIGHT	equ	25
 
@@ -21,18 +20,11 @@ _screen_clear_loop:
 	jne _screen_clear_loop
 	ret
 
-screen_debugGetCursorXY:
-	mov ebx, dword [VGA_CURSOR_X]
-	mov ecx, dword [VGA_CURSOR_Y]
-
-screen_debugGetCursorXY_infloop:	
-	jmp screen_debugGetCursorXY_infloop
-	
 screen_setCursor:
-	pop edx 		;pop return value
-	pop ebx			;pop cursor x
-	pop ecx			;pop cursor y
-	push edx		;push the return value back on
+	pop eax
+	pop ebx	                ;pop cursor x
+	pop ecx	                ;pop cursor y
+	push eax
 
 	mov dword [VGA_CURSOR_X], ebx
 	mov dword [VGA_CURSOR_Y], ecx
