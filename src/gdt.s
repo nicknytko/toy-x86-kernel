@@ -1,23 +1,36 @@
-SECTION .bss
-
 	GDT_ENTRY_SIZE		equ 8
-	GDT_TABLE_ENTRIES 	equ 5
+	GDT_TABLE_ENTRIES 	equ 3
 	GDT_TABLE_LIMIT 	equ (GDT_ENTRY_SIZE * GDT_TABLE_ENTRIES) - 1
 	
-GDT_TABLE:	resb (GDT_TABLE_LIMIT + 1)
-GDT_PTR:	resb 6
+GDT_TABLE:	times (GDT_TABLE_LIMIT + 1) db 0
+	
+GDT_TABLE_NULL:
+	times 2 dd 0
 
-SECTION .text
+GDT_TABLE_CODE:
+	dw 0xFFFF		;lower limit
+	dw 0			;base low
+	db 0			;base middle
+	db 0x9A			;access
+	db 0xCF			;granularity
+	db 0			;base high
+
+GDT_TABLE_DATA:
+	dw 0xFFFF
+	dw 0
+	db 0
+	db 0x92
+	db 0xCF
+	db 0
+
+GDT_PTR:
+	dw GDT_TABLE_LIMIT
+	dd GDT_TABLE_NULL
+	
+[GLOBAL gdt_init]
 	
 gdt_init:
 	mov eax, GDT_PTR
-	mov word [GDT_PTR], GDT_TABLE_LIMIT
-	mov dword [GDT_PTR + 2], GDT_TABLE
-
-	mov eax, GDT_PTR
-	call gdt_flush
-	
-gdt_flush:			;pass pointer to gdt table as eax
 	lgdt [eax]
 
 	mov ax, 0x10
@@ -27,7 +40,7 @@ gdt_flush:			;pass pointer to gdt table as eax
 	mov gs, ax
 	mov ss, ax
 
-	jmp 0x8:_gdt_flush
+	jmp 0x08:_gdt_init_flush
 
-_gdt_flush:
+_gdt_init_flush:
 	ret

@@ -2,6 +2,8 @@
 
 int main( void *pMBHeader )
 {
+    gdt_init();
+
     screen_clear();
     screen_setCursor( 0, 0 );
 
