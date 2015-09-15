@@ -1,4 +1,5 @@
-[GLOBAL pic_remap]0
+[GLOBAL pic_remap]
+[GLOBAL pic_sendEOI]
 
 	PIC1_BASE equ 0x20
 	PIC2_BASE equ 0xA0
@@ -9,11 +10,7 @@
 
 	PIC_EOI   equ 0x20
 
-pic_sendEOI:			; [esp+4] - irq number
-	pop ebx
-	pop eax
-	push ebx
-
+pic_sendEOI:			; eax - irq number
 	cmp eax, 8
 	jl _pic_sendEOI_pic1
 
@@ -27,7 +24,6 @@ _pic_sendEOI_pic1:
 	ret
 
 pic_remap:
-
 	mov al, 0x11		;initialize both pics
 	out PIC1_COM, al
 	out PIC2_COM, al

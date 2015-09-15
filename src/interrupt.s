@@ -1,5 +1,7 @@
 [GLOBAL idt_init]
+[GLOBAL irq_loadHandler]
 [EXTERN pic_remap]
+[EXTERN pic_sendEOI]
 
 	IDT_ENTRY_SIZE		equ 8
 	IDT_TABLE_ENTRIES	equ 48
@@ -8,6 +10,12 @@
 %macro IDT_CALL_SET 1
 	mov eax, %1
 	mov ebx, ISR_%1
+	call idt_set
+%endmacro
+
+%macro IRQ_CALL_SET 1
+	mov eax, %1
+	mov ebx, IRQ_%1
 	call idt_set
 %endmacro
 
@@ -47,6 +55,8 @@ IDT_PTR:
 	dw IDT_TABLE_LIMIT
 	dd IDT_TABLE
 
+IRQ_TABLE: times 16 dd 0	;table of all the irq handlers
+
 ISR_NO_ERROR 0
 ISR_NO_ERROR 1
 ISR_NO_ERROR 2
@@ -79,6 +89,22 @@ ISR_NO_ERROR 28
 ISR_NO_ERROR 29
 ISR_NO_ERROR 30
 ISR_NO_ERROR 31
+IRQ          32
+IRQ          33
+IRQ          34
+IRQ          35
+IRQ          36
+IRQ          37
+IRQ          38
+IRQ          39
+IRQ          40
+IRQ          41
+IRQ          42
+IRQ          43
+IRQ          44
+IRQ          45
+IRQ          46
+IRQ          47
 
 isr_stub:
 	add esp, 8
@@ -86,9 +112,34 @@ isr_stub:
 	iret
 
 irq_stub:
+	pusha
+	mov eax, [esp+32]
+
+	call pic_sendEOI
+
+	sub eax, 32	;get irq from table
+	imul eax, 4
+	add eax, IRQ_TABLE
+
+	mov edx, [eax]
+	call edx
+
+	popa
 	add esp, 8
 	sti
 	iret
+
+irq_loadHandler:	; [esi+8] - irq number, [esi+4] - ptr to handler
+	pop ecx
+	pop ebx
+	pop eax
+	push ecx
+
+	imul eax, 4
+	add eax, IRQ_TABLE
+	mov dword [eax], ebx
+
+	ret
 	
 idt_set: 			;eax - index in idt table, ebx - pointer to isr
 	imul eax, IDT_ENTRY_SIZE
@@ -144,10 +195,24 @@ idt_init:
 	IDT_CALL_SET 29
 	IDT_CALL_SET 30
 	IDT_CALL_SET 31
+	IRQ_CALL_SET 32
+	IRQ_CALL_SET 33
+	IRQ_CALL_SET 34
+	IRQ_CALL_SET 35
+	IRQ_CALL_SET 36
+	IRQ_CALL_SET 37
+	IRQ_CALL_SET 38
+	IRQ_CALL_SET 39
+	IRQ_CALL_SET 40
+	IRQ_CALL_SET 41
+	IRQ_CALL_SET 42
+	IRQ_CALL_SET 43
+	IRQ_CALL_SET 44
+	IRQ_CALL_SET 45
+	IRQ_CALL_SET 46
+	IRQ_CALL_SET 47
 	
 	mov eax, IDT_PTR
 	lidt [eax]
-
-	int 0x3
 
 	ret
