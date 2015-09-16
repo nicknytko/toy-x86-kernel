@@ -215,4 +215,6 @@ idt_init:
 	mov eax, IDT_PTR
 	lidt [eax]
 
+	sti
+
 	ret
