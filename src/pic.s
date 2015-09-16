@@ -24,11 +24,6 @@ _pic_sendEOI_pic1:
 	ret
 
 pic_remap:
-	;in ax, PIC1_DATA
-	;mov bl, al
-	;in ax, PIC2_DATA
-	;mov bh, al
-
 	mov al, 0x11		;initialize both pics
 	out PIC1_COM, al
 	out PIC2_COM, al

@@ -57,4 +57,7 @@ start:
 
 	cli
 	call main
-	jmp $
+
+idle:
+	hlt
+	jmp idle
