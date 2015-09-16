@@ -11,9 +11,10 @@ int main( void *pMBHeader )
     
     screen_clear( );
     screen_setCursor( 0, 0 );
+   
+    screen_printString( "\nHello, World!" );
 
-    screen_printString( "hello\t" );
-    screen_printString( "world\n" );
+    screen_scroll( );
 
     return 0xDEADBABA;
 }

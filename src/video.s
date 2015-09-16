@@ -1,12 +1,15 @@
 	[GLOBAL screen_clear]
 	[GLOBAL screen_setCursor]
 	[GLOBAL screen_printString]
+	[GLOBAL screen_scroll]
 
 	VGA_WIDTH	equ	80
 	VGA_HEIGHT	equ	25
 
 	VGA_OFFSET	equ	0xB8000
 	VGA_END		equ	VGA_OFFSET + (VGA_WIDTH*VGA_HEIGHT)*2
+
+	VGA_BLANK       equ     0xF00
 	
 VGA_CURSOR_X:		dd 	0
 VGA_CURSOR_Y:		dd	0
@@ -14,7 +17,7 @@ VGA_CURSOR_Y:		dd	0
 screen_clear:
 	mov eax, VGA_OFFSET
 _screen_clear_loop:
-	mov word [eax], 0xF00
+	mov word [eax], VGA_BLANK
 	add eax, 2
 	cmp eax, VGA_END
 	jne _screen_clear_loop
@@ -54,6 +57,49 @@ screen_setCursor:
 	out dx, al
 	
 	ret
+
+screen_scroll:
+	mov eax, VGA_OFFSET
+	mov ebx, (VGA_OFFSET + (VGA_WIDTH * (VGA_HEIGHT-1)))
+_screen_scroll_loop:
+	mov dx, word [eax + VGA_WIDTH*2]
+	mov word [eax], dx
+
+	add eax, 2
+	cmp eax, ebx
+	jl _screen_scroll_loop
+
+	mov ebx, (VGA_OFFSET + (VGA_WIDTH * VGA_HEIGHT))
+_screen_scroll_lastline:
+	mov word [eax], VGA_BLANK
+	add eax, 2
+
+	cmp eax, ebx
+	jl _screen_scroll_lastline
+
+	mov eax, dword [VGA_CURSOR_Y]
+	mov ebx, dword [VGA_CURSOR_X]
+
+	dec eax
+
+	push eax
+	push ebx
+
+	call screen_setCursor
+
+	ret
+
+screen_newline:
+	mov eax, dword [VGA_CURSOR_Y]
+	inc eax
+
+	mov dword [VGA_CURSOR_Y], eax
+	mov dword [VGA_CURSOR_X], 0
+
+	pop eax
+	push 0
+
+	call screen_setCursor
 
 screen_printString:
 	pop eax

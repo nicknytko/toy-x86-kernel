@@ -1,5 +1,6 @@
 [GLOBAL pit_init]
 [GLOBAL pit_callback]
+[GLOBAL pit_getTicks]
 [EXTERN irq_loadHandler]
 	
 	PIT_PORT_CH0         equ 0x40
@@ -70,4 +71,8 @@ pit_init: 			;[esp+4] - frequency in hz
 	mov al, bl
 	out PIT_PORT_CH0, al
 	
+	ret
+
+pit_getTicks:
+	mov eax, [PIT_TICKS]
 	ret
