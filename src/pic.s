@@ -11,7 +11,7 @@
 	PIC_EOI   equ 0x20
 
 pic_sendEOI:			; eax - irq number
-	cmp eax, 8
+	cmp eax, 0x28
 	jl _pic_sendEOI_pic1
 
 	mov al, PIC_EOI
@@ -43,5 +43,9 @@ pic_remap:
 	mov al, 1		;8086/8088 mode
 	out PIC1_DATA, al
 	out PIC2_DATA, al
- 
+
+	mov al, 0
+	out PIC1_DATA, al
+	out PIC2_DATA, al
+	
 	ret
