@@ -6,7 +6,7 @@
 	PIC1_COM  equ PIC1_BASE
 	PIC2_COM  equ PIC2_BASE
 	PIC1_DATA equ PIC1_BASE+1
-	PIC2_DATA equ PIC2_BASE+2
+	PIC2_DATA equ PIC2_BASE+1
 
 	PIC_EOI   equ 0x20
 
@@ -24,6 +24,11 @@ _pic_sendEOI_pic1:
 	ret
 
 pic_remap:
+	;in ax, PIC1_DATA
+	;mov bl, al
+	;in ax, PIC2_DATA
+	;mov bh, al
+
 	mov al, 0x11		;initialize both pics
 	out PIC1_COM, al
 	out PIC2_COM, al
