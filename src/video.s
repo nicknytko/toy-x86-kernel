@@ -1,6 +1,8 @@
 	[GLOBAL screen_clear]
 	[GLOBAL screen_setCursor]
+	[GLOBAL screen_newline]
 	[GLOBAL screen_printString]
+	[GLOBAL screen_printHex]
 	[GLOBAL screen_scroll]
 
 	VGA_WIDTH	equ	80
@@ -61,6 +63,7 @@ screen_setCursor:
 screen_scroll:
 	mov eax, VGA_OFFSET
 	mov ebx, (VGA_OFFSET + (VGA_WIDTH * (VGA_HEIGHT-1)))
+
 _screen_scroll_loop:
 	mov dx, word [eax + VGA_WIDTH*2]
 	mov word [eax], dx
@@ -70,6 +73,7 @@ _screen_scroll_loop:
 	jl _screen_scroll_loop
 
 	mov ebx, (VGA_OFFSET + (VGA_WIDTH * VGA_HEIGHT))
+
 _screen_scroll_lastline:
 	mov word [eax], VGA_BLANK
 	add eax, 2
@@ -96,10 +100,85 @@ screen_newline:
 	mov dword [VGA_CURSOR_Y], eax
 	mov dword [VGA_CURSOR_X], 0
 
-	pop eax
+	push eax
 	push 0
 
 	call screen_setCursor
+	ret
+
+screen_printHex:
+	pop edx
+	pop eax
+	push edx
+
+	mov ebx, dword [VGA_CURSOR_X]
+	mov ecx, dword [VGA_CURSOR_Y]
+
+	mov edx, eax
+
+	mov eax, ecx
+	imul eax, VGA_WIDTH
+	add eax, ebx
+	imul eax, 2
+	add eax, VGA_OFFSET
+
+	mov ebx, edx
+
+	mov byte [eax], 0x30
+	mov byte [eax+1], 0xF
+	mov byte [eax+2], 0x78
+	mov byte [eax+3], 0xF
+	add eax, 4
+
+	mov edx, eax
+	add eax, 14
+
+_screen_printHex_loop:
+	cmp eax, edx
+	jl _screen_printHex_endLoop
+
+	mov ecx, ebx
+	and ecx, 0xF
+	shr ebx, 4
+
+	cmp ecx, 10
+	jge _screen_printHex_printLetter
+
+_screen_printHex_printNum:
+	add ecx, 48
+	mov byte [eax], cl
+	dec eax
+	mov byte [eax], 0xF
+	dec eax
+
+	jmp _screen_printHex_loop
+
+_screen_printHex_printLetter:
+	add ecx, 55
+	mov byte [eax], cl
+	dec eax
+	mov byte [eax], 0xF
+	dec eax
+
+	jmp _screen_printHex_loop
+
+_screen_printHex_endLoop:
+	add eax, 18
+
+	sub eax, VGA_OFFSET
+	xor edx, edx
+	mov ebx, 2
+	div ebx
+	
+	xor edx, edx
+	mov ebx, VGA_WIDTH
+	div ebx
+	
+	push eax
+	push edx
+	call screen_setCursor
+	
+	ret
 
 screen_printString:
 	pop eax

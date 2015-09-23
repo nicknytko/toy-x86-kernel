@@ -13,8 +13,10 @@ int main( void *pMBHeader )
     screen_setCursor( 0, 0 );
    
     screen_printString( "\nHello, World!" );
-
+    screen_newline( );
     screen_scroll( );
+
+    screen_printHex( 0xDEADBEEF );
 
     return 0xDEADBABA;
 }
