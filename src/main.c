@@ -17,6 +17,8 @@ int main( void *pMBHeader )
     screen_scroll( );
 
     screen_printHex( 0xDEADBEEF );
+    screen_newline( );
+    screen_printDec( 123000 + 456 );
 
     return 0xDEADBABA;
 }

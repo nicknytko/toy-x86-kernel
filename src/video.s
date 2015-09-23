@@ -3,6 +3,7 @@
 	[GLOBAL screen_newline]
 	[GLOBAL screen_printString]
 	[GLOBAL screen_printHex]
+	[GLOBAL screen_printDec]
 	[GLOBAL screen_scroll]
 
 	VGA_WIDTH	equ	80
@@ -178,6 +179,79 @@ _screen_printHex_endLoop:
 	push edx
 	call screen_setCursor
 	
+	ret
+
+screen_printDec:
+	pop eax
+	pop edx
+	push eax
+
+	mov ebx, dword [VGA_CURSOR_X]
+	mov ecx, dword [VGA_CURSOR_Y]
+
+	mov eax, ecx
+	imul eax, VGA_WIDTH
+	add eax, ebx
+	imul eax, 2
+	add eax, VGA_OFFSET
+
+	push eax		; starting memory cell
+	mov eax, edx
+	push eax		; number
+	mov ebx, 10
+	mov ecx, 0
+
+_screen_printDec_countDigits:
+	xor edx, edx
+	div ebx
+
+	inc ecx
+
+	cmp eax, 0
+	jg _screen_printDec_countDigits
+
+	pop eax			; number
+	pop ebx			; starting memory cell
+	
+	dec ecx
+	imul ecx, 2
+	add ecx, ebx		; iterator / ending memory cell
+
+	push ecx
+
+_screen_printDec_printDigits:
+	xor edx, edx
+
+	push ebx
+	mov ebx, 10
+	div ebx
+	pop ebx
+
+	add dl, 48
+	mov byte [ecx], dl
+	mov byte [ecx+1], 0xF
+
+	sub ecx, 2
+
+	cmp ecx, ebx
+	jge _screen_printDec_printDigits
+
+	pop eax
+	add eax, 2
+
+	sub eax, VGA_OFFSET
+	xor edx, edx
+	mov ebx, 2
+	div ebx
+	
+	xor edx, edx
+	mov ebx, VGA_WIDTH
+	div ebx
+	
+	push eax
+	push edx
+	call screen_setCursor
+
 	ret
 
 screen_printString:
