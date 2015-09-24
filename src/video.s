@@ -1,6 +1,7 @@
 	[GLOBAL screen_clear]
 	[GLOBAL screen_setCursor]
 	[GLOBAL screen_newline]
+	[GLOBAL screen_tab]
 	[GLOBAL screen_printString]
 	[GLOBAL screen_printHex]
 	[GLOBAL screen_printDec]
@@ -103,6 +104,22 @@ screen_newline:
 
 	push eax
 	push 0
+
+	call screen_setCursor
+	ret
+
+screen_tab:
+	mov eax, dword [VGA_CURSOR_X]
+	mov ebx, dword [VGA_CURSOR_Y]
+
+	xor edx, edx
+	mov ebx, 8
+	div ebx
+	inc eax
+	imul eax, ebx
+
+	push ebx
+	push eax
 
 	call screen_setCursor
 	ret

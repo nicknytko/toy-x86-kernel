@@ -2,6 +2,7 @@
 #include "gdt.h"
 #include "interrupt.h"
 #include "pit.h"
+#include "panic.h"
 
 int main( void *pMBHeader )
 {
@@ -18,7 +19,9 @@ int main( void *pMBHeader )
 
     screen_printHex( 0xDEADBEEF );
     screen_newline( );
-    screen_printDec( 123000 + 456 );
+    screen_printDec( 1234567890 );
 
-    return 0xDEADBABA;
+    panic("Panic Test.");
+
+    return 0;
 }
