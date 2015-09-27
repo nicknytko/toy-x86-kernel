@@ -1,4 +1,7 @@
-SOURCES=boot.o main.o video.o gdt.o interrupt.o pic.o pit.o paging.o panic.o serial.o
+ASMSRC = $(wildcard *.s)
+CSRC = $(wildcard *.c)
+
+SOURCES = $(CSRC:.c=.o) $(ASMSRC:.s=.o)
 
 CFLAGS=-g -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector
 LDFLAGS=-melf_i386 -Tlink.ld
