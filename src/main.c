@@ -3,13 +3,17 @@
 #include "interrupt.h"
 #include "pit.h"
 #include "panic.h"
+#include "serial.h"
 
 int main( void *pMBHeader )
 {
     gdt_init( );
     idt_init( );
     pit_init( 50 );
-    
+    serial_init( );
+   
+    serial_writeString( "Hello, World from serial!\n" );
+
     screen_clear( );
     screen_setCursor( 0, 0 );
    
@@ -20,8 +24,6 @@ int main( void *pMBHeader )
     screen_printHex( 0xDEADBEEF );
     screen_newline( );
     screen_printDec( 1234567890 );
-
-    panic("Panic Test.");
 
     return 0;
 }
