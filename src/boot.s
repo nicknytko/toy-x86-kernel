@@ -5,6 +5,7 @@
 [EXTERN bss]
 [EXTERN end]
 [EXTERN main]
+[EXTERN mboot_setinfo]
 
 ;; Multiboot constants
 
@@ -53,7 +54,7 @@ MULTIBOOT_HEADER:
 	dd start
 
 start:
-	push ebx
+	call mboot_setinfo
 
 	cli
 	call main

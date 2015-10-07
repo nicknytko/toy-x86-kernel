@@ -129,11 +129,13 @@ irq_stub:
 	sti
 	iret
 
-irq_loadHandler:	; [esi+8] - irq number, [esi+4] - ptr to handler
-	pop ecx
-	pop ebx
-	pop eax
-	push ecx
+irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
+	;pop ecx
+	;pop ebx
+	;pop eax
+	;push ecx
+	mov eax, [esp+8]
+	mov ebx, [esp+4]
 
 	imul eax, 4
 	add eax, IRQ_TABLE

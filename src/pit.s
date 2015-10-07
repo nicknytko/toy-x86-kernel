@@ -53,13 +53,12 @@ pit_init: 			;[esp+4] - frequency in hz
 	push 0
 	push pit_callback
 	call irq_loadHandler
+	add esp, 8
 
 	mov eax, PIT_FLAGS
 	out PIT_MODE, al
 	
-	pop ebx
-	pop ecx
-	push ebx
+	mov ecx, [esp+4]
 
 	mov eax, PIT_INPUT_CLOCK
 	xor edx, edx

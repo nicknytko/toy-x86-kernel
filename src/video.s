@@ -28,10 +28,8 @@ _screen_clear_loop:
 	ret
 
 screen_setCursor:
-	pop eax
-	pop ebx	                ;pop cursor x
-	pop ecx	                ;pop cursor y
-	push eax
+	mov ebx, [esp+4] 	;cursor x
+	mov ecx, [esp+8]	;cursor y
 
 	mov dword [VGA_CURSOR_X], ebx
 	mov dword [VGA_CURSOR_Y], ecx
@@ -92,6 +90,7 @@ _screen_scroll_lastline:
 	push ebx
 
 	call screen_setCursor
+	add esp, 8
 
 	ret
 
@@ -106,6 +105,7 @@ screen_newline:
 	push 0
 
 	call screen_setCursor
+	add esp, 8
 	ret
 
 screen_tab:
@@ -122,6 +122,7 @@ screen_tab:
 	push eax
 
 	call screen_setCursor
+	add esp, 8
 	ret
 
 screen_printHex:
@@ -195,6 +196,7 @@ _screen_printHex_endLoop:
 	push eax
 	push edx
 	call screen_setCursor
+	add esp, 8
 	
 	ret
 
@@ -268,13 +270,23 @@ _screen_printDec_printDigits:
 	push eax
 	push edx
 	call screen_setCursor
+	add esp, 8
 
 	ret
 
 screen_printString:
-	pop eax
-	pop esi			;get string pointer
-	push eax
+;	pop eax
+;	pop esi			;get string pointer
+;	push eax
+
+	mov esi, [esp+4]
+
+	cmp esi, 0
+	jne _screen_printString_sanityCheck
+	
+	ret
+
+_screen_printString_sanityCheck:
 
 	mov ebx, dword [VGA_CURSOR_X]
 	mov ecx, dword [VGA_CURSOR_Y]
@@ -347,5 +359,6 @@ _screen_printString_endLoop:
 	push eax
 	push edx
 	call screen_setCursor
-	
+	add esp, 8
+
 	ret

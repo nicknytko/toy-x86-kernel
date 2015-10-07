@@ -88,9 +88,7 @@ _serial_writeByte_loop:
 	ret
 
 serial_writeString:
-	pop eax
-	pop esi
-	push eax
+	mov esi, [esp+4]
 
 	xor eax, eax
 
