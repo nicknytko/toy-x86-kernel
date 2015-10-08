@@ -14,22 +14,24 @@
 
 MULTIBOOT_INFO: dd 0
 
-MULTIBOOT_MEMSIZE_PRESENT: db 0
-MULTIBOOT_BOOTDEV_PRESENT: db 0
-MULTIBOOT_CMDLINE_PRESENT: db 0
-MULTIBOOT_MODS_PRESENT: db 0
-MULTIBOOT_SYMS_PRESENT: db 0
-MULTIBOOT_MMAP_PRESENT: db 0
-MULTIBOOT_DRIVES_PRESENT: db 0
-MULTIBOOT_CONFIGTAB_PRESENT: db 0
-MULTIBOOT_BOOTLOADER_NAME_PRESENT: db 0
-MULTIBOOT_APMTAB_PRESENT: db 0
-MULTIBOOT_VPE_PRESENT: db 0
+MULTIBOOT_MEMSIZE_PRESENT 		equ 0x1
+MULTIBOOT_BOOTDEV_PRESENT 		equ 0x2
+MULTIBOOT_CMDLINE_PRESENT		equ 0x4
+MULTIBOOT_MODS_PRESENT			equ 0x8
+MULTIBOOT_SYMS_PRESENT			equ 0x10
+MULTIBOOT_SYMS2_PRESENT			equ 0x20
+MULTIBOOT_MMAP_PRESENT			equ 0x40
+MULTIBOOT_DRIVES_PRESENT		equ 0x80
+MULTIBOOT_CONFIGTAB_PRESENT		equ 0x100
+MULTIBOOT_BOOTLOADER_NAME_PRESENT	equ 0x200
+MULTIBOOT_APMTAB_PRESENT		equ 0x400
+MULTIBOOT_VPE_PRESENT			equ 0x800
 
 %macro CHECK_IF_PRESENT 2
-	mov eax, %1
-	mov bl, byte [eax]
-	cmp bl, 1
+	mov eax, MULTIBOOT_INFO
+	mov ebx, dword [eax]
+	test ebx, %1
+
 	je _check_if_present_%1%2
 	mov eax, 0
 	ret
@@ -40,94 +42,9 @@ mboot_setinfo:		; ebx - multiboot info pointer
 	mov eax, MULTIBOOT_INFO
 	mov dword [eax], ebx
 
-_multiboot_setinfo_1:
-	mov eax, dword [ebx]	;flags
-	test eax, 0x1
-	je _multiboot_setinfo_2
-
-	mov ecx, MULTIBOOT_MEMSIZE_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_2:
-	test eax, 0x2
-	je _multiboot_setinfo_3
-	
-	mov ecx, MULTIBOOT_BOOTDEV_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_3:
-	test eax, 0x4
-	je _multiboot_setinfo_4
-
-	mov ecx, MULTIBOOT_CMDLINE_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_4:
-	test eax, 0x8
-	je _multiboot_setinfo_5
-
-	mov ecx, MULTIBOOT_MODS_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_5:
-	test eax, 0x10
-	je _multiboot_setinfo_6
-
-	mov ecx, MULTIBOOT_SYMS_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_6:
-	test eax, 0x20
-	je _multiboot_setinfo_7
-
-	mov ecx, MULTIBOOT_SYMS_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_7:
-	test eax, 0x40
-	je _multiboot_setinfo_8
-
-	mov ecx, MULTIBOOT_MMAP_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_8:
-	test eax, 0x80
-	je _multiboot_setinfo_9
-
-	mov ecx, MULTIBOOT_DRIVES_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_9:
-	test eax, 0x100
-	je _multiboot_setinfo_10
-
-	mov ecx, MULTIBOOT_CONFIGTAB_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_10:
-	test eax, 0x200
-	je _multiboot_setinfo_11
-
-	mov ecx, MULTIBOOT_BOOTLOADER_NAME_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_11:
-	test eax, 0x400
-	je _multiboot_setinfo_12
-
-	mov ecx, MULTIBOOT_APMTAB_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_12:
-	test eax, 0x800
-	je _multiboot_setinfo_end
-
-	mov ecx, MULTIBOOT_VPE_PRESENT
-	mov byte [ecx], 1
-
-_multiboot_setinfo_end:
 	ret
 
+;; Get total ram in kilobytes
 mboot_totalRam:
 	CHECK_IF_PRESENT MULTIBOOT_MEMSIZE_PRESENT, __LINE__
 
@@ -139,6 +56,34 @@ mboot_totalRam:
 
 	ret
 
+;; Get root partition?
+mboot_bootDevice:
+	CHECK_IF_PRESENT MULTIBOOT_BOOTDEV_PRESENT, __LINE__
+	
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+12]
+
+	ret
+
+;; Get kernel command line?
+mboot_cmdline:
+	CHECK_IF_PRESENT MULTIBOOT_CMDLINE_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+16]
+
+	ret
+
+;; Return pointer to the name of the bootloader
+mboot_bootName:
+	CHECK_IF_PRESENT MULTIBOOT_BOOTLOADER_NAME_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+64]
+
+	ret
+
+;; Get number of modules
 mboot_modsNum:
 	CHECK_IF_PRESENT MULTIBOOT_MODS_PRESENT, __LINE__
 	
@@ -147,6 +92,7 @@ mboot_modsNum:
 
 	ret
 
+;; Returns address to array of pointers to modules
 mboot_modsPtr:
 	CHECK_IF_PRESENT MULTIBOOT_MODS_PRESENT, __LINE__
 
@@ -155,8 +101,48 @@ mboot_modsPtr:
 
 	ret
 
-mboot_bootName:
-	CHECK_IF_PRESENT MULTIBOOT_BOOTLOADER_NAME_PRESENT, __LINE__
+mboot_memmapLen:
+	CHECK_IF_PRESENT MULTIBOOT_MMAP_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+44]
+	
+	ret
+
+mboot_memmapPtr:
+	CHECK_IF_PRESENT MULTIBOOT_MMAP_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+48]
+
+	ret
+
+mboot_drivesLen:
+	CHECK_IF_PRESENT MULTIBOOT_DRIVES_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+52]
+
+	ret
+
+mboot_drivesPtr:
+	CHECK_IF_PRESENT MULTIBOOT_DRIVES_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+56]
+
+	ret
+
+mboot_configTable:
+	CHECK_IF_PRESENT MULTIBOOT_CONFIGTAB_PRESENT, __LINE__
+
+	mov edx, dword [MULTIBOOT_INFO]
+	mov eax, dword [edx+60]
+
+	ret
+
+mboot_apmTable:
+	CHECK_IF_PRESENT MULTIBOOT_APMTAB_PRESENT, __LINE__
 
 	mov edx, dword [MULTIBOOT_INFO]
 	mov eax, dword [edx+64]

@@ -24,7 +24,6 @@ int main( )
     serial_writeString( "Hello, World from serial!\n" );
 
     screen_clear( );
-    screen_setCursor( 0, 0 );
    
     screen_printString( "\nHello, World!" );
     screen_newline( );
@@ -35,8 +34,27 @@ int main( )
     screen_printDec( 1234567890 );
 
     screen_newline( );
+    screen_newline( );
+
     screen_printDec( mboot_totalRam( ) );
     screen_printString(" kilobytes of ram\n");
+
+    screen_printDec( mboot_modsNum( ) );
+    screen_printString(" module(s)\nmodules address: ");
+    screen_printHex( mboot_modsPtr( )[0] );
+
+    screen_printString("\nmemmap size: ");
+    screen_printDec( mboot_memmapLen( ) );
+    screen_printString("\nmemmap address: ");
+    screen_printHex( (unsigned int)mboot_memmapPtr( ) );
+
+    mboot_drivesLen( );
+    mboot_drivesPtr( );
+   
+    screen_printString("\ndrivemap size: ");
+    screen_printDec( mboot_drivesLen( ) );
+    screen_printString("\ndrivemap address: ");
+    screen_printHex( (unsigned int)mboot_drivesPtr( ) );
 
     return 0;
 }

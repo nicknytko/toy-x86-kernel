@@ -25,6 +25,12 @@ _screen_clear_loop:
 	add eax, 2
 	cmp eax, VGA_END
 	jne _screen_clear_loop
+
+	push 0
+	push 0
+	call screen_setCursor
+	add esp, 8
+
 	ret
 
 screen_setCursor:
