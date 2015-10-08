@@ -126,9 +126,7 @@ screen_tab:
 	ret
 
 screen_printHex:
-	pop edx
-	pop eax
-	push edx
+	mov eax, [esp+4]
 
 	mov ebx, dword [VGA_CURSOR_X]
 	mov ecx, dword [VGA_CURSOR_Y]
@@ -201,9 +199,7 @@ _screen_printHex_endLoop:
 	ret
 
 screen_printDec:
-	pop eax
-	pop edx
-	push eax
+	mov edx, [esp+4]
 
 	mov ebx, dword [VGA_CURSOR_X]
 	mov ecx, dword [VGA_CURSOR_Y]
