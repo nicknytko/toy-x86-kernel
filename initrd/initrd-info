@@ -1,0 +1,24 @@
+#!/usr/bin/python2
+
+import tarfile
+
+tar = tarfile.open("initrd.tar", "r")
+#print tar.getnames( )
+
+info = tar.next( )
+while info != None:
+    if info.name != ".":
+        print( "Name:\t\t" + str(info.name) )
+	print( "Size:\t\t" + str(info.size) )
+	print( "Modify Time:\t" + str(info.mtime) )
+    	print( "Mode:\t\t" + str(info.mode) )
+    	print( "Type:\t\t" + str(info.type) )
+    	print( "Linkname:\t" + str(info.linkname) )
+    	print( "UID:\t\t" + str(info.uid) )
+    	print( "GID:\t\t" + str(info.gid) )
+    	print( "Uname:\t\t" + str(info.uname) )
+    	print( "Gname:\t\t" + str(info.gname) )
+    	print( "PAX:\t\t" + str(info.pax_headers) )
+	print( "\n" )
+
+    info = tar.next( )
