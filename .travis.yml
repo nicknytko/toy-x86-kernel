@@ -1,7 +1,9 @@
 language: c
 sudo: false
-before_install:
-  - sudo apt-get install nasm
+addons:
+  apt:
+    packages:
+    - nasm
 script:
   - cd src
   - make
