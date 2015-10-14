@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nickgn12/x86-thing.svg)](https://travis-ci.org/nickgn12/x86-thing)
+
 # x86-thing
 who even knows
 
