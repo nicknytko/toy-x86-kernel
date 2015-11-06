@@ -1,2 +1,2 @@
 #! /bin/bash
-hd -b initrd.tar
+hd init.rd

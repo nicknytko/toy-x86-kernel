@@ -2,6 +2,7 @@
 #include <fstream>
 #include <dirent.h>
 #include <cstring>
+#include <cctype>
 
 /* Initrd file makeup
 
@@ -12,7 +13,7 @@ for every file:
 
 512 bytes  name
 1 dword    offset
-2 dword    file size
+1 dword    file size
 
 file data
 
@@ -34,6 +35,22 @@ public:
 
     cInitRdFile* pFiles;
 } __attribute__ ((__packed__));
+
+bool equalsIgnoreCase( const char* szFirst, const char* szSecond )
+{
+    if (strlen(szFirst) != strlen(szSecond))
+	return false;
+
+    int nLen = strlen( szFirst );
+
+    for (int i=0;i < nLen;++i)
+    {
+	if (tolower(szFirst[i]) != tolower(szSecond[i]))
+	    return false;
+    }
+
+    return true;
+}
 
 unsigned long getFileSize( const char* szPath )
 {
@@ -166,11 +183,49 @@ int getFileData( cInitRdFile* pFiles, char* pDataBase, char* &pData, const char*
     return nIter;
 }
 
-int main( )
+void printUsage( char* argv0 )
 {
-    const char* szPath = "root";
+    printf( "usage: %s [options] directory output\n", argv0 + 2 );
+    printf( "  options:\n" );
+    printf( "    -v, --verbose\tRuns in verbose mode\n" );
+}
+
+int main( int argc, char ** argv )
+{
+    if (argc < 3)
+    {
+	printUsage( argv[0] );
+	return 0;
+    }
+
+    const char* szPath = argv[argc-2];
+    const char* szFile = argv[argc-1];
+    bool bVerbose = false;
+
+    if (argc > 3)
+    {
+	for (int i=1;i < argc-2;++i)
+	{
+	    switch (argv[i][1])
+	    {
+	    case 'v':
+	    case 'V':
+		bVerbose = true;
+		break;
+	    case '-':
+		if (equalsIgnoreCase( argv[i], "--verbose" ) )
+		    bVerbose = true;
+		break;
+	    default:
+		printf( "Unknown option %c.", argv[i][1] );
+	    }
+	}
+    }
 
     int nFiles = getFilesInDirectory( szPath );
+
+    if (bVerbose)
+	printf( "Found %i files in %s.\n", nFiles, szPath );
 
     cInitRd* pInitRd = new cInitRd;
     pInitRd->nMagic = 0xDEADBEEF;
@@ -183,24 +238,43 @@ int main( )
 
     for (int i=0;i < nFiles;++i)
     {
-	printf("%s, %lu bytes\n", pInitRd->pFiles[i].szName, pInitRd->pFiles[i].lSize );
-
 	lTotalBytes += pInitRd->pFiles[i].lSize + 1;
     }
 
-    printf("Total %lu bytes to pack.\n", lTotalBytes);
+    if (bVerbose)
+	printf( "Total %lu bytes of data to archive.\n", lTotalBytes );
 
     char* pData = new char[lTotalBytes];
     char* pDataTemp = pData;
     unsigned int nDataOffset = sizeof(cInitRd) + sizeof(cInitRdFile) * nFiles;
+
     nDataOffset &= 0xFFFFFFF0;
     nDataOffset += 0x10;
 
-    printf( "Data starting point is %i\n", nDataOffset );
+    if (bVerbose)
+	printf( "Data offset is 0x%X.\n", nDataOffset );
 
     getFileData( pInitRd->pFiles, pData - nDataOffset, pDataTemp, szPath );
 
-    fwrite( pData, lTotalBytes, 1, stdout );
+    FILE* pOutput = fopen( szFile, "wb" );
+
+    fwrite( &pInitRd->nMagic, sizeof( unsigned int ), 1, pOutput );
+    fwrite( &pInitRd->nFiles, sizeof( unsigned int ), 1, pOutput );
+
+    for (int i=0;i < nFiles;++i)
+    {
+	fwrite( pInitRd->pFiles[i].szName, 512, 1, pOutput );
+	fwrite( &pInitRd->pFiles[i].nOffset, sizeof( unsigned int ), 1, pOutput );
+	fwrite( &pInitRd->pFiles[i].lSize, sizeof( unsigned long ), 1, pOutput );
+    }
+
+    fseek( pOutput, nDataOffset, SEEK_SET );
+    fwrite( pData, lTotalBytes, 1, pOutput );
+
+    fclose( pOutput );
+
+    if (bVerbose)
+	printf( "Finished.\n" );
 
     delete[] pData;
     delete[] pInitRd->pFiles;
