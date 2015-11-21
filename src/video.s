@@ -20,6 +20,7 @@ VGA_CURSOR_Y:		dd	0
 	
 screen_clear:
 	mov eax, VGA_OFFSET
+
 _screen_clear_loop:
 	mov word [eax], VGA_BLANK
 	add eax, 2

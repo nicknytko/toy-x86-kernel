@@ -65,7 +65,7 @@ mboot_bootDevice:
 
 	ret
 
-;; Get kernel command line?
+;; Get kernel command line arguments
 mboot_cmdline:
 	CHECK_IF_PRESENT MULTIBOOT_CMDLINE_PRESENT, __LINE__
 

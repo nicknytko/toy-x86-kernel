@@ -1,6 +1,8 @@
 [GLOBAL a20_enable]
 [GLOBAL a20_isEnabled]
-
+[EXTERN kb_ps2_wait_read]
+[EXTERN kb_ps2_wait_write]
+	
 PS2_RW 		equ 0x60
 PS2_STATUS 	equ 0x64
 PS2_COMMAND	equ 0x64
@@ -44,50 +46,34 @@ a20_check:			;http://wiki.osdev.org/A20#Testing_the_A20_line
 _a20_check_end:
 	ret
 
-ps2_wait_read:
-	in al, PS2_STATUS
-	and al, 0x1
-	cmp al, 0x1
-	jne ps2_wait_read
-	ret
-
-ps2_wait_write:
-	in al, PS2_STATUS
-	and al, 0x2
-	cmp al, 0x2
-	jne ps2_wait_write
-	ret
-
 a20_enable_ps2:			;enable the a20 line using the ps2 controller
 	cli
 
-	call ps2_wait_write
+	call kb_ps2_wait_write
 	mov al, 0xAD
 	out PS2_COMMAND, al
 
-	call ps2_wait_write
+	call kb_ps2_wait_write
 	mov al, 0xD0
 	out PS2_COMMAND, al
 
-	call ps2_wait_read
+	call kb_ps2_wait_read
 	xor eax, eax
 	in al, PS2_RW
 	push eax
 
-	call ps2_wait_write
+	call kb_ps2_wait_write
 	mov al, 0xD1
 	out PS2_COMMAND, al
 
-	call ps2_wait_write
+	call kb_ps2_wait_write
 	pop eax
 	or al, 2
 	out PS2_RW, al
 
-	call ps2_wait_write
+	call kb_ps2_wait_write
 	mov al, 0xAE
 	out PS2_COMMAND, al
-
-	call ps2_wait_write
 	sti
 
 	ret

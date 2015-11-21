@@ -8,8 +8,11 @@
 #include "kheap.h"
 #include "paging.h"
 #include "multiboot.h"
+#include "keyboard.h"
 
-int main( )
+/** Kernel Main
+ */
+void main( )
 {
     a20_enable( );
 
@@ -17,7 +20,7 @@ int main( )
     idt_init( );
     pit_init( 50 );
     serial_init( );
-
+    kb_init( );
     kheap_init( );
     paging_init( );
 
@@ -55,6 +58,4 @@ int main( )
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");
     screen_printHex( (unsigned int)mboot_drivesPtr( ) );
-
-    return 0;
 }

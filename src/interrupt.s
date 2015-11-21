@@ -2,7 +2,8 @@
 [GLOBAL irq_loadHandler]
 [EXTERN pic_remap]
 [EXTERN pic_sendEOI]
-
+[EXTERN pic_setIMRMask]
+	
 	IDT_ENTRY_SIZE		equ 8
 	IDT_TABLE_ENTRIES	equ 48
 	IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
@@ -122,18 +123,21 @@ irq_stub:
 	add eax, IRQ_TABLE
 
 	mov edx, [eax]
+	cmp edx, 0
+	je _irq_stub_nohandler
+	
 	call edx
-
+	
+_irq_stub_nohandler:	
 	popa
 	add esp, 8
 	sti
+	
 	iret
 
 irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
-	;pop ecx
-	;pop ebx
-	;pop eax
-	;push ecx
+	;; load in our table of pointers
+
 	mov eax, [esp+8]
 	mov ebx, [esp+4]
 
@@ -141,6 +145,11 @@ irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
 	add eax, IRQ_TABLE
 	mov dword [eax], ebx
 
+	mov eax, [esp+8]
+	push eax
+	call pic_setIMRMask
+	add esp, 4
+	
 	ret
 	
 idt_set: 			;eax - index in idt table, ebx - pointer to isr
