@@ -2,6 +2,7 @@
 	[GLOBAL screen_setCursor]
 	[GLOBAL screen_newline]
 	[GLOBAL screen_tab]
+	[GLOBAL screen_printChar]
 	[GLOBAL screen_printString]
 	[GLOBAL screen_printHex]
 	[GLOBAL screen_printDec]
@@ -277,14 +278,42 @@ _screen_printDec_printDigits:
 
 	ret
 
-screen_printString:
-;	pop eax
-;	pop esi			;get string pointer
-;	push eax
+screen_printChar:
+	mov edx, [esp+4]
+	mov dh,	0xF
+	
+	mov ebx, dword [VGA_CURSOR_X]
+	mov ecx, dword [VGA_CURSOR_Y]
 
+	mov eax, ecx
+	imul eax, VGA_WIDTH
+	add eax, ebx
+	imul eax, 2
+	add eax, VGA_OFFSET
+
+	mov word [eax], dx	;print character
+	
+	sub eax, VGA_OFFSET
+	xor edx, edx
+	mov ebx, 2
+	div ebx
+	inc eax
+	
+	xor edx, edx
+	mov ebx, VGA_WIDTH
+	div ebx
+	
+	push eax
+	push edx
+	call screen_setCursor
+	add esp, 8
+		
+	ret
+	
+screen_printString:
 	mov esi, [esp+4]
 
-	cmp esi, 0
+	cmp esi, 0		;don't print if the string is null
 	jne _screen_printString_sanityCheck
 	
 	ret
