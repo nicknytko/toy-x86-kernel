@@ -2,7 +2,8 @@
 [GLOBAL irq_loadHandler]
 [EXTERN pic_remap]
 [EXTERN pic_sendEOI]
-[EXTERN pic_setIMRMask]
+[EXTERN pic_IMRDisableAll]	
+[EXTERN pic_clearIMRMask]
 	
 	IDT_ENTRY_SIZE		equ 8
 	IDT_TABLE_ENTRIES	equ 48
@@ -117,7 +118,8 @@ irq_stub:
 	mov eax, [esp+32]
 
 	call pic_sendEOI
-
+	mov eax, [esp+32]
+	
 	sub eax, 32	;get irq from table
 	imul eax, 4
 	add eax, IRQ_TABLE
@@ -147,7 +149,7 @@ irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
 
 	mov eax, [esp+8]
 	push eax
-	call pic_setIMRMask
+	call pic_clearIMRMask
 	add esp, 4
 	
 	ret
@@ -173,6 +175,7 @@ idt_set: 			;eax - index in idt table, ebx - pointer to isr
 	
 idt_init:
 	call pic_remap
+	call pic_IMRDisableAll	;disable all pics until they they have a routine loaded
 	
 	IDT_CALL_SET 0
 	IDT_CALL_SET 1

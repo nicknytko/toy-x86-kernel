@@ -142,7 +142,7 @@ panic: ;[esi-4] - string for reason
 	call screen_newline
 
 	popad
-
+	
 	cli			;disable interrupts
 _panic_infloop:
 	jmp _panic_infloop

@@ -4,6 +4,7 @@
 [GLOBAL kb_ps2_wait_write]
 [EXTERN irq_loadHandler]
 [EXTERN panic]
+[EXTERN screen_printDec]
 	
 PS2_AUX_AVAILABLE:	db 0
 PS2_SELFTEST_FAIL:	db 'Failed PS/2 self-test.', 0
@@ -38,17 +39,28 @@ kb_ps2_wait_write:
 	ret
 	
 kb_poll:
+	xor eax, eax
 	call kb_ps2_wait_read
 	in al, PS2_DATA
+
+	push eax
+	call screen_printDec
+	add esp, 4
 	ret
 	
 kb_irq:
 	call kb_poll
 	ret
 
-kb_init:
-	cli
+_kb_init:
+	push 1
+	push kb_irq
+	call irq_loadHandler
+	add esp, 8
+
+	ret
 	
+kb_init:
 	;; disable auxilliary devices
 	
 	call kb_ps2_wait_write
@@ -122,5 +134,4 @@ _kb_init_testpass:
 	mov al, PS2_COM_ENABLE
 	out PS2_COMMAND, al
 
-	sti
 	ret

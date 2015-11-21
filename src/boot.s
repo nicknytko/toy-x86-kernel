@@ -55,10 +55,7 @@ MULTIBOOT_HEADER:
 
 start:
 	call mboot_setinfo
-
-	cli
 	call main
 
 idle:
-	hlt
 	jmp idle

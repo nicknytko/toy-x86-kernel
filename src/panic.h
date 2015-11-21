@@ -1,6 +1,16 @@
 #ifndef PANIC_H
 #define PANIC_H
 
-void panic( char* );
+/**
+ * @file panic.h
+ * @brief Kernel panic
+ *
+ * Kernel panic function
+ */
+
+/** Initiates a kernel panic and locks up the system
+ * @param szError Reason for error
+ */
+void panic( char* szError );
 
 #endif

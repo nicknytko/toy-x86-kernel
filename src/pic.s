@@ -1,6 +1,8 @@
 [GLOBAL pic_remap]
 [GLOBAL pic_sendEOI]
+[GLOBAL pic_IMRDisableAll]
 [GLOBAL pic_setIMRMask]
+[GLOBAL pic_clearIMRMask]
 	
 	PIC1_BASE equ 0x20
 	PIC2_BASE equ 0xA0
@@ -24,6 +26,12 @@ _pic_sendEOI_pic1:
 
 	ret
 
+pic_IMRDisableAll:
+	mov al, 0xFF
+	out PIC1_DATA, al
+	out PIC2_DATA, al
+	ret
+	
 pic_setIMRMask:			; [esp+4] - irq number
 	mov edx, [esp+4]
 	cmp edx, 8
@@ -51,6 +59,36 @@ _pic_setIMRMask_slave:
 
 	out PIC2_DATA, al
 	
+	ret
+
+pic_clearIMRMask:			; [esp+4] - irq number
+	mov edx, [esp+4]
+	cmp edx, 8
+	mov cl, dl
+	jge _pic_setIMRMask_slave
+
+	in al, PIC1_DATA
+	mov dl, al
+	
+	mov al, 1
+	shl al, cl		;get imr from pic, set n'th bit, and send back
+	xor al, dl
+
+	out PIC1_DATA, al
+	
+	ret
+	
+_pic_clearIMRMask_slave:
+
+	in al, PIC2_DATA
+	mov dl, al
+	
+	mov al, 1
+	shl al, cl
+	xor al, dl
+
+	out PIC2_DATA, al
+
 	ret
 	
 pic_remap:

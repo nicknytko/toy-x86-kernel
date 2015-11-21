@@ -51,9 +51,6 @@ void main( )
     screen_printString("\nmemmap address: ");
     screen_printHex( (unsigned int)mboot_memmapPtr( ) );
 
-    mboot_drivesLen( );
-    mboot_drivesPtr( );
-   
     screen_printString("\ndrivemap size: ");
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");
