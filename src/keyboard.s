@@ -5,6 +5,7 @@
 [EXTERN irq_loadHandler]
 [EXTERN panic]
 [EXTERN screen_printChar]
+[EXTERN screen_printHex]
 	
 PS2_AUX_AVAILABLE:	db 0
 PS2_SELFTEST_FAIL:	db 'Failed PS/2 self-test.', 0
@@ -26,65 +27,93 @@ PS2_COM_WRITE_COMMAND	equ 0x60
 
 PS2_COM_SELFTEST	equ 0xAA
 
-KB_SCANCODE:			db 0
-KB_SCANCODE_ESCAPE_PRESS:	db 0 ; 0x1
-KB_SCANCODE_1_PRESS:		db '1' ;0x2
-KB_SCANCODE_2_PRESS:		db '2' ;0x3
-KB_SCANCODE_3_PRESS:		db '3' ;0x4
-KB_SCANCODE_4_PRESS:		db '4' ;0x5
-KB_SCANCODE_5_PRESS:		db '5' ;0x6
-KB_SCANCODE_6_PRESS:		db '6' ;0x7
-KB_SCANCODE_7_PRESS:		db '7' ;0x8
-KB_SCANCODE_8_PRESS:		db '8' ;0x9
-KB_SCANCODE_9_PRESS:		db '9' ;0xA
-KB_SCANCODE_0_PRESS:		db '0' ;0xB
-KB_SCANCODE_MINUS_PRESS:	db '-' ;0xC
-KB_SCANCODE_EQUAL_PRESS:	db '=' ;0xD
-KB_SCANCODE_BACKSPACE_PRESS:	db '\b' ;0xE
-KB_SCANCODE_TAB_PRESS:		db '\t' ;0xF
-KB_SCANCODE_Q_PRESS:		db 'q'	;0x10
-KB_SCANCODE_W_PRESS:		db 'w'	;0x11
-KB_SCANCODE_E_PRESS:		db 'e'	;0x12
-KB_SCANCODE_R_PRESS:		db 'r'	;0x13
-KB_SCANCODE_T_PRESS:		db 't'	;0x14
-KB_SCANCODE_Y_PRESS:		db 'y'	;0x15
-KB_SCANCODE_U_PRESS:		db 'u'	;0x16
-KB_SCANCODE_I_PRESS:		db 'i'	;0x17
-KB_SCANCODE_O_PRESS:		db 'o'	;0x18
-KB_SCANCODE_P_PRESS:		db 'p'	;0x19
-KB_SCANCODE_LBRACKET_PRESS:	db '['	;0x1A
-KB_SCANCODE_RBRACKET_PRESS:	db ']'	;0x1B
-KB_SCANCODE_ENTER_PRESS:	db '\n' ;0x1C
-KB_SCANCODE_LCONTROL_PRESS:	db 0	;0x1D
-KB_SCANCODE_A_PRESS:		db 'a'	;0x1E
-KB_SCANCODE_S_PRESS:		db 's'	;0x1F
-KB_SCANCODE_D_PRESS:		db 'd'	;0x20
-KB_SCANCODE_F_PRESS:		db 'f'	;0x21
-KB_SCANCODE_G_PRESS:		db 'g'	;0x22
-KB_SCANCODE_H_PRESS:		db 'h'	;0x23
-KB_SCANCODE_J_PRESS:		db 'j'	;0x24
-KB_SCANCODE_K_PRESS:		db 'k'	;0x25
-KB_SCANCODE_L_PRESS:		db 'l'	;0x26
-KB_SCANCODE_SEMICOLON_PRESS:	db '\;' ;0x27
-KB_SCANCODE_QUOTE_PRESS:	db '\' 	;0x28
-KB_SCANCODE_BACKTICK_PRESS:	db '`'	;0x29
-KB_SCANCODE_LSHIFT_PRESS:	db 0	;0x2AKB_SCANCODE_BACKSLASH_PRESS:	db '\\'	;0x2B
-KB_SCANCODE_Z_PRESS:		db 'z'	;0x2C
-KB_SCANCODE_X_PRESS:		db 'x'	;0x2D
-KB_SCANCODE_C_PRESS:		db 'c'	;0x2E
-KB_SCANCODE_V_PRESS:		db 'v'	;0x2F
-KB_SCANCODE_B_PRESS:		db 'b'	;0x30
-KB_SCANCODE_N_PRESS:		db 'n'	;0x31
-KB_SCANCODE_M_PRESS:		db 'm'	;0x32
-KB_SCANCODE_COMMA_PRESS:	db ','	;0x33
-KB_SCANCODE_PERIOD_PRESS:	db '.'	;0x34
-KB_SCANCODE_FORWARDSLASH_PRESS:	db '/'	;0x35
-KB_SCANCODE_RSHIFT_PRESS:	db 0	;0x36
-KB_SCANCODE_NP_STAR_PRESS:	db '*'	;0x37
-KB_SCANCODE_LALT_PRESS:		db 0	;0x38
-KB_SCANCODE_SPACE_PRESS:	db ' '	;0x39
-KB_SCANCODE_CAPSLOCK_PRESS:	db 0	;0x3A
-KB_SCANCODE_FUNCTION_PRESS:	times 10 db 0 ;0x3B - 0x45
+	
+KB_RELEASE		equ 0xF0
+KB_MULTIMEDIA		equ 0xE0
+
+	
+KB_SCANCODE:
+KB_F9:			db 0	;0x01
+			db 0	;0x02
+KB_F5:			db 0	;0x03
+KB_F3:			db 0	;0x04
+KB_F1:			db 0	;0x05
+KB_F2:			db 0	;0x06
+KB_F12:			db 0	;0x07
+			db 0	;0x08
+KB_F10:			db 0	;0x09
+KB_F8:			db 0	;0x0A
+KB_F6:			db 0	;0x0B
+KB_F4:			db 0	;0x0C
+KB_TAB:			db 0	;0x0D
+KB_BACKTICK:		db 96	;0x0E
+KB_UNUSED3:		db 0	;0x0F
+			db 0	;0x10
+KB_LALT:		db 0	;0x11
+KB_LSHIFT:		db 0	;0x12
+			db 0	;0x13
+KB_LCONTROL:		db 0	;0x14
+KB_Q:			db 'q'	;0x15
+KB_1:			db '1'	;0x16
+			db 0, 0, 0 ;0x17-0x19
+KB_Z:			db 'z'	;0x1A
+KB_S:			db 's'	;0x1B
+KB_A:			db 'a'	;0x1C
+KB_W:			db 'w'	;0x1D
+KB_2:			db '2'	;0x1E
+			db 0, 0	;0x1F-0x20
+KB_C:			db 'c'	;0x21
+KB_X:			db 'x'	;0x22
+KB_D:			db 'd'	;0x23
+KB_E:			db 'e'	;0x24
+KB_4:			db '4'	;0x25
+KB_3:			db '3'	;0x26
+			db 0, 0	;0x27-0x28
+KB_SPACE:		db ' '	;0x29
+KB_V:			db 'v'	;0x2A
+KB_F:			db 'f'	;0x2B
+KB_T:			db 't'	;0x2C
+KB_R:			db 'r'	;0x2D
+KB_5:			db '5'	;0x2E
+			db 0, 0	;0x2F-0x30
+KB_N:			db 'n'	;0x31
+KB_B:			db 'b'	;0x32
+KB_H:			db 'h'	;0x33
+KB_G:			db 'g'	;0x34
+KB_Y:			db 'y'	;0x35
+KB_6:			db '6'	;0x36
+			db 0, 0, 0	;0x37-0x39
+KB_M:			db 'm'	;0x3A
+KB_J:			db 'j'	;0x3B
+KB_U:			db 'u'	;0x3C
+KB_7:			db '7'	;0x3D
+KB_8:			db '8'	;0x3E
+			db 0, 0	;0x3F-0x40
+KB_COMMA:		db ','	;0x41
+KB_K:			db 'k'	;0x42
+KB_I:			db 'i'	;0x43
+KB_O:			db 'o'	;0x44
+KB_0:			db '0'	;0x45
+KB_9:			db '9'	;0x46
+			db 0, 0	;0x47-0x48
+KB_PERIOD:		db '.'	;0x49
+KB_FORWARDSLASH:	db '/'	;0x4A
+KB_L:			db 'l'	;0x4B
+KB_SEMICOLON:		db ';'	;0x4C
+KB_P:			db 'p'	;0x4D
+KB_MINUS:		db '-'	;0x4E
+			db 0, 0, 0	;0x4F-0x51
+KB_QUOTE:		db 39	;0x52
+			db 0	;0x53
+KB_LBRACKET:		db '['	;0x54
+KB_EQUAL:		db 61	;0x55
+			db 0, 0	;0x56-0x57
+KB_CAPSLOCK:		db 0	;0x58
+KB_RSHIFT:		db 0	;0x59
+KB_ENTER:		db 0	;0x5a
+KB_RBRACKET:		db ']'	;0x5B
+			db 0	;0x5C
+KB_BACKSLASH:		db 92	;0x5D
 	
 kb_ps2_wait_read:
 	in al, PS2_STATUS
@@ -100,13 +129,14 @@ kb_ps2_wait_write:
 
 kb_printScancode:	; [esp+4] - scancode
 	mov eax, [esp+4]
-	cmp eax, 0x45
+	cmp eax, 0x5D
 	jle _kb_printScancode
 
 	ret
 
 _kb_printScancode:
 	add eax, KB_SCANCODE
+	dec eax
 	xor edx, edx
 	mov dl, byte [eax]
 	
@@ -121,21 +151,33 @@ kb_poll:
 	call kb_ps2_wait_read
 	in al, PS2_DATA
 
+	cmp al, KB_RELEASE
+	jne _kb_poll_end
+
+	xor eax, eax
+	call kb_ps2_wait_read
+	in al, PS2_DATA
+
+	cmp al, KB_MULTIMEDIA
+	jne _kb_poll_return
+
+	xor eax, eax
+	call kb_ps2_wait_read
+	in al, PS2_DATA
+
+	jmp _kb_poll_return
+
+_kb_poll_end:	
+	
 	push eax
 	call kb_printScancode
 	add esp, 4
+
+_kb_poll_return:	
 	ret
 	
 kb_irq:
 	call kb_poll
-	ret
-
-_kb_init:
-	push 1
-	push kb_irq
-	call irq_loadHandler
-	add esp, 8
-
 	ret
 	
 kb_init:
@@ -196,7 +238,9 @@ _kb_init_testpass:
 	
 	call kb_ps2_wait_write
 	pop eax
-	or al, 0x1
+	or al, 0x1		;enable interrupts
+	xor al, 0x40		;disable translation
+
 	out PS2_DATA, al
 
 	;; set the keyboard irq
