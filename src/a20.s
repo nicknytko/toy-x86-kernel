@@ -40,12 +40,17 @@ a20_check:			;http://wiki.osdev.org/A20#Testing_the_A20_line
 
 	mov ax, 0
 	je _a20_check_end
-
+	
 	mov ax, 1
 
 _a20_check_end:
 	ret
 
+a20_enable_bios:
+	mov ax, 0x2401
+	int 0x15
+	ret
+	
 a20_enable_ps2:			;enable the a20 line using the ps2 controller
 	cli
 
@@ -81,9 +86,13 @@ a20_enable_ps2:			;enable the a20 line using the ps2 controller
 a20_enable:
 	call a20_check
 	cmp ax, 0
-
+	
 	jne _a20_enable_end
 
+	call a20_enable_bios
+	call a20_check
+	cmp ax, 0
+	
 	call a20_enable_ps2
 	call a20_check
 	cmp ax, 0

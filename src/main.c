@@ -13,14 +13,15 @@
 /** Kernel Main
  */
 void main( )
-{
-    a20_enable( );
-
+{   
+//    a20_enable( );
+  
     gdt_init( );
     idt_init( );
     pit_init( 50 );
     serial_init( );
     kb_init( );
+
     kheap_init( );
     paging_init( );
 

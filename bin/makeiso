@@ -1,0 +1,3 @@
+#! /bin/bash
+cp kernel iso/boot/kernel
+grub-mkrescue -d /usr/lib/grub/i386-pc/ -o kernel.iso iso
