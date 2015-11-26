@@ -1,4 +1,5 @@
 target remote localhost:1234
 symbol-file kernel
+set directories ../src
 break main
 continue

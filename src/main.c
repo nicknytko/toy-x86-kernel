@@ -14,7 +14,7 @@
  */
 void main( )
 {   
-//    a20_enable( );
+    a20_enable( );
   
     gdt_init( );
     idt_init( );

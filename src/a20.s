@@ -7,49 +7,24 @@ PS2_RW 		equ 0x60
 PS2_STATUS 	equ 0x64
 PS2_COMMAND	equ 0x64
 
-A20_ENABLED: db 0
-
-a20_check:			;http://wiki.osdev.org/A20#Testing_the_A20_line
-	cli
-
-	xor ax, ax
-	mov es, ax
-
-	not ax
-	mov dx, ax
-
-	mov di, 0x0500
-	mov si, 0x0510
-
-	mov al, byte [es:di]
-	push ax
-
-	mov al, byte [ds:si]
-	push ax
-
-	mov byte [es:di], 0x00
-	mov byte [ds:si], 0xFF
-
-	cmp byte [es:di], 0xFF
-
-	pop ax
-	mov byte [ds:si], al
-
-	pop ax
-	mov byte [es:di], al
-
-	mov ax, 0
-	je _a20_check_end
-	
-	mov ax, 1
-
-_a20_check_end:
-	ret
-
 a20_enable_bios:
+	[BITS 16]
 	mov ax, 0x2401
 	int 0x15
+	[BITS 32]
+	
+	xor eax, eax
+	jc _a20_enable_bios_fail
+	
+	mov eax, 1
+
+_a20_enable_bios_fail:	
 	ret
+
+a20_enable_fast:
+	in al, 0x92
+	or al, 0x2
+	out 0x92, al
 	
 a20_enable_ps2:			;enable the a20 line using the ps2 controller
 	cli
@@ -84,28 +59,29 @@ a20_enable_ps2:			;enable the a20 line using the ps2 controller
 	ret
 
 a20_enable:
-	call a20_check
-	cmp ax, 0
-	
-	jne _a20_enable_end
-
+	;; try to first enable a20 through bios
 	call a20_enable_bios
-	call a20_check
-	cmp ax, 0
+	cmp ax, 1
+	je _a20_enable_end
+
+	;; check if ps2 controller is working
+	in al, PS2_STATUS
+	mov dl, al
+	in al, PS2_RW
+	and al, dl
+	cmp al, 0xFF
+
+	;; if so, initialize using ps2 controller
+	jne _a20_enable_ps2controller
+
+	;; if not, try fast a20
+	call a20_enable_fast
+	ret
+	
+_a20_enable_ps2controller:	
 	
 	call a20_enable_ps2
-	call a20_check
 	cmp ax, 0
 
-	je _a20_enabled_fail
-
 _a20_enable_end:
-	mov byte [A20_ENABLED], 0x1
-	ret
-
-_a20_enabled_fail:
-	ret
-
-a20_isEnabled:
-	mov al, byte [A20_ENABLED]
 	ret
