@@ -1,4 +1,4 @@
-[GLOBAL panic]
+[GLOBAL kpanic]
 [EXTERN screen_printString]
 [EXTERN screen_printHex]
 [EXTERN screen_tab]
@@ -15,10 +15,7 @@ P_EBP: db 'EBP ', 0
 P_ESI: db 'ESI ', 0
 P_EDI: db 'EDI ', 0
 
-panic: ;[esi-4] - string for reason
-;	pop eax
-;	pop esi
-;	push eax
+kpanic: ;[esi-4] - string for reason
 	pushad
 
 	mov esi, [esp+36]

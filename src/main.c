@@ -1,32 +1,41 @@
 #include "base.h"
 
-#include "video/video.h"
-#include "gdt/gdt.h"
-#include "interrupt/interrupt.h"
-#include "pit/pit.h"
-#include "panic/panic.h"
-#include "serial/serial.h"
-#include "a20/a20.h"
-#include "mem/kheap.h"
-#include "mem/paging.h"
-#include "multiboot/multiboot.h"
-#include "keyboard/keyboard.h"
+#include <a20/a20.h>
+#include <gdt/gdt.h>
+#include <interrupt/interrupt.h>
+#include <mem/kheap.h>
+#include <mem/paging.h>
+
+#include <video/video.h>
+#include <pit/pit.h>
+#include <serial/serial.h>
+#include <multiboot/multiboot.h>
+#include <ps2/ps2.h>
+
+/** Enter protected mode
+ */
+void k_pmode( )
+{
+    a20_enable( );
+    gdt_init( );
+    idt_init( );
+    kheap_init( );
+    paging_init( );
+}
 
 /** Kernel Main
  */
 void kmain( )
-{   
-    a20_enable( );
-  
-    gdt_init( );
-    idt_init( );
+{
+    //Set up our environment for protected mode
+    k_pmode( );
+
+    //Enable lesser-important things
     pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
     serial_init( );
-    kb_init( );
+    ps2_init( );
 
-    kheap_init( );
-    paging_init( );
-
+    //Demonstrate what we can do so far
     serial_writeString( "Hello, World from serial!\n" );
 
     screen_clear( );

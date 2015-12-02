@@ -11,6 +11,6 @@
 /** Initiates a kernel panic and locks up the system
  * @param szError Reason for error
  */
-void panic( char* szError );
+void kpanic( char* szError );
 
 #endif
