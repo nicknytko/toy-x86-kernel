@@ -55,7 +55,6 @@ serial_init:
 _serial_init_done:
 	ret
 
-
 serial_readByte:
 	mov dx, COM1_PORT+5
 
@@ -67,10 +66,7 @@ _serial_readByte_loop:
 	ret
 
 serial_writeByte:
-	pop eax
-	pop ebx
-	push eax
-
+	mov ebx, [esp+4]
 	mov dx, COM1_PORT+5
 
 _serial_writeByte_loop:
@@ -99,7 +95,8 @@ _serial_writeString_loop:
 
 	push eax
 	call serial_writeByte
-
+	add esp, 4
+	
 	inc esi
 	jmp _serial_writeString_loop
 

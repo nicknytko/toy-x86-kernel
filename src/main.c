@@ -1,3 +1,5 @@
+#include "base.h"
+
 #include "video/video.h"
 #include "gdt/gdt.h"
 #include "interrupt/interrupt.h"
@@ -18,7 +20,7 @@ void kmain( )
   
     gdt_init( );
     idt_init( );
-    pit_init( 50 );
+    pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
     serial_init( );
     kb_init( );
 

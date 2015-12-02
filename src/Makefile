@@ -4,7 +4,7 @@ CSRC = $(wildcard *.c) $(wildcard */*.c)
 SOURCES = $(CSRC:.c=.o) $(ASMSRC:.s=.o)
 BINARY=../bin/kernel
 
-CFLAGS=-g -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -ffreestanding -lgcc
+CFLAGS=-g -I. -m32 -fno-builtin -fno-stack-protector -lgcc -ffreestanding -O2 -Wall -Wextra -fno-exceptions
 LDFLAGS=-melf_i386 -Tlink.ld
 ASFLAGS=-felf -F dwarf -g
 
