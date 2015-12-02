@@ -4,7 +4,7 @@
 [EXTERN code]
 [EXTERN bss]
 [EXTERN end]
-[EXTERN main]
+[EXTERN kmain]
 [EXTERN mboot_setinfo]
 
 ;; Multiboot constants
@@ -55,7 +55,7 @@ MULTIBOOT_HEADER:
 
 start:
 	call mboot_setinfo
-	call main
+	call kmain
 
 idle:
 	jmp idle

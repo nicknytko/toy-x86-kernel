@@ -10,12 +10,10 @@ kheap_init:
 	mov dword [HEAP_ADDRESS], eax
 	ret
 
-;; in: [esp-4] - size
+;; in: [esp+4] - size
 ;; out: eax - address
 kmalloc:
-	pop eax
-	pop ecx
-	push eax
+	mov ecx, [esp+4]
 	
 	mov eax, dword [HEAP_ADDRESS]
 	mov ebx, eax
@@ -24,13 +22,11 @@ kmalloc:
 	mov dword [HEAP_ADDRESS], ebx
 	ret
 
-;; in: [esp-4] - size
+;; in: [esp+4] - size
 ;; out: eax - address
 ;; allocate memory aligned to a page
 kmalloc_a:
-	pop eax
-	pop ecx
-	push eax
+	mov ecx, [esp+4]
 
 	mov eax, dword [HEAP_ADDRESS]
 	and eax, 0xFFFFF000 	;round down to page

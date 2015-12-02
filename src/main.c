@@ -1,18 +1,18 @@
-#include "video.h"
-#include "gdt.h"
-#include "interrupt.h"
-#include "pit.h"
-#include "panic.h"
-#include "serial.h"
-#include "a20.h"
-#include "kheap.h"
-#include "paging.h"
-#include "multiboot.h"
-#include "keyboard.h"
+#include "video/video.h"
+#include "gdt/gdt.h"
+#include "interrupt/interrupt.h"
+#include "pit/pit.h"
+#include "panic/panic.h"
+#include "serial/serial.h"
+#include "a20/a20.h"
+#include "mem/kheap.h"
+#include "mem/paging.h"
+#include "multiboot/multiboot.h"
+#include "keyboard/keyboard.h"
 
 /** Kernel Main
  */
-void main( )
+void kmain( )
 {   
     a20_enable( );
   
