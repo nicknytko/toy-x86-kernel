@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/nickgn12/x86-thing.svg)](https://travis-ci.org/nickgn12/x86-thing)
 
 # x86-thing
-Basic "kernel" written in x86 assembly.
+Basic "kernel" written in c and x86 assembly.
 
 # feature list
  - [x] enable a20 gate
