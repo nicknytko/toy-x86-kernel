@@ -23,12 +23,12 @@ typedef uint8_t bool;
 
 uint8 inb( uint16 port );
 uint16 inw( uint16 port );
-void outb( uint8 value, uint16 port );
+void outb( uint16 port, uint8 value );
 
 // Word to byte conversion
 
 #define word_lbyte( x ) (x & 0xFF)
-#define word_hbyte( x ) ((x & 0xFF) >> 8)
+#define word_hbyte( x ) ((x & 0xFF00) >> 8)
 
 // Dword to word conversion
 

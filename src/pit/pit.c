@@ -28,7 +28,7 @@ void pit_init( uint32 nFrequency, uint8 nFlags )
     irq_loadHandler( (uint32) &pit_irq, 0 );
 
     //load the pit with our flags
-    outb( nFlags, PIT_MODE );
+    outb( PIT_MODE, nFlags );
 
     //the pit expects a frequency as a divisor of its clock
     nFrequency = PIT_INPUT_CLOCK / nFrequency;

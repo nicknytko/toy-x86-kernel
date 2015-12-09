@@ -1,14 +1,20 @@
 [GLOBAL idt_init]
 [GLOBAL irq_loadHandler]
+[GLOBAL nmi_enable]
+[GLOBAL nmi_disable]
+[GLOBAL int_sti]	
+[GLOBAL int_cli]
 [EXTERN pic_remap]
 [EXTERN pic_sendEOI]
 [EXTERN pic_IMRDisableAll]	
 [EXTERN pic_clearIMRMask]
-	
-	IDT_ENTRY_SIZE		equ 8
-	IDT_TABLE_ENTRIES	equ 48
-	IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
 
+IDT_ENTRY_SIZE		equ 8
+IDT_TABLE_ENTRIES	equ 48
+IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
+
+NMI_REGISTER		equ 0x70
+	
 %macro IDT_CALL_SET 1
 	mov eax, %1
 	mov ebx, ISR_%1
@@ -152,6 +158,30 @@ irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
 	call pic_clearIMRMask
 	add esp, 4
 	
+	ret
+
+int_cli:
+	cli
+	call nmi_disable
+	ret
+
+int_sti:
+	sti
+	call nmi_enable
+	ret
+
+nmi_enable:
+	mov dx, NMI_REGISTER
+	in al, dx
+	and al, 0x7F
+	out dx, al
+	ret
+
+nmi_disable:
+	mov dx, NMI_REGISTER
+	in al, dx
+	or al, 0x80
+	out dx, al
 	ret
 	
 idt_set: 			;eax - index in idt table, ebx - pointer to isr

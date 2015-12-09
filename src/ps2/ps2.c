@@ -30,17 +30,17 @@ void ps2_init( )
     //Disable auxilliary devices
     
     ps2_wait_write( );
-    outb( PS2_COM_DISABLE_AUX, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_DISABLE_AUX );
 
     //Disable keyboard
 
     ps2_wait_write( );
-    outb( PS2_COM_DISABLE, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_DISABLE );
 
     //Get current keyboard command byte
 
     ps2_wait_write( );
-    outb( PS2_COM_READ_COMMAND, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_READ_COMMAND );
 
     ps2_wait_read( );
     nCommand = inb( PS2_DATA );
@@ -53,7 +53,7 @@ void ps2_init( )
     //Start keyboard self-test
 
     ps2_wait_write( );
-    outb( PS2_COM_SELFTEST, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_SELFTEST );
 
     ps2_wait_read( );
     
@@ -68,10 +68,10 @@ void ps2_init( )
 	nCommand ^= 0x40; //Disable scancode translation
 
     ps2_wait_write( );
-    outb( PS2_COM_WRITE_COMMAND, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_WRITE_COMMAND );
     
     ps2_wait_write( );
-    outb( nCommand, PS2_DATA ); //Upload byte back to ps2
+    outb( PS2_DATA, nCommand ); //Upload byte back to ps2
 
     //Load the IRQ Handler
 
@@ -82,13 +82,13 @@ void ps2_init( )
     if ( ps2_auxAvailable( ) )
     {
 	ps2_wait_write( );
-	outb( PS2_COM_ENABLE_AUX, PS2_COMMAND );
+	outb( PS2_COMMAND, PS2_COM_ENABLE_AUX );
     }
     
     //Re-enable the keyboard
 
     ps2_wait_write( );
-    outb( PS2_COM_ENABLE, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_ENABLE );
 }
 
 bool ps2_auxAvailable( )

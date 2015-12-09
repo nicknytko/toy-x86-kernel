@@ -41,15 +41,15 @@ void screen_setCursor( uint32 nCursorX, uint32 nCursorY )
 	nVGACursorY += nShiftAmt;
     }
     
-    // send low byte of our cell
-    
-    outb( 14, VGA_BASE );
-    outb( word_lbyte( nCell ), VGA_BASE + 1 );
-
     // send high byte of our cell
     
-    outb( 15, VGA_BASE );
-    outb( word_hbyte( nCell ), VGA_BASE + 1 );
+    outb( VGA_BASE, 0xE );
+    outb( VGA_BASE + 1, word_hbyte( nCell ) );
+
+    // send low byte of our cell
+    
+    outb( VGA_BASE, 0xF );
+    outb( VGA_BASE + 1, word_lbyte( nCell ) );
 }
 
 uint16 screen_getCursorX( )

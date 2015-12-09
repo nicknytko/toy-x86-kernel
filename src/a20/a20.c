@@ -19,12 +19,12 @@ void a20_enable_ps2( )
     // disable ps2 controller
     
     ps2_wait_write( );
-    outb( PS2_COM_DISABLE, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_DISABLE );
 
     // read from the controller output port
 
     ps2_wait_write( );
-    outb( PS2_COM_READ_OUTPUT, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_READ_OUTPUT );
 
     ps2_wait_read( );
     nConfig = inb( PS2_DATA );
@@ -33,15 +33,15 @@ void a20_enable_ps2( )
     // write back to the controller output port
 
     ps2_wait_write( );
-    outb( PS2_COM_WRITE_OUTPUT, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_WRITE_OUTPUT );
 
     ps2_wait_write( );
-    outb( nConfig, PS2_DATA );
+    outb( PS2_DATA, nConfig );
 
     // re-enable ps2 controller
 
     ps2_wait_write( );
-    outb( PS2_COM_ENABLE, PS2_COMMAND );
+    outb( PS2_COMMAND, PS2_COM_ENABLE );
 }
 
 void a20_enable( )

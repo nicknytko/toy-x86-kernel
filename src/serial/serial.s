@@ -2,12 +2,16 @@
 [GLOBAL serial_writeByte]
 [GLOBAL serial_writeString]
 [GLOBAL serial_readByte]
-
+[EXTERN irq_loadHandler]
+	
 BDA_COM: equ 0x0400
 
 COM1_PORT: equ 0x3f8
 COM_PORTS: db 0
 
+serial_irq:
+	ret
+	
 serial_init:
 	mov ax, word [BDA_COM]
 	
@@ -51,6 +55,11 @@ serial_init:
 	mov al, 0x0B
 
 	out dx, al		;irq enabled
+
+	push 4
+	push serial_irq
+	call irq_loadHandler
+	add esp, 8
 
 _serial_init_done:
 	ret

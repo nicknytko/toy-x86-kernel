@@ -39,4 +39,22 @@ void pic_clearIMRMask( uint32 nMask );
  */
 void irq_loadHandler( uint32 pHandler, uint32 nIRQ );
 
+/** @brief Disable interrupts
+ * Calls CLI and disables NMI's.
+ */
+void int_cli( );
+
+/** @brief Enable interrupts
+ * Calls STI and enables NMI's.
+ */
+void int_sti( );
+
+/** Enables NMI's
+ */
+void nmi_enable( );
+
+/** Disables NMI's
+ */
+void nmi_disable( );
+
 #endif

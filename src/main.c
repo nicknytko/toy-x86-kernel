@@ -8,6 +8,7 @@
 
 #include <video/video.h>
 #include <pit/pit.h>
+#include <rtc/rtc.h>
 #include <serial/serial.h>
 #include <multiboot/multiboot.h>
 #include <ps2/ps2.h>
@@ -32,6 +33,7 @@ void kmain( )
 
     //Enable lesser-important things
     pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
+    rtc_init( );
     serial_init( );
     ps2_init( );
 

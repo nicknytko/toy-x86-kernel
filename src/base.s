@@ -11,8 +11,8 @@ inw:				;esp+4 - port
 	in ax, dx
 	ret
 	
-outb:				;esp+4 - value, esp+8 - port
-	mov edx, [esp+8]
-	mov eax, [esp+4]
+outb:				;esp+4 - port, esp+8 - value
+	mov edx, [esp+4]
+	mov eax, [esp+8]
 	out dx, al
 	ret

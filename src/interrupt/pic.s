@@ -65,7 +65,7 @@ pic_clearIMRMask:			; [esp+4] - irq number
 	mov edx, [esp+4]
 	cmp edx, 8
 	mov cl, dl
-	jge _pic_setIMRMask_slave
+	jge _pic_clearIMRMask_slave
 
 	in al, PIC1_DATA
 	mov dl, al
@@ -84,6 +84,7 @@ _pic_clearIMRMask_slave:
 	mov dl, al
 	
 	mov al, 1
+	sub cl, 8
 	shl al, cl
 	xor al, dl
 
@@ -92,28 +93,52 @@ _pic_clearIMRMask_slave:
 	ret
 	
 pic_remap:
-	mov al, 0x11		;initialize both pics
+	xor eax, eax
+
+	;; save pic masks
+	
+	in al, PIC1_DATA
+	push eax
+	in al, PIC2_DATA
+	push eax
+
+	;; start initialization
+	
+	mov al, 0x11
 	out PIC1_COM, al
 	out PIC2_COM, al
 
-	mov al, 0x20		;remap pic1 to interrupt 32
+	;; remap pic1 to interrupt 32
+	
+	mov al, 0x20		
 	out PIC1_DATA, al
 
-	mov al, 0x28		;remap pic2 to interrupt 40
+	;; remap pic2 to interrupt 40
+	
+	mov al, 0x28		
 	out PIC2_DATA, al
 
-	mov al, 4		;tell pic 1 that pic 2 is at irq2
+	;; tell pic1 that pic2 is at irq2
+	
+	mov al, 4
 	out PIC1_DATA, al
 
-	mov al, 2		;tell pic 2 cascade identity
+	;; tell pic2 cascade identity
+	
+	mov al, 2
 	out PIC2_DATA, al
 
-	mov al, 1		;8086/8088 mode
+	;; 8086/8088 mode
+	
+	mov al, 1
 	out PIC1_DATA, al
 	out PIC2_DATA, al
 
-	mov al, 0
-	out PIC1_DATA, al
+	;; restore saved masks
+	
+	pop eax
 	out PIC2_DATA, al
+	pop eax
+	out PIC1_DATA, al
 	
 	ret
