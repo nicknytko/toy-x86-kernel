@@ -4,7 +4,7 @@
 #include <panic/panic.h>
 #include <interrupt/interrupt.h>
 
-bool bPS2AuxAvailable;
+static bool bPS2AuxAvailable;
 
 void ps2_kb_poll( );
 

@@ -10,7 +10,7 @@
 
 #define PIT_INPUT_CLOCK 	1193180
 
-uint32 nPitTicks;
+static uint32 nPitTicks;
 
 IRQ_HANDLER_NOARGS( pit_irq )
 {

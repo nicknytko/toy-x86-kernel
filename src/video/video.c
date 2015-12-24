@@ -9,7 +9,7 @@
 
 #define vgaoffset( x, y ) (uint8*)(VGA_OFFSET + ((y * VGA_WIDTH) + x) * 2);
 
-uint16 nVGACursorX, nVGACursorY;
+static uint16 nVGACursorX, nVGACursorY;
 
 void screen_clear( )
 {

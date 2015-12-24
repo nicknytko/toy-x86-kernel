@@ -1,2 +1,2 @@
 #! /bin/bash
-hd init.rd
+hexdump init.rd

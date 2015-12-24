@@ -3,8 +3,8 @@
 
 #include <interrupt/interrupt.h>
 
-uint8 nRTCSecond, nRTCMinute, nRTCHour, nRTCDay, nRTCMonth;
-uint32 nRTCYear;
+static uint8 nRTCSecond, nRTCMinute, nRTCHour, nRTCDay, nRTCMonth;
+static uint32 nRTCYear;
 
 static uint8 rtc_readRegister( uint8 nRegister )
 {

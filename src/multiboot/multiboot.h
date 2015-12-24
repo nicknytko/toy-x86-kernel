@@ -39,6 +39,18 @@
 #define MULTIBOOT_APMTAB_VALUE			0x44
 #define MULTIBOOT_VBE_OFFSET			0x48
 
+/** Checks if a particular feature is present in the multiboot info structure
+ * @param nFeature MULTIBOOT_X_PRESENT
+ * @returns True if the particular feature is present
+ */
+bool mboot_isPresent( uint16 nFeature );
+
+/** Returns the value of a particular entry in the multiboot info structure
+ * @param nFeature MULTIBOOT_X_VALUE
+ * @returns Value
+ */
+uint32 mboot_getValue( uint16 nFeature );
+
 /** Gets the total amount of ram available
  * @returns Size of RAM in kilobytes
  */

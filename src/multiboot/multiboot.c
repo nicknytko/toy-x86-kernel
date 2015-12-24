@@ -1,13 +1,13 @@
 #include <base.h>
 #include "multiboot.h"
 
-uint32 pMultibootHeader;
+static uint32 pMultibootHeader;
 
 #define CHECK_IF_PRESENT( x ) \
     if ( ( get_dword( pMultibootHeader ) | x ) == 0 )	\
 	return 0;
 
-inline uint32 mboot_value( uint32 x )
+static inline uint32 mboot_value( uint32 x )
 {
     return get_dword( pMultibootHeader + x );
 }
@@ -15,6 +15,18 @@ inline uint32 mboot_value( uint32 x )
 void mboot_setinfo( uint32 pMultiboot )
 {
     pMultibootHeader = pMultiboot;
+}
+
+bool mboot_isPresent( uint16 nFeature )
+{
+    CHECK_IF_PRESENT( nFeature );
+
+    return true;
+}
+
+uint32 mboot_getValue( uint16 nFeature )
+{
+    return mboot_value( nFeature );
 }
 
 uint32 mboot_totalRam( )

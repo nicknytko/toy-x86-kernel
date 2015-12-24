@@ -12,6 +12,7 @@
 #include <serial/serial.h>
 #include <multiboot/multiboot.h>
 #include <ps2/ps2.h>
+#include <initrd/initrd.h>
 
 /** Enter protected mode
  */
@@ -36,6 +37,9 @@ void kmain( )
     rtc_init( );
     serial_init( );
     ps2_init( );
+
+    //Load ramdisk
+    initrd_load( );
 
     //Demonstrate what we can do so far
     serial_writeString( "Hello, World from serial!\n" );
@@ -69,4 +73,17 @@ void kmain( )
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");
     screen_printHex( (unsigned int)mboot_drivesPtr( ) );
+
+    screen_newline( );
+    screen_newline( );
+    screen_printString( "Contents of ramdisk: \n" );
+    
+    for (uint32 i=0;i < initrd_getNumFiles( );i++)
+    {
+	screen_printString( initrd_getFileName( i ) );
+	screen_printChar( ':' );
+	screen_printChar( ' ' );
+	screen_printString( initrd_getData( i ) );
+	screen_newline( );
+    }
 }

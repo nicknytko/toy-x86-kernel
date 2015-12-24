@@ -36,6 +36,10 @@ void screen_tab( );
  */
 void screen_printString( char* szStr );
 
+/** Prints a character
+ */
+void screen_printChar( uint8 c );
+
 /** Prints an unsigned hexadecimal number
  */
 void screen_printHex( uint32 nHex );
