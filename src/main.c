@@ -58,7 +58,7 @@ void kmain( )
 
     screen_printDec( mboot_modsNum( ) );
     screen_printString(" module(s)\nmodules address: ");
-    screen_printHex( mboot_modsPtr( )[0] );
+    screen_printHex( mboot_modsPtr( ) );
 
     screen_printString("\nmemmap size: ");
     screen_printDec( mboot_memmapLen( ) );

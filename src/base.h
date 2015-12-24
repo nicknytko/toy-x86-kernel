@@ -25,6 +25,16 @@ uint8 inb( uint16 port );
 uint16 inw( uint16 port );
 void outb( uint16 port, uint8 value );
 
+// Memory setters and getters
+
+void set_dword( uint32 nAddress, uint32 nValue );
+void set_word( uint32 nAddress, uint16 nValue );
+void set_byte( uint32 nAddress, uint8 nValue );
+
+uint32 get_dword( uint32 nAddress );
+uint16 get_word( uint32 nAddress );
+uint8 get_byte( uint32 nAddress );
+
 // Word to byte conversion
 
 #define word_lbyte( x ) (x & 0xFF)

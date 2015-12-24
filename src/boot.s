@@ -54,7 +54,9 @@ MULTIBOOT_HEADER:
 	dd start
 
 start:
+	push ebx
 	call mboot_setinfo
+	add esp, 4
 	call kmain
 
 idle:
