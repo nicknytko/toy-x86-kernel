@@ -42,7 +42,7 @@ void kmain( )
     initrd_load( );
 
     //Demonstrate what we can do so far
-    serial_writeString( "Hello, World from serial!\n" );
+    serial_writeString( 0, "Hello, World from serial!\n" );
 
     screen_clear( );
    
