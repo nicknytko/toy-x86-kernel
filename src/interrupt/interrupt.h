@@ -21,18 +21,6 @@ typedef struct s_irqStack
  */
 void idt_init( );
 
-/** Sets a bit in the IMR register
- * Used to disable a certain IRQ
- * @param nMask The number bit to set
- */
-void pic_setIMRMask( uint32 nMask );
-
-/** Clears a bit in the IMR register
- * Used to enable a certain IRQ
- * @param nMask The number bit to set
- */
-void pic_clearIMRMask( uint32 nMask );
-
 /** Sets a handler for an IRQ
  * @param pHandler Pointer to a function to be called for the IRQ
  * @param nIRQ Number of IRQ

@@ -123,7 +123,9 @@ irq_stub:
 	pusha
 	mov eax, [esp+32]
 
+	push eax
 	call pic_sendEOI
+	add esp, 4
 	mov eax, [esp+32]
 	
 	sub eax, 32	;get irq from table
