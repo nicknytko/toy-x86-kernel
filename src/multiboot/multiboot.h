@@ -8,6 +8,9 @@
  * Interface for accessing information passed by the multiboot-compatible bootloader
  */
 
+/* Information on this can be found in the GRUB Documentation.
+   https://www.gnu.org/software/grub/manual/multiboot/multiboot.html#Boot-information-format */
+
 #define MULTIBOOT_MEMSIZE_PRESENT		0x1
 #define MULTIBOOT_BOOTDEV_PRESENT		0x2
 #define MULTIBOOT_CMDLINE_PRESENT		0x4

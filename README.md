@@ -26,6 +26,7 @@ make
 make sure x86 qemu is installed
 
 ```bash
+cd bin
 ./run
 ```
 
@@ -33,11 +34,13 @@ make sure x86 qemu is installed
 to run qemu in debug mode
 
 ```bash
+cd bin
 ./debug
 ```
 
 to start gdb
 
 ```bash
+cd bin
 ./gdb
 ```
