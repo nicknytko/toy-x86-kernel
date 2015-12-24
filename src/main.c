@@ -86,4 +86,22 @@ void kmain( )
 	screen_printString( initrd_getData( i ) );
 	screen_newline( );
     }
+
+    while ( !rtc_hasTime( ) );
+    
+    screen_printString( "The current time is: " );
+    screen_printDec( rtc_getHour( ) );
+    screen_printChar( ':' );
+    
+    if ( rtc_getMinute( ) < 10 )
+	screen_printChar( '0' );
+
+    screen_printDec( rtc_getMinute( ) );
+    screen_printChar( ' ' );
+
+    screen_printDec( rtc_getMonth( ) );
+    screen_printChar( '/' );
+    screen_printDec( rtc_getDay( ) );
+    screen_printChar( '/' );
+    screen_printDec( rtc_getYear( ) );
 }

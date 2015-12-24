@@ -42,6 +42,9 @@
 	MULTIBOOT_FLAGS                 equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO
 	MULTIBOOT_CHECKSUM              equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_FLAGS)
 
+section .multiboot
+align 4
+	
 MULTIBOOT_HEADER:
 	dd MULTIBOOT_HEADER_MAGIC
 	dd MULTIBOOT_FLAGS
@@ -53,6 +56,8 @@ MULTIBOOT_HEADER:
 	dd end
 	dd start
 
+section .data
+	
 start:
 	push ebx
 	call mboot_setinfo

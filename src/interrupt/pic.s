@@ -72,7 +72,8 @@ pic_clearIMRMask:			; [esp+4] - irq number
 	
 	mov al, 1
 	shl al, cl		;get imr from pic, set n'th bit, and send back
-	xor al, dl
+	not al
+	and al, dl
 
 	out PIC1_DATA, al
 	
@@ -86,10 +87,15 @@ _pic_clearIMRMask_slave:
 	mov al, 1
 	sub cl, 8
 	shl al, cl
-	xor al, dl
+	not al
+	and al, dl
 
 	out PIC2_DATA, al
 
+	push 2
+	call pic_clearIMRMask
+	add esp, 4
+	
 	ret
 	
 pic_remap:
