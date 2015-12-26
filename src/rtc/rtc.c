@@ -9,10 +9,21 @@ static uint32 nRTCYear;
 
 static bool bIntFired;
 
+static inline uint8 rtc_bcdToBin( uint8 nBcd )
+{
+    return (nBcd & 0xF) + ((nBcd / 16) * 10);
+}
+
 static uint8 rtc_readRegister( uint8 nRegister )
 {
     outb( RTC_INDEX, nRegister );
     return inb( RTC_DATA );
+}
+
+static uint8 rtc_readRegisterBCD( uint8 nRegister )
+{
+    outb( RTC_INDEX, nRegister );
+    return rtc_bcdToBin( inb( RTC_DATA ) );
 }
 
 IRQ_HANDLER_NOARGS( rtc_irq )
@@ -23,16 +34,29 @@ IRQ_HANDLER_NOARGS( rtc_irq )
     outb( RTC_INDEX, RTC_REGISTER_C );
     uint8 nInt = inb( RTC_DATA );
 
-    // get data from rtc
-    
-    nRTCSecond = rtc_readRegister( RTC_REGISTER_SECOND );
-    nRTCMinute = rtc_readRegister( RTC_REGISTER_MINUTE );
-    nRTCHour = rtc_readRegister( RTC_REGISTER_HOUR );
-    nRTCDay = rtc_readRegister( RTC_REGISTER_DAY );
-    nRTCDayOfWeek = rtc_readRegister( RTC_REGISTER_DAYOFWEEK );
-    nRTCMonth = rtc_readRegister( RTC_REGISTER_MONTH );
-    nRTCYear = rtc_readRegister( RTC_REGISTER_CENTURY ) * 100 + rtc_readRegister( RTC_REGISTER_YEAR );
+    // check if the numbers are in binary or BCD
 
+    if ( rtc_readRegister( RTC_REGISTER_B ) & 0x4 )
+    {
+	nRTCSecond = rtc_readRegister( RTC_REGISTER_SECOND );
+	nRTCMinute = rtc_readRegister( RTC_REGISTER_MINUTE );
+	nRTCHour = rtc_readRegister( RTC_REGISTER_HOUR );
+	nRTCDay = rtc_readRegister( RTC_REGISTER_DAY );
+	nRTCDayOfWeek = rtc_readRegister( RTC_REGISTER_DAYOFWEEK );
+	nRTCMonth = rtc_readRegister( RTC_REGISTER_MONTH );
+	nRTCYear = rtc_readRegister( RTC_REGISTER_CENTURY ) * 100 + rtc_readRegister( RTC_REGISTER_YEAR );
+    }
+    else
+    {
+	nRTCSecond = rtc_readRegisterBCD( RTC_REGISTER_SECOND );
+	nRTCMinute = rtc_readRegisterBCD( RTC_REGISTER_MINUTE );
+	nRTCHour = rtc_readRegisterBCD( RTC_REGISTER_HOUR );
+	nRTCDay = rtc_readRegisterBCD( RTC_REGISTER_DAY );
+	nRTCDayOfWeek = rtc_readRegisterBCD( RTC_REGISTER_DAYOFWEEK );
+	nRTCMonth = rtc_readRegisterBCD( RTC_REGISTER_MONTH );
+	nRTCYear = rtc_readRegisterBCD( RTC_REGISTER_CENTURY ) * 100 + rtc_readRegisterBCD( RTC_REGISTER_YEAR );
+    }
+    
     bIntFired = true;
 }
 
@@ -95,10 +119,6 @@ void rtc_init( )
     // enable RTC interrupts by setting the 6'th bit
     
     nData |= 0x40;
-
-    // set clock data type to binary, instead of bcd
-
-    nData |= 0x4;
 
     // give our modified mask back to the rtc clock
     
