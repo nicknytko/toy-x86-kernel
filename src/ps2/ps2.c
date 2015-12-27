@@ -75,7 +75,7 @@ void ps2_init( )
 
     //Load the IRQ Handler
 
-    irq_loadHandler( (uint32) &ps2_irq, 1 );
+    irq_loadHandler( 1, (uint32) &ps2_irq );
 
     //Re-enable auxiliary devices (if available)
     

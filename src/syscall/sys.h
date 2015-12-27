@@ -29,6 +29,10 @@
  */
 void syscall_test( uint32 eax, uint32 ebx, uint32 ecx, uint32 edx );
 
+/** Sets up the interrupt for system calls
+ */
+void syscall_init( );
+
 /** Exits the current process without cleaning up files
  * @param nExit Exit code
  */

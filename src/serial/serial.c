@@ -73,7 +73,7 @@ void serial_init( )
 	break;
     }
 
-    irq_loadHandler( (uint32)serial_irq, 4 );
+    irq_loadHandler( 4, (uint32)serial_irq );
 }
 
 void serial_writeChar( uint8 nSerial, uint8 nByte )

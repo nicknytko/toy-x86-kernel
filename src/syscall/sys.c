@@ -1,7 +1,15 @@
 #include <base.h>
 #include "sys.h"
 
+#include <interrupt/interrupt.h>
 #include <video/video.h>
+
+void syscall_stub( );
+
+void syscall_init( )
+{
+    idt_setAll( SYSCALL_INT, (uint32)(&syscall_stub), 0x8, 0x8E );
+}
 
 // we will be filling in these placeholder functions later
 

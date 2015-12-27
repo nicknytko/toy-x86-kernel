@@ -4,28 +4,43 @@
 [GLOBAL nmi_disable]
 [GLOBAL int_sti]	
 [GLOBAL int_cli]
+[GLOBAL IDT_TABLE]
+[GLOBAL IRQ_TABLE]
+[EXTERN idt_set]
 [EXTERN pic_remap]
 [EXTERN pic_sendEOI]
 [EXTERN pic_IMRDisableAll]	
-[EXTERN pic_clearIMRMask]
 [EXTERN syscall_stub]
 	
 IDT_ENTRY_SIZE		equ 8
-IDT_TABLE_ENTRIES	equ 49
+IDT_TABLE_ENTRIES	equ 256
 IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
 
 NMI_REGISTER		equ 0x70
+
+;;; Various tables for holding handlers
+	
+IDT_TABLE: times (IDT_TABLE_ENTRIES*IDT_ENTRY_SIZE) db 0	
+IRQ_TABLE: times 16 dd 0
+
+IDT_PTR:
+	dw IDT_TABLE_LIMIT
+	dd IDT_TABLE
+
+;;; Macros for setting and creating handlers
 	
 %macro IDT_CALL_SET 1
-	mov eax, %1
-	mov ebx, ISR_%1
+	push ISR_%1
+	push %1
 	call idt_set
+	add esp, 8
 %endmacro
 
 %macro IRQ_CALL_SET 1
-	mov eax, %1
-	mov ebx, IRQ_%1
+	push IRQ_%1
+	push %1
 	call idt_set
+	add esp, 8
 %endmacro
 
 %macro ISR_NO_ERROR 1
@@ -50,22 +65,9 @@ IRQ_%1:
 	push byte %1
 	jmp irq_stub
 %endmacro
-
-IDT_TABLE: times (IDT_TABLE_ENTRIES*IDT_ENTRY_SIZE) db 0
-
-;;; structure of idt entry
-;;; 0x0-0x1 lower offset (word)
-;;; 0x2-0x3 code segment (word)
-;;; 0x4     unused (byte)
-;;; 0x5     attributes (byte)
-;;; 0x6-0x7 higher offset (word)
 	
-IDT_PTR:
-	dw IDT_TABLE_LIMIT
-	dd IDT_TABLE
-
-IRQ_TABLE: times 16 dd 0	;table of all the irq handlers
-
+;;; All of our stub interrupt Handlers
+	
 ISR_NO_ERROR 0
 ISR_NO_ERROR 1
 ISR_NO_ERROR 2
@@ -122,19 +124,22 @@ isr_stub:
 
 irq_stub:
 	pusha
-	mov eax, [esp+32]
 
+	;; always send an end-of-interrupt
+
+	mov eax, [esp+32]
 	push eax
 	call pic_sendEOI
 	add esp, 4
+
+	;; get IRQ from table
 	
 	mov eax, [esp+32]
-	
-	sub eax, 32	;get irq from table
-	imul eax, 4
-	add eax, IRQ_TABLE
+	sub eax, 32
+	mov edx, [IRQ_TABLE + eax*4]
 
-	mov edx, [eax]
+	;; check if we have a handler
+	
 	cmp edx, 0
 	je _irq_stub_nohandler
 	
@@ -146,23 +151,6 @@ _irq_stub_nohandler:
 	sti
 	
 	iret
-
-irq_loadHandler:	; [esp+8] - irq number, [esp+4] - ptr to handler
-	;; load in our table of pointers
-
-	mov eax, [esp+8]
-	mov ebx, [esp+4]
-
-	imul eax, 4
-	add eax, IRQ_TABLE
-	mov dword [eax], ebx
-
-	mov eax, [esp+8]
-	push eax
-	call pic_clearIMRMask
-	add esp, 4
-	
-	ret
 
 int_cli:
 	cli
@@ -188,28 +176,14 @@ nmi_disable:
 	out dx, al
 	ret
 	
-idt_set: 			;eax - index in idt table, ebx - pointer to isr
-	imul eax, IDT_ENTRY_SIZE
-	add eax, IDT_TABLE
-
-	mov ecx, ebx
-	and ecx, 0xFFFF
-
-	mov word [eax], cx
-	mov word [eax+2], 0x08
-	mov byte [eax+5], 0x8E
-
-	mov ecx, ebx
-	and ecx, 0xFFFF0000
-	shr ecx, 16
-
-	mov word [eax+6], cx
-	
-	ret
-	
 idt_init:
+	
+	;; Set up our pic, have every IRQ disabled by default
+	
 	call pic_remap
-	call pic_IMRDisableAll	;disable all pics until they they have a routine loaded
+	call pic_IMRDisableAll
+
+	;; Setup our interrupts
 	
 	IDT_CALL_SET 0
 	IDT_CALL_SET 1
@@ -260,9 +234,7 @@ idt_init:
 	IRQ_CALL_SET 46
 	IRQ_CALL_SET 47
 
-	mov eax, 48
-	mov ebx, syscall_stub
-	call idt_set
+	;; Load our IDT and restore interrupts
 	
 	mov eax, IDT_PTR
 	lidt [eax]

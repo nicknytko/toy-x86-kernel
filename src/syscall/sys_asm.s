@@ -62,7 +62,7 @@ syscall_stub:
 
 	dec eax
 
-	call dword [eax*4 + syscall_table]
+	call dword [syscall_table + eax*4]
 
 _syscall_fail_check:	
 	

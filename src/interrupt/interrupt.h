@@ -25,7 +25,21 @@ void idt_init( );
  * @param pHandler Pointer to a function to be called for the IRQ
  * @param nIRQ Number of IRQ
  */
-void irq_loadHandler( uint32 pHandler, uint32 nIRQ );
+void irq_loadHandler( uint32 nIRQ, uint32 pHandler );
+
+/** Loads an IDT
+ * @param nIndex Interrupt number
+ * @param pISR Address of an ISR handler
+ */
+void idt_set( uint32 nIndex, uint32 pISR );
+
+/** Loads an IDT, allowing for selector and flags to be changed
+ * @param nIndex Interrupt number
+ * @param pISR Address of an ISR handler
+ * @param nSelector Code segment selector
+ * @param nFlags Type and attributes
+ */
+void idt_setAll( uint32 nIndex, uint32 pISR, uint16 nSelector, uint8 nFlags );
 
 /** @brief Disable interrupts
  * Calls CLI and disables NMI's.

@@ -102,10 +102,8 @@ ps2_kb_printScancode:	; [esp+4] - scancode
 	ret
 
 _ps2_kb_printScancode:
-	add eax, PS2_KB_SCANCODE
 	dec eax
-	xor edx, edx
-	mov dl, byte [eax]
+	mov dl, byte [PS2_KB_SCANCODE + eax]
 	
 	push edx
 	call screen_printChar

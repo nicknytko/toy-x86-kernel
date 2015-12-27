@@ -24,6 +24,19 @@ void k_pmode( )
     idt_init( );
     kheap_init( );
     paging_init( );
+    syscall_init( );
+}
+
+/** Load less important devices
+ */
+void k_loadSecondary( )
+{
+    pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
+    rtc_init( );
+    serial_init( );
+    ps2_init( );
+
+    initrd_load( );    
 }
 
 /** Kernel Main
@@ -32,16 +45,8 @@ void kmain( )
 {
     //Set up our environment for protected mode
     k_pmode( );
-
-    //Enable lesser-important things
-    pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
-    rtc_init( );
-    serial_init( );
-    ps2_init( );
-
-    //Load ramdisk
-    initrd_load( );
-
+    k_loadSecondary( );
+    
     //Demonstrate what we can do so far
     serial_writeString( 0, "Hello, World from serial!\n" );
 

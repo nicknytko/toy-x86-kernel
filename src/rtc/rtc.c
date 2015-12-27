@@ -123,7 +123,7 @@ void rtc_init( )
     // give our modified mask back to the rtc clock
     
     outb( RTC_DATA, nData );
-    irq_loadHandler( (uint32)rtc_irq, 8 );
+    irq_loadHandler( 8, (uint32)rtc_irq );
 
     // re-enable interrupts and nmi's
     

@@ -25,7 +25,7 @@ uint32 pit_getTicks( )
 void pit_init( uint32 nFrequency, uint8 nFlags )
 {
     //the pit calls irq 0, load our callback function
-    irq_loadHandler( (uint32) &pit_irq, 0 );
+    irq_loadHandler( 0, (uint32) &pit_irq );
 
     //load the pit with our flags
     outb( PIT_MODE, nFlags );

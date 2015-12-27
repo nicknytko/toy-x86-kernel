@@ -43,6 +43,6 @@ uint8 get_byte( uint32 nAddress );
 // Dword to word conversion
 
 #define dword_lword( x ) (x & 0xFFFF)
-#define dword_hword( x ) ((x & 0xFFFF) >> 16)
+#define dword_hword( x ) ((x & 0xFFFF0000) >> 16)
 
 #endif
