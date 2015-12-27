@@ -3,6 +3,8 @@
 # x86-thing
 Basic "kernel" written in c and x86 assembly.
 
+Partial documentation can be found [here](http://nickgn12.github.io/x86-thing/index.html).
+
 # feature list
  - [x] enable a20 gate
  - [x] load GDT table
