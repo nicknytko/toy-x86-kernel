@@ -8,9 +8,10 @@
 [EXTERN pic_sendEOI]
 [EXTERN pic_IMRDisableAll]	
 [EXTERN pic_clearIMRMask]
-
+[EXTERN syscall_stub]
+	
 IDT_ENTRY_SIZE		equ 8
-IDT_TABLE_ENTRIES	equ 48
+IDT_TABLE_ENTRIES	equ 49
 IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
 
 NMI_REGISTER		equ 0x70
@@ -126,6 +127,7 @@ irq_stub:
 	push eax
 	call pic_sendEOI
 	add esp, 4
+	
 	mov eax, [esp+32]
 	
 	sub eax, 32	;get irq from table
@@ -257,6 +259,10 @@ idt_init:
 	IRQ_CALL_SET 45
 	IRQ_CALL_SET 46
 	IRQ_CALL_SET 47
+
+	mov eax, 48
+	mov ebx, syscall_stub
+	call idt_set
 	
 	mov eax, IDT_PTR
 	lidt [eax]

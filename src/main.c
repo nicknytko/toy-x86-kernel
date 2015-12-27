@@ -13,6 +13,7 @@
 #include <multiboot/multiboot.h>
 #include <ps2/ps2.h>
 #include <initrd/initrd.h>
+#include <syscall/sys.h>
 
 /** Enter protected mode
  */
@@ -104,4 +105,6 @@ void kmain( )
     screen_printDec( rtc_getDay( ) );
     screen_printChar( '/' );
     screen_printDec( rtc_getYear( ) );
+
+    syscall_test( SYS_WRITE, 0, (uint32)"\nHello, syscall!", 16 );
 }
