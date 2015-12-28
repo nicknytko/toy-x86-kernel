@@ -91,26 +91,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="pic_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PIC_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PIC_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="pic_8h.html#a56fe5012021ceb89a2514621cacd3df8">    4</a></span>&#160;<span class="preprocessor">#define PIC1_BASE       0x20</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="pic_8h.html#abb8c772edb235f2bba59933e8d457fb4">    5</a></span>&#160;<span class="preprocessor">#define PIC2_BASE       0xA0</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="pic_8h.html#a15b03fb878a292b35fa8e72eb5578b5a">    6</a></span>&#160;<span class="preprocessor">#define PIC1_COM        PIC1_BASE</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="pic_8h.html#a4d48fe54cdd77c7fdb128b7df035ce84">    7</a></span>&#160;<span class="preprocessor">#define PIC2_COM        PIC2_BASE</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="pic_8h.html#af27e966ec947ca1172f30ae301c5f24b">    8</a></span>&#160;<span class="preprocessor">#define PIC1_DATA       (PIC1_BASE+1)</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="pic_8h.html#ab6d3b9f6f427357310896adf176145f1">    9</a></span>&#160;<span class="preprocessor">#define PIC2_DATA       (PIC2_BASE+1)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="pic_8h.html#a170d8eebdb48c16cfcd60cbd46760cb2">   11</a></span>&#160;<span class="preprocessor">#define PIC_EOI         0x20</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a5b871ade8f10f62495927306703e74cb">pic_IMRDisableAll</a>( );</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#af89250c02a5c036857204d9292e2d9fc">pic_setIMRMask</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nMask );</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a7df429a8e22174e50167851f712369e5">pic_clearIMRMask</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nMask );</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a5823df1f974a11e219267ec98db6e302">pic_remap</a>( );</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="pic_8h.html#a56fe5012021ceb89a2514621cacd3df8">    8</a></span>&#160;<span class="preprocessor">#define PIC1_BASE       0x20</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="pic_8h.html#abb8c772edb235f2bba59933e8d457fb4">    9</a></span>&#160;<span class="preprocessor">#define PIC2_BASE       0xA0</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="pic_8h.html#a15b03fb878a292b35fa8e72eb5578b5a">   10</a></span>&#160;<span class="preprocessor">#define PIC1_COM        PIC1_BASE</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="pic_8h.html#a4d48fe54cdd77c7fdb128b7df035ce84">   11</a></span>&#160;<span class="preprocessor">#define PIC2_COM        PIC2_BASE</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="pic_8h.html#af27e966ec947ca1172f30ae301c5f24b">   12</a></span>&#160;<span class="preprocessor">#define PIC1_DATA       (PIC1_BASE+1)</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="pic_8h.html#ab6d3b9f6f427357310896adf176145f1">   13</a></span>&#160;<span class="preprocessor">#define PIC2_DATA       (PIC2_BASE+1)</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="pic_8h.html#a170d8eebdb48c16cfcd60cbd46760cb2">   15</a></span>&#160;<span class="preprocessor">#define PIC_EOI         0x20</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a5b871ade8f10f62495927306703e74cb">pic_IMRDisableAll</a>( );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#af89250c02a5c036857204d9292e2d9fc">pic_setIMRMask</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nMask );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a7df429a8e22174e50167851f712369e5">pic_clearIMRMask</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nMask );</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="pic_8h.html#a5823df1f974a11e219267ec98db6e302">pic_remap</a>( );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="pic_8h_html_a7df429a8e22174e50167851f712369e5"><div class="ttname"><a href="pic_8h.html#a7df429a8e22174e50167851f712369e5">pic_clearIMRMask</a></div><div class="ttdeci">void pic_clearIMRMask(uint32 nMask)</div><div class="ttdef"><b>Definition:</b> pic.c:57</div></div>
-<div class="ttc" id="base_8h_html_acbd4acd0d29e2d6c43104827f77d9cd2"><div class="ttname"><a href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition:</b> base.h:13</div></div>
+<div class="ttc" id="base_8h_html_acbd4acd0d29e2d6c43104827f77d9cd2"><div class="ttname"><a href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition:</b> base.h:16</div></div>
 <div class="ttc" id="pic_8h_html_a5b871ade8f10f62495927306703e74cb"><div class="ttname"><a href="pic_8h.html#a5b871ade8f10f62495927306703e74cb">pic_IMRDisableAll</a></div><div class="ttdeci">void pic_IMRDisableAll()</div><div class="ttdef"><b>Definition:</b> pic.c:18</div></div>
 <div class="ttc" id="pic_8h_html_a5823df1f974a11e219267ec98db6e302"><div class="ttname"><a href="pic_8h.html#a5823df1f974a11e219267ec98db6e302">pic_remap</a></div><div class="ttdeci">void pic_remap()</div><div class="ttdef"><b>Definition:</b> pic.c:81</div></div>
 <div class="ttc" id="pic_8h_html_af89250c02a5c036857204d9292e2d9fc"><div class="ttname"><a href="pic_8h.html#af89250c02a5c036857204d9292e2d9fc">pic_setIMRMask</a></div><div class="ttdeci">void pic_setIMRMask(uint32 nMask)</div><div class="ttdef"><b>Definition:</b> pic.c:26</div></div>

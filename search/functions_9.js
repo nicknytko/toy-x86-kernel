@@ -1,17 +1,12 @@
 var searchData=
 [
-  ['paging_5finit',['paging_init',['../paging_8h.html#a569adfd13ea3c63741f64108821b1712',1,'paging.h']]],
-  ['pic_5fclearimrmask',['pic_clearIMRMask',['../pic_8c.html#a458473b4de65735c61de594a3dbf145f',1,'pic_clearIMRMask(uint32 nIRQ):&#160;pic.c'],['../pic_8h.html#a7df429a8e22174e50167851f712369e5',1,'pic_clearIMRMask(uint32 nMask):&#160;pic.c']]],
-  ['pic_5fimrdisableall',['pic_IMRDisableAll',['../pic_8c.html#a5b871ade8f10f62495927306703e74cb',1,'pic_IMRDisableAll():&#160;pic.c'],['../pic_8h.html#a5b871ade8f10f62495927306703e74cb',1,'pic_IMRDisableAll():&#160;pic.c']]],
-  ['pic_5fremap',['pic_remap',['../pic_8c.html#a5823df1f974a11e219267ec98db6e302',1,'pic_remap():&#160;pic.c'],['../pic_8h.html#a5823df1f974a11e219267ec98db6e302',1,'pic_remap():&#160;pic.c']]],
-  ['pic_5fsendeoi',['pic_sendEOI',['../pic_8c.html#a8dce48d36d507334f8f84810cf96f869',1,'pic.c']]],
-  ['pic_5fsetimrmask',['pic_setIMRMask',['../pic_8c.html#a039ffd908c19b9a0ae51531fef4d0138',1,'pic_setIMRMask(uint32 nIRQ):&#160;pic.c'],['../pic_8h.html#af89250c02a5c036857204d9292e2d9fc',1,'pic_setIMRMask(uint32 nMask):&#160;pic.c']]],
-  ['pit_5fgetticks',['pit_getTicks',['../pit_8c.html#a7f9960d33dddcac5d659092485e754cb',1,'pit_getTicks():&#160;pit.c'],['../pit_8h.html#a7f9960d33dddcac5d659092485e754cb',1,'pit_getTicks():&#160;pit.c']]],
-  ['pit_5finit',['pit_init',['../pit_8c.html#a33d44845b9ad02573dace50aa4c0a571',1,'pit_init(uint32 nFrequency, uint8 nFlags):&#160;pit.c'],['../pit_8h.html#a355ee716cc87877bb770867ee63e11ce',1,'pit_init(uint32 frequency, uint8 nFlags):&#160;pit.c']]],
-  ['ps2_5fauxavailable',['ps2_auxAvailable',['../ps2_8c.html#aa742018f7afcfd7df2353d494c614601',1,'ps2_auxAvailable():&#160;ps2.c'],['../ps2_8h.html#aa742018f7afcfd7df2353d494c614601',1,'ps2_auxAvailable():&#160;ps2.c']]],
-  ['ps2_5fexists',['ps2_exists',['../a20_8c.html#a722441a814540c9bc80d9538b132f1a9',1,'a20.c']]],
-  ['ps2_5finit',['ps2_init',['../ps2_8c.html#a59b249c25ab2aafc894e53fc94eced6a',1,'ps2_init():&#160;ps2.c'],['../ps2_8h.html#a59b249c25ab2aafc894e53fc94eced6a',1,'ps2_init():&#160;ps2.c']]],
-  ['ps2_5fkb_5fpoll',['ps2_kb_poll',['../ps2_8c.html#ababbbae2c9e19d29ae11e4c1e87443c3',1,'ps2.c']]],
-  ['ps2_5fwait_5fread',['ps2_wait_read',['../ps2_8c.html#ae2c875177446e5614d0972b97ab23196',1,'ps2_wait_read():&#160;ps2.c'],['../ps2_8h.html#ae2c875177446e5614d0972b97ab23196',1,'ps2_wait_read():&#160;ps2.c']]],
-  ['ps2_5fwait_5fwrite',['ps2_wait_write',['../ps2_8c.html#aec357a07c6cfd19e50ec947125938d5d',1,'ps2_wait_write():&#160;ps2.c'],['../ps2_8h.html#aec357a07c6cfd19e50ec947125938d5d',1,'ps2_wait_write():&#160;ps2.c']]]
+  ['rtc_5fgetday',['rtc_getDay',['../rtc_8c.html#ab106351be69154eb3e6883b3aa2ac442',1,'rtc_getDay():&#160;rtc.c'],['../rtc_8h.html#ab106351be69154eb3e6883b3aa2ac442',1,'rtc_getDay():&#160;rtc.c']]],
+  ['rtc_5fgetdayofweek',['rtc_getDayOfWeek',['../rtc_8c.html#aa7f3601d7dbd10fba47d234a6c4b2958',1,'rtc_getDayOfWeek():&#160;rtc.c'],['../rtc_8h.html#aa7f3601d7dbd10fba47d234a6c4b2958',1,'rtc_getDayOfWeek():&#160;rtc.c']]],
+  ['rtc_5fgethour',['rtc_getHour',['../rtc_8c.html#abcb0f3ebdc14556fa511d352966c55c4',1,'rtc_getHour():&#160;rtc.c'],['../rtc_8h.html#abcb0f3ebdc14556fa511d352966c55c4',1,'rtc_getHour():&#160;rtc.c']]],
+  ['rtc_5fgetminute',['rtc_getMinute',['../rtc_8c.html#a7b563016a8f624fd0478adc6030bd4ed',1,'rtc_getMinute():&#160;rtc.c'],['../rtc_8h.html#a7b563016a8f624fd0478adc6030bd4ed',1,'rtc_getMinute():&#160;rtc.c']]],
+  ['rtc_5fgetmonth',['rtc_getMonth',['../rtc_8c.html#a570c6d35fa97a9e2b84527de45957801',1,'rtc_getMonth():&#160;rtc.c'],['../rtc_8h.html#a570c6d35fa97a9e2b84527de45957801',1,'rtc_getMonth():&#160;rtc.c']]],
+  ['rtc_5fgetsecond',['rtc_getSecond',['../rtc_8c.html#af03f5291c43df6beaec69e2e09dd40df',1,'rtc_getSecond():&#160;rtc.c'],['../rtc_8h.html#af03f5291c43df6beaec69e2e09dd40df',1,'rtc_getSecond():&#160;rtc.c']]],
+  ['rtc_5fgetyear',['rtc_getYear',['../rtc_8c.html#a8acb7aacce1cd8e8163517c88299c5da',1,'rtc_getYear():&#160;rtc.c'],['../rtc_8h.html#a8acb7aacce1cd8e8163517c88299c5da',1,'rtc_getYear():&#160;rtc.c']]],
+  ['rtc_5fhastime',['rtc_hasTime',['../rtc_8c.html#af7fc79b293b7f98987dd37a7b1460e4f',1,'rtc_hasTime():&#160;rtc.c'],['../rtc_8h.html#af7fc79b293b7f98987dd37a7b1460e4f',1,'rtc_hasTime():&#160;rtc.c']]],
+  ['rtc_5finit',['rtc_init',['../rtc_8c.html#abb4fa397a4a71ad09e3b0df51f40dbe8',1,'rtc_init():&#160;rtc.c'],['../rtc_8h.html#abb4fa397a4a71ad09e3b0df51f40dbe8',1,'rtc_init():&#160;rtc.c']]]
 ];

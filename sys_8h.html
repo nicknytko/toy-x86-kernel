@@ -92,6 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>System calls for user-mode applications to interface with kernel. These are the 17 minimum required for newlib. Additional ones will be added as needed.  
+<a href="#details">More...</a></p>
+
 <p><a href="sys_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -151,7 +154,7 @@ Functions</h2></td></tr>
 <tr class="separator:abc56110aa251e2acce554cd527d75089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72de310ee019c0fc2aade09db1bd1d13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a72de310ee019c0fc2aade09db1bd1d13">sys_write</a> (<a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nFd, char *pBuffer, <a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nLength)</td></tr>
 <tr class="separator:a72de310ee019c0fc2aade09db1bd1d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59155ac1a52a1d12f3799b6eb9c13f65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a59155ac1a52a1d12f3799b6eb9c13f65">sys_open</a> (const char *szFilename, <a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nFlags, <a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> <a class="el" href="inode_8h.html#aada0d8263589a8c342737ea292120785">nMode</a>)</td></tr>
+<tr class="memitem:a59155ac1a52a1d12f3799b6eb9c13f65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a59155ac1a52a1d12f3799b6eb9c13f65">sys_open</a> (const char *szFilename, <a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nFlags, <a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nMode)</td></tr>
 <tr class="separator:a59155ac1a52a1d12f3799b6eb9c13f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae00dab61bc20ddd05bd8a6805d9685"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a9ae00dab61bc20ddd05bd8a6805d9685">sys_close</a> (<a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> nFd)</td></tr>
 <tr class="separator:a9ae00dab61bc20ddd05bd8a6805d9685"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,7 +177,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aafd38ba2ae9d9bd60c5aa4f272675497"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#aafd38ba2ae9d9bd60c5aa4f272675497">sys_wait</a> (<a class="el" href="base_8h.html#ab7903878916593daecbeb95b98115ab0">int32</a> *pStatus)</td></tr>
 <tr class="separator:aafd38ba2ae9d9bd60c5aa4f272675497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>System calls for user-mode applications to interface with kernel. These are the 17 minimum required for newlib. Additional ones will be added as needed. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="adede9a13ca34fe3ad84694c9f9b34a7b"></a>
 <div class="memitem">
 <div class="memproto">

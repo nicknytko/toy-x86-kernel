@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['check_5fif_5fpresent',['CHECK_IF_PRESENT',['../multiboot_8c.html#a6cb5e290c136952ca63b5881dbf14997',1,'multiboot.c']]],
-  ['cs',['cs',['../structs__irqStack.html#a47592c624feb25f7d3ccd90aaee716e9',1,'s_irqStack']]]
+  ['ds',['ds',['../structs__irqStack.html#acb9975fb75eacf83e4bfb6ebcfa0b67b',1,'s_irqStack']]],
+  ['dword_5fhword',['dword_hword',['../base_8h.html#a956ed22f0a6d17ba389f3d5487c7276d',1,'base.h']]],
+  ['dword_5flword',['dword_lword',['../base_8h.html#acfb5f374588c7d7d98afadbc8864181c',1,'base.h']]]
 ];
