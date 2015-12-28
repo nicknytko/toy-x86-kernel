@@ -7,6 +7,7 @@
 [GLOBAL IDT_TABLE]
 [GLOBAL IRQ_TABLE]
 [EXTERN idt_set]
+[EXTERN isr_handler]
 [EXTERN pic_remap]
 [EXTERN pic_sendEOI]
 [EXTERN pic_IMRDisableAll]	
@@ -19,14 +20,20 @@ IDT_TABLE_LIMIT		equ (IDT_TABLE_ENTRIES * IDT_ENTRY_SIZE) - 1
 NMI_REGISTER		equ 0x70
 
 ;;; Various tables for holding handlers
-	
-IDT_TABLE: times (IDT_TABLE_ENTRIES*IDT_ENTRY_SIZE) db 0	
-IRQ_TABLE: times 16 dd 0
 
+SECTION .bss
+	
+IDT_TABLE: resb (IDT_TABLE_ENTRIES*IDT_ENTRY_SIZE)
+IRQ_TABLE: resb 16
+
+SECTION .data
+	
 IDT_PTR:
 	dw IDT_TABLE_LIMIT
 	dd IDT_TABLE
 
+SECTION .text
+	
 ;;; Macros for setting and creating handlers
 	
 %macro IDT_CALL_SET 1
@@ -118,6 +125,7 @@ IRQ          46
 IRQ          47
 
 isr_stub:
+	call isr_handler
 	add esp, 8
 	sti
 	iret

@@ -40,6 +40,9 @@ void screen_setCursor( uint32 nCursorX, uint32 nCursorY )
 	nVGACursorX -= nShiftAmt * VGA_WIDTH;
 	nVGACursorY += nShiftAmt;
     }
+
+    if (nVGACursorY >= VGA_HEIGHT)
+	screen_scroll( );
     
     // send high byte of our cell
     

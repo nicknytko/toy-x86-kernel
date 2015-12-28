@@ -18,7 +18,9 @@
 [EXTERN sys_times]
 [EXTERN sys_wait]
 
-syscall_table:
+SECTION .data
+	
+SYSCALL_TABLE:
 	dd sys_exit
 	dd sys_fork
 	dd sys_kill
@@ -37,6 +39,8 @@ syscall_table:
 	dd sys_times
 	dd sys_wait
 
+SECTION .text
+	
 syscall_test:	
 	mov eax, [esp+4]
 	mov ebx, [esp+8]
@@ -48,23 +52,33 @@ syscall_test:
 	ret
 	
 syscall_stub:
-	cli
-
 	cmp eax, 0x1
 	jl _syscall_fail_check
 
 	cmp eax, 0x11
 	jg _syscall_fail_check
 
+	cli
+	pushad
+	
 	push edx
 	push ecx
 	push ebx
 
 	dec eax
-
-	call dword [syscall_table + eax*4]
-
-_syscall_fail_check:	
+	call dword [SYSCALL_TABLE + eax*4]
 	
 	add esp, 12
+
+	;; set up our stack so that eax is set to our return value when we popad
+	
+	mov dword [esp + 0x1C], eax
+	
+	popad
+	sti
+
+	iret
+	
+_syscall_fail_check:	
+	xor eax, eax
 	iret

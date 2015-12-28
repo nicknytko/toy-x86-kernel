@@ -10,6 +10,8 @@ PS2_STATUS		equ 0x64
 	
 PS2_KB_RELEASE		equ 0xF0
 PS2_KB_MULTIMEDIA	equ 0xE0
+
+SECTION .data
 	
 PS2_KB_SCANCODE:
 PS2_KB_F9:			db 0	;0x01
@@ -93,6 +95,8 @@ PS2_KB_ENTER:			db 0	;0x5a
 PS2_KB_RBRACKET:		db ']'	;0x5B
 				db 0	;0x5C
 PS2_KB_BACKSLASH:		db 92	;0x5D
+
+SECTION .text
 	
 ps2_kb_printScancode:	; [esp+4] - scancode
 	mov eax, [esp+4]
