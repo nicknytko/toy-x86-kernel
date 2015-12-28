@@ -1,6 +1,10 @@
 #ifndef PIT_H
 #define PIT_H
 
+/** @file pit.h
+ * @brief Programmable Interval Timer (PIT) interface.
+ */
+
 // PIT Specific Values
 // Channel Select
 

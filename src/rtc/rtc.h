@@ -1,6 +1,11 @@
 #ifndef RTC_H
 #define RTC_H
 
+/** @file rtc.h
+ * @brief Real Time Clock.
+ * Interface for getting date and time from CMOS.
+ */
+
 /* Good documentation for the RTC clock can be found here
    http://bos.asmhackers.net/docs/timer/docs/cmos.pdf */
 

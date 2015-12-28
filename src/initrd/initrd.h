@@ -1,6 +1,10 @@
 #ifndef INITRD_H
 #define INITRD_H
 
+/** @file initrd.h
+ * @brief Initial ramdisk.
+ */
+
 /** Gets the number of files in the initial ramdisk
  * @return number of files
  */

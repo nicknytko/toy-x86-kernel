@@ -1,6 +1,10 @@
 #ifndef INTERRUPT_H
 #define INTERRUPT_H
 
+/** @file interrupt.h
+ * @brief Functions for loading interrupt handles and IRQ's.
+ */
+
 /** @brief Various values available to an irq handler.
  * Represents the stack pushed by the hardware when an IRQ is called.
  */

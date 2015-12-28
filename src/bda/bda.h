@@ -1,6 +1,11 @@
 #ifndef BDA_H
 #define BDA_H
 
+/** @file bda.h
+ * @brief BDA interface.
+ * Provides functions for accessing the Bios Data Area.
+ */
+
 /* Good documentation for the Bios Data Area can be found here
    http://www.bioscentral.com/misc/bda.htm */
 

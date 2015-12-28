@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+/** @brief Basic functions and data types
+ */
+
 // Sized types
 
 typedef int8_t int8;

@@ -1,6 +1,10 @@
 #ifndef PS2_H
 #define PS2_H
 
+/** @file ps2.h
+ * @brief PS2 Keyboard driver
+ */
+
 //PS2 Controller Ports
 
 #define PS2_DATA	0x60

@@ -1,6 +1,10 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+/** @file video.h
+ * @brief Text-mode video driver.
+ */
+
 #define VGA_BASE	0x3D4
 
 /** Clears the screen

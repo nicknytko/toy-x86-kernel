@@ -1,6 +1,10 @@
 #ifndef PIC_H
 #define PIC_H
 
+/** @file pic.h
+ * @brief 8259 PIC interface.
+ */
+
 #define PIC1_BASE		0x20
 #define PIC2_BASE		0xA0
 #define PIC1_COM		PIC1_BASE

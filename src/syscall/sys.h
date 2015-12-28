@@ -1,9 +1,10 @@
 #ifndef SYS_H
 #define SYS_H
 
-// system calls for user-mode applications to interface with kernel
-// these are the 17 minimum required for newlib
-// additional ones will be added as needed
+/** @file sys.h
+ * @brief System calls for user-mode applications to interface with kernel.
+ * These are the 17 minimum required for newlib.  Additional ones will be added as needed.
+ */
 
 #define SYSCALL_INT		0x30
 
