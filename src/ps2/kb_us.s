@@ -1,19 +1,8 @@
-[GLOBAL ps2_kb_poll]
-[EXTERN screen_printChar]
-[EXTERN screen_printHex]
-[EXTERN ps2_wait_read]
-[EXTERN ps2_wait_write]	
-	
-PS2_DATA		equ 0x60
-PS2_COMMAND		equ 0x64
-PS2_STATUS		equ 0x64
-	
-PS2_KB_RELEASE		equ 0xF0
-PS2_KB_MULTIMEDIA	equ 0xE0
+[GLOBAL PS2_SCANCODE_US]
 
 SECTION .data
 	
-PS2_KB_SCANCODE:
+PS2_SCANCODE_US:
 PS2_KB_F9:			db 0	;0x01
 				db 0	;0x02
 PS2_KB_F5:			db 0	;0x03
@@ -95,52 +84,3 @@ PS2_KB_ENTER:			db 0	;0x5a
 PS2_KB_RBRACKET:		db ']'	;0x5B
 				db 0	;0x5C
 PS2_KB_BACKSLASH:		db 92	;0x5D
-
-SECTION .text
-	
-ps2_kb_printScancode:	; [esp+4] - scancode
-	mov eax, [esp+4]
-	cmp eax, 0x5D
-	jle _ps2_kb_printScancode
-
-	ret
-
-_ps2_kb_printScancode:
-	dec eax
-	mov dl, byte [PS2_KB_SCANCODE + eax]
-	
-	push edx
-	call screen_printChar
-	add esp, 4
-	
-	ret
-	
-ps2_kb_poll:
-	xor eax, eax
-	call ps2_wait_read
-	in al, PS2_DATA
-
-	cmp al, PS2_KB_RELEASE
-	jne _ps2_kb_poll_end
-
-	xor eax, eax
-	call ps2_wait_read
-	in al, PS2_DATA
-
-	cmp al, PS2_KB_MULTIMEDIA
-	jne _ps2_kb_poll_return
-
-	xor eax, eax
-	call ps2_wait_read
-	in al, PS2_DATA
-
-	jmp _ps2_kb_poll_return
-
-_ps2_kb_poll_end:	
-	
-	push eax
-	call ps2_kb_printScancode
-	add esp, 4
-
-_ps2_kb_poll_return:	
-	ret

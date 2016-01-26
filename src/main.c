@@ -3,8 +3,8 @@
 #include <a20/a20.h>
 #include <gdt/gdt.h>
 #include <interrupt/interrupt.h>
-#include <mem/kheap.h>
-#include <mem/paging.h>
+#include <memory/heap.h>
+#include <memory/paging.h>
 
 #include <video/video.h>
 #include <pit/pit.h>
@@ -12,7 +12,7 @@
 #include <serial/serial.h>
 #include <multiboot/multiboot.h>
 #include <ps2/ps2.h>
-#include <initrd/initrd.h>
+#include <fs/initrd/initrd.h>
 #include <syscall/sys.h>
 
 /** Enter protected mode

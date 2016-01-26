@@ -1,5 +1,5 @@
-ASMSRC = $(wildcard *.s) $(wildcard */*.s)
-CSRC = $(wildcard *.c) $(wildcard */*.c)
+ASMSRC = $(wildcard *.s) $(wildcard */*.s) $(wildcard */*/*.s)
+CSRC = $(wildcard *.c) $(wildcard */*.c) $(wildcard */*/*.c)
 
 SOURCES = $(CSRC:.c=.o) $(ASMSRC:.s=.o)
 BINARY=../bin/kernel

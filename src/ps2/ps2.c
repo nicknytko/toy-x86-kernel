@@ -3,10 +3,25 @@
 
 #include <panic/panic.h>
 #include <interrupt/interrupt.h>
+#include <video/video.h>
+
+extern uint8 PS2_SCANCODE_US[];
 
 static bool bPS2AuxAvailable;
+static uint8* pKeymap;
 
-void ps2_kb_poll( );
+void ps2_kb_poll( )
+{
+    uint8 nData = inb( PS2_DATA );
+
+    if ( nData == PS2_KB_RELEASE || nData == PS2_KB_MULTIMEDIA )
+    {
+	nData = inb( PS2_DATA );
+    }
+
+    if ( nData <= 0x5D )
+	screen_printChar( pKeymap[ nData - 1 ] );
+}
 
 void ps2_wait_read( )
 {
@@ -73,9 +88,10 @@ void ps2_init( )
     ps2_wait_write( );
     outb( PS2_DATA, nCommand ); //Upload byte back to ps2
 
-    //Load the IRQ Handler
+    //Load the IRQ Handler and keymap
 
     irq_loadHandler( 1, (uint32) &ps2_irq );
+    pKeymap = PS2_SCANCODE_US;
 
     //Re-enable auxiliary devices (if available)
     

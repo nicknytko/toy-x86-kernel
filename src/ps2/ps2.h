@@ -33,6 +33,11 @@
 
 #define PS2_COM_SELFTEST	0xAA
 
+//PS2 Data Bytes
+
+#define PS2_KB_RELEASE		0xFA
+#define PS2_KB_MULTIMEDIA	0xE0
+
 //PS2 Functions
 
 /** Initializes the PS2 controller.
