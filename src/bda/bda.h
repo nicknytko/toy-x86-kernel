@@ -9,19 +9,19 @@
 /* Good documentation for the Bios Data Area can be found here
    http://www.bioscentral.com/misc/bda.htm */
 
-#define BDA_BASE_ADDRESS		0x0400
-#define BDA_SERIAL1_PORT		BDA_BASE_ADDRESS
-#define BDA_SERIAL2_PORT		(BDA_BASE_ADDRESS + 0x2)
-#define BDA_SERIAL3_PORT		(BDA_BASE_ADDRESS + 0x4)
-#define BDA_SERIAL4_PORT		(BDA_BASE_ADDRESS + 0x6)
-#define BDA_PARALLEL1_PORT		(BDA_BASE_ADDRESS + 0x8)
-#define BDA_PARALLEL2_PORT		(BDA_BASE_ADDRESS + 0xA)
-#define BDA_PARALLEL3_PORT		(BDA_BASE_ADDRESS + 0xC)
-#define BDA_PARALLEL4_PORT		(BDA_BASE_ADDRESS + 0xE)
-#define BDA_EQUIPMENT			(BDA_BASE_ADDRESS + 0x10)
-#define BDA_MEMSIZE			(BDA_BASE_ADDRESS + 0x13)
-#define BDA_KEYBOARD_FLAGS		(BDA_BASE_ADDRESS + 0x17)
-#define BDA_KEYBOARD_FLAGS2		(BDA_BASE_ADDRESS + 0x18)
+#define BDA_BASE_ADDRESS                0x0400
+#define BDA_SERIAL1_PORT                BDA_BASE_ADDRESS
+#define BDA_SERIAL2_PORT                (BDA_BASE_ADDRESS + 0x2)
+#define BDA_SERIAL3_PORT                (BDA_BASE_ADDRESS + 0x4)
+#define BDA_SERIAL4_PORT                (BDA_BASE_ADDRESS + 0x6)
+#define BDA_PARALLEL1_PORT              (BDA_BASE_ADDRESS + 0x8)
+#define BDA_PARALLEL2_PORT              (BDA_BASE_ADDRESS + 0xA)
+#define BDA_PARALLEL3_PORT              (BDA_BASE_ADDRESS + 0xC)
+#define BDA_PARALLEL4_PORT              (BDA_BASE_ADDRESS + 0xE)
+#define BDA_EQUIPMENT                   (BDA_BASE_ADDRESS + 0x10)
+#define BDA_MEMSIZE                     (BDA_BASE_ADDRESS + 0x13)
+#define BDA_KEYBOARD_FLAGS              (BDA_BASE_ADDRESS + 0x17)
+#define BDA_KEYBOARD_FLAGS2             (BDA_BASE_ADDRESS + 0x18)
 
 /** Gets the number of serial ports available (0-4)
  */

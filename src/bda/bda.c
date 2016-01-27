@@ -9,15 +9,15 @@ uint8 bda_numSerialPorts( )
     {
     default:
     case 0:
-	return 0;
+        return 0;
     case 1:
-	return 1;
+        return 1;
     case 2:
-	return 2;
+        return 2;
     case 4:
-	return 3;
+        return 3;
     case 8:
-	return 4;
+        return 4;
     }
 }
 
@@ -29,13 +29,13 @@ uint8 bda_numParallelPorts( )
     {
     default:
     case 0:
-	return 0;
+        return 0;
     case 1:
-	return 1;
+        return 1;
     case 2:
-	return 2;
+        return 2;
     case 4:
-	return 3;
+        return 3;
     }
 }
 

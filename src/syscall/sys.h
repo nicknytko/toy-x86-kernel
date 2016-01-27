@@ -6,25 +6,25 @@
  * These are the 17 minimum required for newlib.  Additional ones will be added as needed.
  */
 
-#define SYSCALL_INT		0x30
+#define SYSCALL_INT             0x30
 
-#define SYS_EXIT		0x1
-#define SYS_FORK		0x2
-#define SYS_KILL		0x3
-#define SYS_GETPID		0x4
-#define SYS_READ		0x5
-#define SYS_WRITE		0x6
-#define SYS_OPEN		0x7
-#define SYS_CLOSE		0x8
-#define SYS_EXECVE		0x9
-#define SYS_FSTAT		0xA
-#define SYS_STAT		0xB
-#define SYS_LINK		0xC
-#define SYS_UNLINK		0xD
-#define SYS_LSEEK		0xE
-#define SYS_SBRK		0xF
-#define SYS_TIMES		0x10
-#define SYS_WAIT		0x11
+#define SYS_EXIT                0x1
+#define SYS_FORK                0x2
+#define SYS_KILL                0x3
+#define SYS_GETPID              0x4
+#define SYS_READ                0x5
+#define SYS_WRITE               0x6
+#define SYS_OPEN                0x7
+#define SYS_CLOSE               0x8
+#define SYS_EXECVE              0x9
+#define SYS_FSTAT               0xA
+#define SYS_STAT                0xB
+#define SYS_LINK                0xC
+#define SYS_UNLINK              0xD
+#define SYS_LSEEK               0xE
+#define SYS_SBRK                0xF
+#define SYS_TIMES               0x10
+#define SYS_WAIT                0x11
 
 /** Simulate a syscall 
  */

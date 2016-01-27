@@ -5,14 +5,14 @@
  * @brief 8259 PIC interface.
  */
 
-#define PIC1_BASE		0x20
-#define PIC2_BASE		0xA0
-#define PIC1_COM		PIC1_BASE
-#define PIC2_COM		PIC2_BASE
-#define PIC1_DATA		(PIC1_BASE+1)
-#define PIC2_DATA		(PIC2_BASE+1)
+#define PIC1_BASE               0x20
+#define PIC2_BASE               0xA0
+#define PIC1_COM                PIC1_BASE
+#define PIC2_COM                PIC2_BASE
+#define PIC1_DATA               (PIC1_BASE+1)
+#define PIC2_DATA               (PIC2_BASE+1)
 
-#define PIC_EOI			0x20
+#define PIC_EOI                 0x20
 
 /** Sets the IMR registers to 0xFF
  * Disables all IRQ's

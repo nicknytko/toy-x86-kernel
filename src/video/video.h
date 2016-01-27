@@ -5,7 +5,7 @@
  * @brief Text-mode video driver.
  */
 
-#define VGA_BASE	0x3D4
+#define VGA_BASE        0x3D4
 
 /** Clears the screen
  */
