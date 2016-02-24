@@ -2,8 +2,11 @@
 #define PAGING_H
 
 #define PAGE_PRESENT            0x1
+#define PAGE_EMPTY		0x0
 #define PAGE_WRITABLE           0x2
+#define PAGE_READONLY		0x0
 #define PAGE_USERMODE           0x4
+#define PAGE_KERNELMODE		0x0
 #define PAGE_WRITETHROUGH       0x8
 #define PAGE_CACHEDISABLED      0x10
 #define PAGE_ACCESSED           0x20
@@ -11,19 +14,18 @@
 #define PAGE_TABLE_4MBPAGES     0x80
 #define PAGE_GLOBAL             0x100
 
-typedef struct
-{
-    uint16 nFlags;
-    uint16 nAddress;
-} s_page;
+/** Set a table in the paging directory
+ */
 
-typedef struct
-{
-    s_page pPages[1024];
-} s_pageTable;
+void paging_setTable( uint32 nIndex, uint32 pAddress, uint8 nFlags );
 
-typedef s_pageTable** s_pageDirectory;
+/** Remove a table in the paging directory
+ */
 
+void paging_removeTable( uint32 nIndex );
+
+/** Initialize paging
+ */
 void paging_init( );
 
 #endif

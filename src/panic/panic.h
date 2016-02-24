@@ -13,4 +13,9 @@
  */
 void kpanic( char* szError );
 
+#define PANIC_STR1( x ) #x
+#define PANIC_STR2( x ) PANIC_STR1( x )
+#define PANIC( x ) kpanic( __FILE__ ":" PANIC_STR2(__LINE__) "\n" x )
+#define ASSERT( x ) if (!(x)){ PANIC( "Assert failed: " #x ); }
+
 #endif
