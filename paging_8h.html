@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>x86 kernel: /home/nick/Git/x86-thing/src/mem/paging.h File Reference</title>
+<title>x86 kernel: /home/nick/Git/x86-thing/src/memory/paging.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,11 +80,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_622d6f97fa5c1d8a93db70ff15b3a1df.html">mem</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_94d7edf6f8f3d9af5fd63c44172da41c.html">memory</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">paging.h File Reference</div>  </div>
@@ -93,11 +96,166 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="paging_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__page.html">s_page</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__pageTable.html">s_pageTable</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a122dfc414a40e260fd35dbe9743db26f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a122dfc414a40e260fd35dbe9743db26f">PAGE_PRESENT</a>&#160;&#160;&#160;0x1</td></tr>
+<tr class="separator:a122dfc414a40e260fd35dbe9743db26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80a2168882aa2c8cf95fa34edb75ec4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a80a2168882aa2c8cf95fa34edb75ec4d">PAGE_WRITABLE</a>&#160;&#160;&#160;0x2</td></tr>
+<tr class="separator:a80a2168882aa2c8cf95fa34edb75ec4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d75453eb15fa89fb93b0e954036d0e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a4d75453eb15fa89fb93b0e954036d0e6">PAGE_USERMODE</a>&#160;&#160;&#160;0x4</td></tr>
+<tr class="separator:a4d75453eb15fa89fb93b0e954036d0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56696016bca4fc31f61555b27f77230a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a56696016bca4fc31f61555b27f77230a">PAGE_WRITETHROUGH</a>&#160;&#160;&#160;0x8</td></tr>
+<tr class="separator:a56696016bca4fc31f61555b27f77230a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f195878d6618276f22b0944aa06056"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a18f195878d6618276f22b0944aa06056">PAGE_CACHEDISABLED</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:a18f195878d6618276f22b0944aa06056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0f255a15cf72f5b47251d19092c41d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#add0f255a15cf72f5b47251d19092c41d">PAGE_ACCESSED</a>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:add0f255a15cf72f5b47251d19092c41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b65338140b4aab20aae2708677df343"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a0b65338140b4aab20aae2708677df343">PAGE_DIRTY</a>&#160;&#160;&#160;0x40</td></tr>
+<tr class="separator:a0b65338140b4aab20aae2708677df343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad257e38a793e398bb27aee60c3fa278b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#ad257e38a793e398bb27aee60c3fa278b">PAGE_TABLE_4MBPAGES</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="separator:ad257e38a793e398bb27aee60c3fa278b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d99c75e51b448fcb97266da4815c63f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a0d99c75e51b448fcb97266da4815c63f">PAGE_GLOBAL</a>&#160;&#160;&#160;0x100</td></tr>
+<tr class="separator:a0d99c75e51b448fcb97266da4815c63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:afdaf000a5d176398a3ee25192b83f6b8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structs__pageTable.html">s_pageTable</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a></td></tr>
+<tr class="separator:afdaf000a5d176398a3ee25192b83f6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a569adfd13ea3c63741f64108821b1712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a> ()</td></tr>
 <tr class="separator:a569adfd13ea3c63741f64108821b1712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="add0f255a15cf72f5b47251d19092c41d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_ACCESSED&#160;&#160;&#160;0x20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a18f195878d6618276f22b0944aa06056"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_CACHEDISABLED&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0b65338140b4aab20aae2708677df343"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_DIRTY&#160;&#160;&#160;0x40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d99c75e51b448fcb97266da4815c63f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_GLOBAL&#160;&#160;&#160;0x100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a122dfc414a40e260fd35dbe9743db26f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_PRESENT&#160;&#160;&#160;0x1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad257e38a793e398bb27aee60c3fa278b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_TABLE_4MBPAGES&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4d75453eb15fa89fb93b0e954036d0e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_USERMODE&#160;&#160;&#160;0x4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a80a2168882aa2c8cf95fa34edb75ec4d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_WRITABLE&#160;&#160;&#160;0x2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a56696016bca4fc31f61555b27f77230a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_WRITETHROUGH&#160;&#160;&#160;0x8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="afdaf000a5d176398a3ee25192b83f6b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structs__pageTable.html">s_pageTable</a>** <a class="el" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a569adfd13ea3c63741f64108821b1712"></a>
 <div class="memitem">

@@ -1,5 +1,14 @@
 var searchData=
 [
+  ['page_5faccessed',['PAGE_ACCESSED',['../paging_8h.html#add0f255a15cf72f5b47251d19092c41d',1,'paging.h']]],
+  ['page_5fcachedisabled',['PAGE_CACHEDISABLED',['../paging_8h.html#a18f195878d6618276f22b0944aa06056',1,'paging.h']]],
+  ['page_5fdirty',['PAGE_DIRTY',['../paging_8h.html#a0b65338140b4aab20aae2708677df343',1,'paging.h']]],
+  ['page_5fglobal',['PAGE_GLOBAL',['../paging_8h.html#a0d99c75e51b448fcb97266da4815c63f',1,'paging.h']]],
+  ['page_5fpresent',['PAGE_PRESENT',['../paging_8h.html#a122dfc414a40e260fd35dbe9743db26f',1,'paging.h']]],
+  ['page_5ftable_5f4mbpages',['PAGE_TABLE_4MBPAGES',['../paging_8h.html#ad257e38a793e398bb27aee60c3fa278b',1,'paging.h']]],
+  ['page_5fusermode',['PAGE_USERMODE',['../paging_8h.html#a4d75453eb15fa89fb93b0e954036d0e6',1,'paging.h']]],
+  ['page_5fwritable',['PAGE_WRITABLE',['../paging_8h.html#a80a2168882aa2c8cf95fa34edb75ec4d',1,'paging.h']]],
+  ['page_5fwritethrough',['PAGE_WRITETHROUGH',['../paging_8h.html#a56696016bca4fc31f61555b27f77230a',1,'paging.h']]],
   ['pic1_5fbase',['PIC1_BASE',['../pic_8h.html#a56fe5012021ceb89a2514621cacd3df8',1,'pic.h']]],
   ['pic1_5fcom',['PIC1_COM',['../pic_8h.html#a15b03fb878a292b35fa8e72eb5578b5a',1,'pic.h']]],
   ['pic1_5fdata',['PIC1_DATA',['../pic_8h.html#af27e966ec947ca1172f30ae301c5f24b',1,'pic.h']]],
@@ -41,6 +50,8 @@ var searchData=
   ['ps2_5fcom_5fwrite_5foutput',['PS2_COM_WRITE_OUTPUT',['../ps2_8h.html#a36979a523c8b8a9edd15809e4f5bbaa7',1,'ps2.h']]],
   ['ps2_5fcommand',['PS2_COMMAND',['../ps2_8h.html#a3447f8526e3d9976a66a93ff322cc87e',1,'ps2.h']]],
   ['ps2_5fdata',['PS2_DATA',['../ps2_8h.html#afdbeabd6455ad1caf38d713be4945425',1,'ps2.h']]],
+  ['ps2_5fkb_5fmultimedia',['PS2_KB_MULTIMEDIA',['../ps2_8h.html#ab4a9d7f4b683f80bf31794e7b93c085f',1,'ps2.h']]],
+  ['ps2_5fkb_5frelease',['PS2_KB_RELEASE',['../ps2_8h.html#a01d7f6725a82fa6bf6d51ef4efeb8830',1,'ps2.h']]],
   ['ps2_5fstatus',['PS2_STATUS',['../ps2_8h.html#a5011033b67ebce0ddc40f985c04832e1',1,'ps2.h']]],
   ['ps2_5ftest_5fsuccess',['PS2_TEST_SUCCESS',['../ps2_8h.html#a42b6d6e21341bd783eea960fbc4e7be7',1,'ps2.h']]]
 ];

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>x86 kernel: /home/nick/Git/x86-thing/src/mem/paging.h Source File</title>
+<title>x86 kernel: /home/nick/Git/x86-thing/src/memory/paging.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_622d6f97fa5c1d8a93db70ff15b3a1df.html">mem</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_94d7edf6f8f3d9af5fd63c44172da41c.html">memory</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,10 +91,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="paging_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PAGING_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PAGING_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keywordtype">void</span> <a class="code" href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a>( );</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="paging_8h_html_a569adfd13ea3c63741f64108821b1712"><div class="ttname"><a href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a></div><div class="ttdeci">void paging_init()</div></div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="paging_8h.html#a122dfc414a40e260fd35dbe9743db26f">    4</a></span>&#160;<span class="preprocessor">#define PAGE_PRESENT            0x1</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="paging_8h.html#a80a2168882aa2c8cf95fa34edb75ec4d">    5</a></span>&#160;<span class="preprocessor">#define PAGE_WRITABLE           0x2</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="paging_8h.html#a4d75453eb15fa89fb93b0e954036d0e6">    6</a></span>&#160;<span class="preprocessor">#define PAGE_USERMODE           0x4</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="paging_8h.html#a56696016bca4fc31f61555b27f77230a">    7</a></span>&#160;<span class="preprocessor">#define PAGE_WRITETHROUGH       0x8</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="paging_8h.html#a18f195878d6618276f22b0944aa06056">    8</a></span>&#160;<span class="preprocessor">#define PAGE_CACHEDISABLED      0x10</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="paging_8h.html#add0f255a15cf72f5b47251d19092c41d">    9</a></span>&#160;<span class="preprocessor">#define PAGE_ACCESSED           0x20</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="paging_8h.html#a0b65338140b4aab20aae2708677df343">   10</a></span>&#160;<span class="preprocessor">#define PAGE_DIRTY              0x40</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="paging_8h.html#ad257e38a793e398bb27aee60c3fa278b">   11</a></span>&#160;<span class="preprocessor">#define PAGE_TABLE_4MBPAGES     0x80</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="paging_8h.html#a0d99c75e51b448fcb97266da4815c63f">   12</a></span>&#160;<span class="preprocessor">#define PAGE_GLOBAL             0x100</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structs__page.html">   14</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structs__page.html#ab0cebbe09a2e4ac71350a2256ce629cf">   16</a></span>&#160;    <a class="code" href="base_8h.html#ac2a9e79eb120216f855626495b7bd18a">uint16</a> <a class="code" href="structs__page.html#ab0cebbe09a2e4ac71350a2256ce629cf">nFlags</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structs__page.html#a5aab5dc2d0d334b89acf16b915be06ec">   17</a></span>&#160;    <a class="code" href="base_8h.html#ac2a9e79eb120216f855626495b7bd18a">uint16</a> <a class="code" href="structs__page.html#a5aab5dc2d0d334b89acf16b915be06ec">nAddress</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <a class="code" href="structs__page.html">s_page</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structs__pageTable.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structs__pageTable.html#a9496f46d0bedc51011fc04fb1a2deb84">   22</a></span>&#160;    <a class="code" href="structs__page.html">s_page</a> pPages[1024];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <a class="code" href="structs__pageTable.html">s_pageTable</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">   25</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="structs__pageTable.html">s_pageTable</a>** <a class="code" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a>( );</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structs__page_html"><div class="ttname"><a href="structs__page.html">s_page</a></div><div class="ttdef"><b>Definition:</b> paging.h:14</div></div>
+<div class="ttc" id="structs__page_html_ab0cebbe09a2e4ac71350a2256ce629cf"><div class="ttname"><a href="structs__page.html#ab0cebbe09a2e4ac71350a2256ce629cf">s_page::nFlags</a></div><div class="ttdeci">uint16 nFlags</div><div class="ttdef"><b>Definition:</b> paging.h:16</div></div>
+<div class="ttc" id="paging_8h_html_a569adfd13ea3c63741f64108821b1712"><div class="ttname"><a href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a></div><div class="ttdeci">void paging_init()</div><div class="ttdef"><b>Definition:</b> paging.c:7</div></div>
+<div class="ttc" id="paging_8h_html_afdaf000a5d176398a3ee25192b83f6b8"><div class="ttname"><a href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a></div><div class="ttdeci">s_pageTable ** s_pageDirectory</div><div class="ttdef"><b>Definition:</b> paging.h:25</div></div>
+<div class="ttc" id="structs__page_html_a5aab5dc2d0d334b89acf16b915be06ec"><div class="ttname"><a href="structs__page.html#a5aab5dc2d0d334b89acf16b915be06ec">s_page::nAddress</a></div><div class="ttdeci">uint16 nAddress</div><div class="ttdef"><b>Definition:</b> paging.h:17</div></div>
+<div class="ttc" id="base_8h_html_ac2a9e79eb120216f855626495b7bd18a"><div class="ttname"><a href="base_8h.html#ac2a9e79eb120216f855626495b7bd18a">uint16</a></div><div class="ttdeci">uint16_t uint16</div><div class="ttdef"><b>Definition:</b> base.h:14</div></div>
+<div class="ttc" id="structs__pageTable_html"><div class="ttname"><a href="structs__pageTable.html">s_pageTable</a></div><div class="ttdef"><b>Definition:</b> paging.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

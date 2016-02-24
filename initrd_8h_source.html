@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.10"/>
-<title>x86 kernel: /home/nick/Git/x86-thing/src/initrd/initrd.h Source File</title>
+<title>x86 kernel: /home/nick/Git/x86-thing/src/fs/initrd/initrd.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b2504aa870020ffc15ef2036283db18d.html">initrd</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7d71b6c457a61cbf03a04bfdc57b6110.html">fs</a></li><li class="navelem"><a class="el" href="dir_658497c6047bc9e0d569f568810d7d0c.html">initrd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,19 +91,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="initrd_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INITRD_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define INITRD_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> <a class="code" href="initrd_8h.html#a4e8a1a22f6e41f8c98b6f1691f87e11d">initrd_getNumFiles</a>( );</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="initrd_8h.html#a2c6e8ff0f948a10ca7e70356546bea68">initrd_load</a>( );</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="initrd_8h.html#afd129aa1f1003eab6a93e01c47d7f47b">initrd_getFileName</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> <a class="code" href="initrd_8h.html#af0707fad7149b5036a877ec97e24dafa">initrd_getFileSize</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="initrd_8h.html#a1594230d0f79e3727734dc3662fe5f89">initrd_getData</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> <a class="code" href="initrd_8h.html#a4e8a1a22f6e41f8c98b6f1691f87e11d">initrd_getNumFiles</a>( );</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="initrd_8h.html#a2c6e8ff0f948a10ca7e70356546bea68">initrd_load</a>( );</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="initrd_8h.html#afd129aa1f1003eab6a93e01c47d7f47b">initrd_getFileName</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> <a class="code" href="initrd_8h.html#af0707fad7149b5036a877ec97e24dafa">initrd_getFileSize</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="initrd_8h.html#a1594230d0f79e3727734dc3662fe5f89">initrd_getData</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFileNumber );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="initrd_8h_html_af0707fad7149b5036a877ec97e24dafa"><div class="ttname"><a href="initrd_8h.html#af0707fad7149b5036a877ec97e24dafa">initrd_getFileSize</a></div><div class="ttdeci">uint32 initrd_getFileSize(uint32 nFileNumber)</div><div class="ttdef"><b>Definition:</b> initrd.c:49</div></div>
-<div class="ttc" id="base_8h_html_acbd4acd0d29e2d6c43104827f77d9cd2"><div class="ttname"><a href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition:</b> base.h:13</div></div>
+<div class="ttc" id="base_8h_html_acbd4acd0d29e2d6c43104827f77d9cd2"><div class="ttname"><a href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition:</b> base.h:16</div></div>
 <div class="ttc" id="initrd_8h_html_a4e8a1a22f6e41f8c98b6f1691f87e11d"><div class="ttname"><a href="initrd_8h.html#a4e8a1a22f6e41f8c98b6f1691f87e11d">initrd_getNumFiles</a></div><div class="ttdeci">uint32 initrd_getNumFiles()</div><div class="ttdef"><b>Definition:</b> initrd.c:25</div></div>
 <div class="ttc" id="initrd_8h_html_afd129aa1f1003eab6a93e01c47d7f47b"><div class="ttname"><a href="initrd_8h.html#afd129aa1f1003eab6a93e01c47d7f47b">initrd_getFileName</a></div><div class="ttdeci">char * initrd_getFileName(uint32 nFileNumber)</div><div class="ttdef"><b>Definition:</b> initrd.c:33</div></div>
 <div class="ttc" id="initrd_8h_html_a1594230d0f79e3727734dc3662fe5f89"><div class="ttname"><a href="initrd_8h.html#a1594230d0f79e3727734dc3662fe5f89">initrd_getData</a></div><div class="ttdeci">char * initrd_getData(uint32 nFileNumber)</div><div class="ttdef"><b>Definition:</b> initrd.c:60</div></div>

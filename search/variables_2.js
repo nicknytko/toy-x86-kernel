@@ -8,6 +8,7 @@ var searchData=
   ['edx',['edx',['../structs__irqStack.html#a9330172e83dc2d37e2b548ef1700072c',1,'s_irqStack']]],
   ['eflags',['eflags',['../structs__irqStack.html#aa4cf348ee37de6ebf1aa0dc8b9d08c75',1,'s_irqStack']]],
   ['eip',['eip',['../structs__irqStack.html#a33a847424a63082aeab742658137399a',1,'s_irqStack']]],
+  ['end',['end',['../heap_8c.html#a30ec0e1a04edb5e980f26fbc98d3cd38',1,'heap.c']]],
   ['es',['es',['../structs__irqStack.html#a3d3ea3fcb994edacb8bfca4332657021',1,'s_irqStack']]],
   ['esi',['esi',['../structs__irqStack.html#a7b07f10db5cdd6481c11c9cf0247c130',1,'s_irqStack']]],
   ['esp',['esp',['../structs__irqStack.html#a9476d2a2b020b3c88788163712b0dc27',1,'s_irqStack']]]
