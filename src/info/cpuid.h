@@ -98,4 +98,9 @@ bool cpuid_existsECX( uint32 nFeature );
 
 bool cpuid_existsEDX( uint32 nFeature );
 
+uint8 cpuid_getStepping( );
+uint8 cpuid_getModel( );
+uint8 cpuid_getFamily( );
+uint8 cpuid_getType( );
+
 #endif

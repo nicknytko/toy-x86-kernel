@@ -3,6 +3,10 @@
 [GLOBAL cpuid_getEDXFeatures]
 [GLOBAL cpuid_existsECX]
 [GLOBAL cpuid_existsEDX]    
+[GLOBAL cpuid_getStepping]
+[GLOBAL cpuid_getModel]
+[GLOBAL cpuid_getFamily]
+[GLOBAL cpuid_getType]
     
 SECTION .bss
 
@@ -61,4 +65,49 @@ cpuid_existsEDX:
     ret
 _cpuid_existsEDX_end:
     xor eax, eax
+    ret
+
+cpuid_getStepping:
+    mov eax, 1
+    cpuid
+    and eax, 0xF
+    ret
+
+cpuid_getModel:
+    mov eax, 1
+    cpuid
+    
+    mov ebx, eax
+    and eax, 0xF0               ; get model from bits 7-4
+    shr eax, 4
+    
+    xchg eax, ebx
+    and eax, 0xF0000            ; get extended model from bits 19-16
+    shr eax, 0xC                ; shift right 16 bits and left 4
+    add eax, ebx                ; add together
+    
+    ret
+
+cpuid_getFamily:
+    mov eax, 1
+    cpuid
+
+    mov ebx, eax
+    and eax, 0xF00
+    shr eax, 8
+
+    xchg eax, ebx
+    and eax, 0xF00000
+    shr eax, 0x14
+    add eax, ebx
+    
+    ret
+
+cpuid_getType:
+    mov eax, 1
+    cpuid
+
+    and eax, 0x3000
+    shr eax, 0xC
+    
     ret
