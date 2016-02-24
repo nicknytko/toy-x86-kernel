@@ -14,6 +14,7 @@
 #include <ps2/ps2.h>
 #include <fs/initrd/initrd.h>
 #include <syscall/sys.h>
+#include <info/cpuid.h>
 
 /** Enter protected mode
  */
@@ -79,7 +80,7 @@ void kmain( )
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");
     screen_printHex( (unsigned int)mboot_drivesPtr( ) );
-
+    
     screen_newline( );
     screen_newline( );
     screen_printString( "Contents of ramdisk: \n" );
@@ -111,5 +112,7 @@ void kmain( )
     screen_printChar( '/' );
     screen_printDec( rtc_getYear( ) );
 
-    syscall_test( SYS_WRITE, 0, (uint32)"\nHello, syscall!", 16 );
+    syscall_test( SYS_WRITE, 0, (uint32)"\nHello, syscall!\n", 16 );
+
+    screen_printString( cpuid_getVendor( ) );
 }

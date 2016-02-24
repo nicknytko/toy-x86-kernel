@@ -38,7 +38,7 @@ void screen_tab( );
 
 /** Prints a null terminated string
  */
-void screen_printString( char* szStr );
+void screen_printString( const char* szStr );
 
 /** Prints a character
  */

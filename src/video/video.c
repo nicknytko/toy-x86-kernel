@@ -175,7 +175,7 @@ void screen_printDec( uint32 nDec )
     screen_setCursor( nVGACursorX + nDigits, nVGACursorY );
 }
 
-void screen_printString( char* szStr )
+void screen_printString( const char* szStr )
 {
     if (szStr == 0)
 	return;

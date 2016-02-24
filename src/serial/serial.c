@@ -1,7 +1,7 @@
 #include <base.h>
 #include "serial.h"
 
-#include <bda/bda.h>
+#include <info/bda.h>
 #include <interrupt/interrupt.h>
 
 IRQ_HANDLER_NOARGS( serial_irq )

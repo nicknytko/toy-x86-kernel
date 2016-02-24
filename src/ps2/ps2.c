@@ -18,7 +18,7 @@ void ps2_kb_poll( )
     {
 	nData = inb( PS2_DATA );
     }
-
+    
     if ( nData <= 0x5D )
 	screen_printChar( pKeymap[ nData - 1 ] );
 }
