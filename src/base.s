@@ -11,7 +11,7 @@
 [GLOBAL stack]    
 
 SECTION .bss
-align 0x20
+align 32
 
 STACKSIZE: equ 0x4000
     
