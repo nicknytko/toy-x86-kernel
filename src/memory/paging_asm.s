@@ -8,7 +8,7 @@
 [EXTERN stack]    
     
 SECTION .data
-align 0x1000
+align 4096
 
 PAGE_DIRECTORY:  times 1024 dd 0
 PAGE_TABLE_KERNEL:   times 1024 dd 0
