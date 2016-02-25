@@ -16,39 +16,11 @@
 #include <syscall/sys.h>
 #include <info/cpuid.h>
 
-/** Enter protected mode
+/** Demonstrate what we are capable of doing so far
  */
-void k_pmode( )
-{
-    a20_enable( );
-    gdt_init( );
-    idt_init( );
-    kheap_init( );
-    paging_init( );
-    syscall_init( );
-}
 
-/** Load less important devices
- */
-void k_loadSecondary( )
+void kdemo( )
 {
-    pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
-    rtc_init( );
-    serial_init( );
-    ps2_init( );
-
-    initrd_load( );    
-}
-
-/** Kernel Main
- */
-void kmain( )
-{
-    //Set up our environment for protected mode
-    k_pmode( );
-    k_loadSecondary( );
-    
-    //Demonstrate what we can do so far
     serial_writeString( 0, "Hello, World from serial!\n" );
 
     screen_clear( );
@@ -80,7 +52,7 @@ void kmain( )
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");
     screen_printHex( (unsigned int)mboot_drivesPtr( ) );
-    
+
     screen_newline( );
     screen_newline( );
     screen_printString( "Contents of ramdisk: \n" );
@@ -115,4 +87,39 @@ void kmain( )
     syscall_test( SYS_WRITE, 0, (uint32)"\nHello, syscall!\n", 16 );
 
     screen_printString( cpuid_getVendor( ) );
+}
+
+/** Initialize kernel for higher half
+ */
+void kinit( )
+{
+    paging_init( );
+    paging_initHigherHalf( PAGING_KERNEL_OFFSET );
+}
+
+void kmain( )
+{
+    // Set up our protected mode junk
+    
+    a20_enable( );
+    gdt_init( );
+    idt_init( );
+    kheap_init( );
+    syscall_init( );
+    
+    // Load our less important devices
+
+    pit_init( 50, (PIT_CHANNEL_0 | PIT_ACCESS_BOTH | PIT_MODE_2_2) );
+    rtc_init( );
+    serial_init( );
+    ps2_init( );
+    initrd_load( );    
+    
+    // Run our demo
+    
+    kdemo( );
+
+    // End
+
+    halt( );
 }

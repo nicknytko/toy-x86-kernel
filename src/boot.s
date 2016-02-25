@@ -4,7 +4,7 @@
 [EXTERN code]
 [EXTERN bss]
 [EXTERN end]
-[EXTERN kmain]
+[EXTERN kinit]
 [EXTERN mboot_setinfo]
 
 ;; Multiboot constants
@@ -39,6 +39,7 @@
 	MULTIBOOT_INFO_VIDEO_INFO 	equ 0x00000800
 
 ;; Configuration
+    
 	MULTIBOOT_FLAGS                 equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO
 	MULTIBOOT_CHECKSUM              equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_FLAGS)
 
@@ -50,19 +51,14 @@ MULTIBOOT_HEADER:
 	dd MULTIBOOT_FLAGS
 	dd MULTIBOOT_CHECKSUM
 
-	dd MULTIBOOT_HEADER
-	dd code
-	dd bss
-	dd end
-	dd start
+section .text
 
-section .data
-	
-start:
+start equ (_start - 0xC0000000)
+_start:
 	push ebx
 	call mboot_setinfo
 	add esp, 4
-	call kmain
+	call kinit
 
 idle:
 	jmp idle

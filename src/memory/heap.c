@@ -1,8 +1,8 @@
 #include <base.h>
 
 extern uint32 end;
-static uint32 pHeapAddress;
-static uint32 pHeapBase;
+static uint32 pHeapAddress = 0;
+static uint32 pHeapBase = 0;
 
 void kheap_init( )
 {

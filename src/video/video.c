@@ -1,15 +1,17 @@
 #include <base.h>
 #include "video.h"
 
+#include <memory/paging.h>
+
 #define VGA_WIDTH 	80
 #define VGA_HEIGHT 	25
 
-#define VGA_OFFSET	0xB8000
+#define VGA_OFFSET	(0xB8000 + PAGING_KERNEL_OFFSET)
 #define VGA_END		VGA_OFFSET + ((VGA_WIDTH * VGA_HEIGHT) * 2)
 
 #define vgaoffset( x, y ) (uint8*)(VGA_OFFSET + ((y * VGA_WIDTH) + x) * 2);
 
-static uint16 nVGACursorX, nVGACursorY;
+static uint16 nVGACursorX = 0, nVGACursorY = 0;
 
 void screen_clear( )
 {

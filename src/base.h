@@ -22,6 +22,10 @@ typedef uint8_t bool;
 #define true 1
 #define false 0
 
+// Halt and wait for interrupts
+
+void halt( );
+
 // Port access
 
 uint8 inb( uint16 port );

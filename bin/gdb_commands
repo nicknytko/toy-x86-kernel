@@ -3,4 +3,4 @@ symbol-file kernel
 set directories ../src
 set disassembly-flavor intel
 break kmain
-continue
+#continue

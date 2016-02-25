@@ -2,15 +2,16 @@
 #include "initrd.h"
 
 #include <multiboot/multiboot.h>
+#include <memory/paging.h>
 
 #define INITRD_FILEHEADER_SIZE 		0x20C
 
-static uint32 nInitrdAddress;
-static uint32 nHeadersOffset;
+static uint32 nInitrdAddress = 0;
+static uint32 nHeadersOffset = 0;
 
 bool initrd_load( )
 {
-    nInitrdAddress = get_dword( mboot_modsPtr( ) );
+    nInitrdAddress = get_dword( mboot_modsPtr( ) + PAGING_KERNEL_OFFSET ) + PAGING_KERNEL_OFFSET;
 
     if ( get_dword( nInitrdAddress ) == 0xDEADBEEF )
     {

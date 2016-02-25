@@ -15,7 +15,8 @@
 // defined in paging_asm.s
 
 extern uint32 PAGE_DIRECTORY[];
-void paging_setDirectory( uint32 pDirectory );
+extern uint32 PAGE_TABLE_KERNEL[];
+void paging_setDirectory( uint32* pDirectory );
 void paging_enablePAE( );
 void paging_enable( );
 
@@ -33,37 +34,38 @@ void paging_removeTable( uint32 nIndex )
     PAGE_DIRECTORY[nIndex] = 0;
 }
 
-static void paging_clearDirectory( )
+void paging_cloneTable( uint32 nOld, uint32 nNew )
 {
-    for ( uint32 i=0; i < 1024; i++ )
-    {
-        paging_setTable( i, 0, PAGE_WRITABLE | PAGE_EMPTY | PAGE_KERNELMODE );
-    }
+    ASSERT( nOld < PAGE_DIR_ENTRIES );
+    ASSERT( nNew < PAGE_DIR_ENTRIES );
+
+    PAGE_DIRECTORY[nNew] = PAGE_DIRECTORY[nOld];
 }
 
 void paging_init( )
 {
-    // Clear the page directory to make sure it has no entries
-    paging_clearDirectory( );
-
-    // Identity map (1:1) the first 4 MB
+    // Set up a table containing the first 4 MB of memory
     
-    uint32* pIdentityTable = (uint32*)kmalloc_a( 1024 * sizeof(uint32) );
+    uint32 pIdentityTable = (uint32)PAGE_TABLE_KERNEL - PAGING_KERNEL_OFFSET;
 
     for ( uint32 i=0; i < 1024; i++ )
     {
-        pIdentityTable[i] = i * 0x1000 | PAGE_PRESENT | PAGE_WRITABLE | PAGE_KERNELMODE ;
+        set_dword( pIdentityTable + i*4, i * 0x1000 | PAGE_PRESENT | PAGE_WRITABLE | PAGE_KERNELMODE );
     }
 
-    // Put our identity-map table in the directory as the first entry
+    // Map our new table to first 4 MB and at 3 GB
     
-    paging_setTable( 0, (uint32)pIdentityTable, PAGE_PRESENT | PAGE_WRITABLE | PAGE_KERNELMODE );
+    uint32 pDirectory = (uint32)PAGE_DIRECTORY - PAGING_KERNEL_OFFSET;
+    uint32 nEntry = (pIdentityTable & 0xFFFFF800) | (PAGE_PRESENT | PAGE_WRITABLE | PAGE_KERNELMODE);
 
+    set_dword( pDirectory, nEntry );
+    set_dword( pDirectory + (768*4), nEntry );
+    
     // Give our directory to the processor
     
-    paging_setDirectory( (uint32)&PAGE_DIRECTORY );
+    paging_setDirectory( PAGE_DIRECTORY - PAGING_KERNEL_OFFSET );
 
-    // Enable PAE if we want it
+    // Enable PAE if we want it (not implemented yet)
     
     if ( PAGING_PAE_ENABLED )
         paging_enablePAE( );

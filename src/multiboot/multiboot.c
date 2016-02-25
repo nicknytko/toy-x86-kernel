@@ -1,6 +1,8 @@
 #include <base.h>
 #include "multiboot.h"
 
+#include <memory/paging.h>
+
 static uint32 pMultibootHeader;
 
 #define CHECK_IF_PRESENT( x ) \
@@ -14,7 +16,9 @@ static inline uint32 mboot_value( uint32 x )
 
 void mboot_setinfo( uint32 pMultiboot )
 {
-    pMultibootHeader = pMultiboot;
+    // Do some janky address shifting because we haven't set up paging yet
+    
+    set_dword( (uint32)(&pMultibootHeader) - PAGING_KERNEL_OFFSET, pMultiboot + PAGING_KERNEL_OFFSET );
 }
 
 bool mboot_isPresent( uint16 nFeature )

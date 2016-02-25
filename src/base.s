@@ -1,3 +1,4 @@
+[GLOBAL halt]
 [GLOBAL inb]
 [GLOBAL inw]
 [GLOBAL outb]
@@ -7,7 +8,22 @@
 [GLOBAL get_dword]
 [GLOBAL get_word]
 [GLOBAL get_byte]
-        
+[GLOBAL stack]    
+
+SECTION .bss
+align 0x20
+
+STACKSIZE: equ 0x4000
+    
+_stack: resb STACKSIZE
+stack:  equ _stack + STACKSIZE
+    
+SECTION .text
+    
+halt:
+    hlt                         ;halt (and catch fire)
+    jmp halt
+    
 inb:                            ;esp+4 - port
     mov edx, [esp+4]
     in al, dx
