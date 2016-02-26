@@ -8,6 +8,14 @@
  * Interface for accessing information passed by the multiboot-compatible bootloader
  */
 
+#define grub_uint16_t uint16
+#define grub_uint32_t uint32
+
+#include "grub_multiboot.h"
+
+#undef grub_uint16_t
+#undef grub_uint32_t
+
 /* Information on this can be found in the GRUB Documentation.
    https://www.gnu.org/software/grub/manual/multiboot/multiboot.html#Boot-information-format */
 
@@ -86,10 +94,10 @@ uint32 mboot_modsPtr( );
  */
 uint32 mboot_memmapLen( );
 
-/** Returns a pointer to the memory map
+/** Returns a pointer to the first entry in the memory map
  * @returns Pointer to memory map
  */
-uint32 mboot_memmapPtr( );
+multiboot_memory_map_t* mboot_memmap( );
 
 /** Returns the number of detected drives
  * @returns Number of drives
@@ -106,9 +114,14 @@ uint32 mboot_drivesPtr( );
  */
 uint32 mboot_configTable( );
 
-/** Returns a pointer fo the APM table
+/** Returns a pointer to the APM table
  * @returns APM Table, if available
  */
 uint32 mboot_apmTable( );
+
+/** Returns a pointer to the multiboot information struct
+ */
+
+multiboot_info_t* mboot_info( );
 
 #endif

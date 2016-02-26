@@ -43,11 +43,40 @@ void kdemo( )
     screen_printString(" module(s)\nmodules address: ");
     screen_printHex( mboot_modsPtr( ) );
 
-    screen_printString("\nmemmap size: ");
-    screen_printDec( mboot_memmapLen( ) );
-    screen_printString("\nmemmap address: ");
-    screen_printHex( (unsigned int)mboot_memmapPtr( ) );
+    multiboot_memory_map_t* memmap = mboot_memmap( );
+    
+    for ( uint32 i=0; i < mboot_memmapLen( ) / sizeof( multiboot_memory_map_t ); i++ )
+    {
+        serial_writeString( 0, "memory map entry at ");
+        serial_writeHex( 0, memmap[i].addr );
+        serial_writeString( 0, ", size " );
+        serial_writeHex( 0, memmap[i].len );
+        serial_writeString( 0, ", " );
 
+        switch ( memmap[i].type )
+        {
+        case MULTIBOOT_MEMORY_AVAILABLE:
+            serial_writeString( 0, "available" );
+            break;
+        case MULTIBOOT_MEMORY_RESERVED:
+            serial_writeString( 0, "reserved" );
+            break;
+        case MULTIBOOT_MEMORY_ACPI_RECLAIMABLE:
+            serial_writeString( 0, "acpi reclaimable" );
+            break;
+        case MULTIBOOT_MEMORY_NVS:
+            serial_writeString( 0, "nvs" );
+            break;
+        case MULTIBOOT_MEMORY_BADRAM:
+            serial_writeString( 0, "bad" );
+            break;
+        default:
+            serial_writeString( 0, "unknown" );
+        }
+
+        serial_writeChar( 0, '\n' );
+    }
+    
     screen_printString("\ndrivemap size: ");
     screen_printDec( mboot_drivesLen( ) );
     screen_printString("\ndrivemap address: ");

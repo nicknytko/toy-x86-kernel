@@ -98,6 +98,24 @@ void serial_writeString( uint8 nSerial, const char* szString )
     }
 }
 
+void serial_writeHex( uint8 nSerial, uint32 nHex )
+{
+    uint8 i;
+    
+    serial_writeChar( nSerial, '0' );
+    serial_writeChar( nSerial, 'x' );
+
+    for (i=0;i < 8;i++)
+    {
+        uint8 nDigit = (nHex >> ((7-i) * 4)) & 0xF;
+
+        if (nDigit < 10)
+            serial_writeChar( nSerial, '0' + nDigit );
+        else
+            serial_writeChar( nSerial, 'A' + (nDigit - 10) );
+    }
+}
+
 uint8 serial_readChar( uint8 nSerial )
 {
     uint16 nPort = serial_getPort( nSerial );

@@ -82,11 +82,11 @@ uint32 mboot_memmapLen( )
     return mboot_value( MULTIBOOT_MMAP_LENGTH_VALUE );
 }
 
-uint32 mboot_memmapPtr( )
+multiboot_memory_map_t*  mboot_memmap( )
 {
     CHECK_IF_PRESENT( MULTIBOOT_MMAP_PRESENT );
 
-    return mboot_value( MULTIBOOT_MMAP_ADDRESS_VALUE );
+    return (multiboot_memory_map_t*)( mboot_value( MULTIBOOT_MMAP_ADDRESS_VALUE ) + PAGING_KERNEL_OFFSET );
 }
 
 uint32 mboot_drivesLen( )
@@ -115,4 +115,9 @@ uint32 mboot_apmTable( )
     CHECK_IF_PRESENT( MULTIBOOT_APMTAB_PRESENT );
 
     return mboot_value( MULTIBOOT_APMTAB_VALUE );
+}
+
+multiboot_info_t* mboot_info( )
+{
+    return (multiboot_info_t*)( pMultibootHeader + PAGING_KERNEL_OFFSET );
 }
