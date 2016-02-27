@@ -121,6 +121,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Prints the contents of the pool to serial bus 0 </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -147,6 +153,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Frees a block of allocated memory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">pMemory</td><td>Allocated memory to free </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -173,6 +186,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initializes a memory pool and returns a pointer to the header </p>
 
 </div>
 </div>
@@ -199,6 +213,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates memory from the pool </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">nSize</td><td>Size in bytes to allocate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to allocated memory </dd></dl>
 
 </div>
 </div>
@@ -231,6 +253,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates aligned memory from the pool </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">nSize</td><td>Size in bytes to allocate </td></tr>
+    <tr><td class="paramname">nAlignment</td><td>Alignment in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to allocated memory </dd></dl>
 
 </div>
 </div>

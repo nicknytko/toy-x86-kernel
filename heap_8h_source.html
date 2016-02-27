@@ -91,20 +91,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="heap_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef KHEAP_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define KHEAP_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="heap_8h.html#a0de409dccfa75eec294527aaf7de3323">    4</a></span>&#160;<span class="preprocessor">#define KHEAP_PHYSICAL_START    0x07E00</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="heap_8h.html#a7a4ed8e27368ed67c1b7205fc6ab01b1">    5</a></span>&#160;<span class="preprocessor">#define KHEAP_PHYSICAL_END  0x7FFFF</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a2b1dfac6a6600d5c1f80ada5b64cc8e8">kheap_init</a>( );</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="heap_8h.html#a0de409dccfa75eec294527aaf7de3323">    8</a></span>&#160;<span class="preprocessor">#define KHEAP_PHYSICAL_START    0x07E00</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="heap_8h.html#a7a4ed8e27368ed67c1b7205fc6ab01b1">    9</a></span>&#160;<span class="preprocessor">#define KHEAP_PHYSICAL_END  0x7FFFF</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="heap_8h.html#ac16d23fec3c1c40214f351a473bc9a69">kmalloc</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize );</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="heap_8h.html#a7318fdf931842eccfc7ef404cfdc21b5">kmalloc_a</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize, <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nAlignment );</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a14c37cf47f52b540c2735d78d63b28f4">kfree</a>( <span class="keywordtype">void</span>* pBlock );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a6de98ab5f11e3b5eec653d12971ecd7c">kheap_debugPrint</a>( );</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a2b1dfac6a6600d5c1f80ada5b64cc8e8">kheap_init</a>( );</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="heap_8h.html#ac16d23fec3c1c40214f351a473bc9a69">kmalloc</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize );</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span>* <a class="code" href="heap_8h.html#a7318fdf931842eccfc7ef404cfdc21b5">kmalloc_a</a>( <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize, <a class="code" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nAlignment );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a14c37cf47f52b540c2735d78d63b28f4">kfree</a>( <span class="keywordtype">void</span>* pBlock );</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a6de98ab5f11e3b5eec653d12971ecd7c">kheap_debugPrint</a>( );</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="heap_8h_html_a2b1dfac6a6600d5c1f80ada5b64cc8e8"><div class="ttname"><a href="heap_8h.html#a2b1dfac6a6600d5c1f80ada5b64cc8e8">kheap_init</a></div><div class="ttdeci">void kheap_init()</div><div class="ttdef"><b>Definition:</b> heap.c:9</div></div>
 <div class="ttc" id="base_8h_html_acbd4acd0d29e2d6c43104827f77d9cd2"><div class="ttname"><a href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></div><div class="ttdeci">uint32_t uint32</div><div class="ttdef"><b>Definition:</b> base.h:16</div></div>
 <div class="ttc" id="heap_8h_html_a6de98ab5f11e3b5eec653d12971ecd7c"><div class="ttname"><a href="heap_8h.html#a6de98ab5f11e3b5eec653d12971ecd7c">kheap_debugPrint</a></div><div class="ttdeci">void kheap_debugPrint()</div><div class="ttdef"><b>Definition:</b> heap.c:30</div></div>

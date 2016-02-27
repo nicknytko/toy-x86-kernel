@@ -177,7 +177,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies a table pointer into another directory entry </p>
+<p>Copies a table pointer into another directory entry </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nOld</td><td>Source table index </td></tr>
+    <tr><td class="paramname">nNew</td><td>Destination table index </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -240,7 +246,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Remove a table in the paging directory </p>
+<p>Remove a table in the paging directory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nIndex</td><td>Number table to remove </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -289,7 +300,14 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set a table in the paging directory </p>
+<p>Set a table in the paging directory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nIndex</td><td>Number of table from 0 to 1024 (512 with PAE) </td></tr>
+    <tr><td class="paramname">pAddress</td><td>Pointer to the table to set </td></tr>
+    <tr><td class="paramname">nFlags</td><td>Table flags </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

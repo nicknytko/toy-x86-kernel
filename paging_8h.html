@@ -92,6 +92,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Paging initialization and table handling.  
+<a href="#details">More...</a></p>
+
 <p><a href="paging_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -138,7 +141,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aec5e45f473072c6d16f92445f68279d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#aec5e45f473072c6d16f92445f68279d4">paging_initHigherHalf</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nOffset)</td></tr>
 <tr class="separator:aec5e45f473072c6d16f92445f68279d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Paging initialization and table handling. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="add0f255a15cf72f5b47251d19092c41d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +340,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies a table pointer into another directory entry </p>
+<p>Copies a table pointer into another directory entry </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nOld</td><td>Source table index </td></tr>
+    <tr><td class="paramname">nNew</td><td>Destination table index </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -368,7 +379,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Jumps to the kernel offset and disables the 4mb identity mapping </p>
+<p>Jumps to the kernel offset and disables the 4mb identity mapping </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nOffset</td><td>Kernel offset for higher half mode </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -385,7 +401,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Remove a table in the paging directory </p>
+<p>Remove a table in the paging directory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nIndex</td><td>Number table to remove </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -418,7 +439,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set a table in the paging directory </p>
+<p>Set a table in the paging directory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nIndex</td><td>Number of table from 0 to 1024 (512 with PAE) </td></tr>
+    <tr><td class="paramname">pAddress</td><td>Pointer to the table to set </td></tr>
+    <tr><td class="paramname">nFlags</td><td>Table flags </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

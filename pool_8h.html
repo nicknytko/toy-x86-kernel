@@ -94,11 +94,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Simple allocator for internal kernel use.  
+<a href="#details">More...</a></p>
+
 <p><a href="pool_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__poolEntry.html">s_poolEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pool Entry Header that immediately precedes every block of allocated memory.  <a href="structs__poolEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -113,6 +117,7 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ade00eccd75ce8e15d3aedffb0f04c901"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structs__poolEntry.html">s_poolEntry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pool_8h.html#ade00eccd75ce8e15d3aedffb0f04c901">__attribute__</a> ((__packed__)) <a class="el" href="structs__poolEntry.html">s_poolEntry</a></td></tr>
+<tr class="memdesc:ade00eccd75ce8e15d3aedffb0f04c901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pool Entry Header that immediately precedes every block of allocated memory.  <a href="#ade00eccd75ce8e15d3aedffb0f04c901">More...</a><br /></td></tr>
 <tr class="separator:ade00eccd75ce8e15d3aedffb0f04c901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee09b33241424a7a70dfc4a4760234d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="pool_8h.html#a82c75457c0ed49548528ea05744e3f51">s_poolHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pool_8h.html#aee09b33241424a7a70dfc4a4760234d7">pool_init</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nAddress, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nEnd)</td></tr>
 <tr class="separator:aee09b33241424a7a70dfc4a4760234d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,7 +141,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a82c75457c0ed49548528ea05744e3f51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pool_8h.html#a82c75457c0ed49548528ea05744e3f51">s_poolHeader</a></td></tr>
 <tr class="separator:a82c75457c0ed49548528ea05744e3f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Simple allocator for internal kernel use. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ac60ba6e96c0cd0d549906cdbf4f34b1d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -188,6 +195,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pool Entry Header that immediately precedes every block of allocated memory. </p>
+<p>Pool Header The beginning of the pool. </p>
+
 </div>
 </div>
 <a class="anchor" id="ad7e5ed5ba06cd635db499423c7cc1f08"></a>
@@ -203,6 +213,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Prints the contents of the pool to serial bus 0 </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -229,6 +245,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Frees a block of allocated memory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">pMemory</td><td>Allocated memory to free </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -255,6 +278,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initializes a memory pool and returns a pointer to the header </p>
 
 </div>
 </div>
@@ -281,6 +305,14 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates memory from the pool </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">nSize</td><td>Size in bytes to allocate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to allocated memory </dd></dl>
 
 </div>
 </div>
@@ -313,6 +345,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates aligned memory from the pool </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pHeader</td><td>Pool header structure </td></tr>
+    <tr><td class="paramname">nSize</td><td>Size in bytes to allocate </td></tr>
+    <tr><td class="paramname">nAlignment</td><td>Alignment in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to allocated memory </dd></dl>
 
 </div>
 </div>
