@@ -7,7 +7,7 @@
  */
 
 /** @file cpuid.h
- * @brief CPUID abstraction
+ * @brief CPUID abstraction.
  * Provides miscellaneous information about processor
  */
 

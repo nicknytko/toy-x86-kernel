@@ -1,6 +1,10 @@
 #ifndef KHEAP_H
 #define KHEAP_H
 
+/** @file heap.h
+ * @brief Kernel malloc functions
+ */
+
 #define KHEAP_PHYSICAL_START	0x07E00
 #define KHEAP_PHYSICAL_END	0x7FFFF
 
