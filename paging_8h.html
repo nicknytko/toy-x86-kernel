@@ -85,9 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">paging.h File Reference</div>  </div>
@@ -96,21 +94,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="paging_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__page.html">s_page</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__pageTable.html">s_pageTable</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a35f5d5146b02753e873d58dd2f5fbc84"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a35f5d5146b02753e873d58dd2f5fbc84">PAGING_KERNEL_OFFSET</a>&#160;&#160;&#160;0xC0000000</td></tr>
+<tr class="separator:a35f5d5146b02753e873d58dd2f5fbc84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9c862a778e5b4c5e6aa2c2fbd27c49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#aee9c862a778e5b4c5e6aa2c2fbd27c49">PAGING_ADDRESS_TO_ENTRY</a>(x)&#160;&#160;&#160;(x / 0x400000)</td></tr>
+<tr class="separator:aee9c862a778e5b4c5e6aa2c2fbd27c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a122dfc414a40e260fd35dbe9743db26f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a122dfc414a40e260fd35dbe9743db26f">PAGE_PRESENT</a>&#160;&#160;&#160;0x1</td></tr>
 <tr class="separator:a122dfc414a40e260fd35dbe9743db26f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b7dcd7795a4050399f4b1c2b594cb1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#ae0b7dcd7795a4050399f4b1c2b594cb1">PAGE_EMPTY</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="separator:ae0b7dcd7795a4050399f4b1c2b594cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80a2168882aa2c8cf95fa34edb75ec4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a80a2168882aa2c8cf95fa34edb75ec4d">PAGE_WRITABLE</a>&#160;&#160;&#160;0x2</td></tr>
 <tr class="separator:a80a2168882aa2c8cf95fa34edb75ec4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18b0db0efe8ab14630d5e2d252847df4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a18b0db0efe8ab14630d5e2d252847df4">PAGE_READONLY</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="separator:a18b0db0efe8ab14630d5e2d252847df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d75453eb15fa89fb93b0e954036d0e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a4d75453eb15fa89fb93b0e954036d0e6">PAGE_USERMODE</a>&#160;&#160;&#160;0x4</td></tr>
 <tr class="separator:a4d75453eb15fa89fb93b0e954036d0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f21bea671a96d716684da34f1095fc2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a0f21bea671a96d716684da34f1095fc2">PAGE_KERNELMODE</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="separator:a0f21bea671a96d716684da34f1095fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56696016bca4fc31f61555b27f77230a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a56696016bca4fc31f61555b27f77230a">PAGE_WRITETHROUGH</a>&#160;&#160;&#160;0x8</td></tr>
 <tr class="separator:a56696016bca4fc31f61555b27f77230a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18f195878d6618276f22b0944aa06056"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a18f195878d6618276f22b0944aa06056">PAGE_CACHEDISABLED</a>&#160;&#160;&#160;0x10</td></tr>
@@ -124,15 +125,18 @@ Macros</h2></td></tr>
 <tr class="memitem:a0d99c75e51b448fcb97266da4815c63f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a0d99c75e51b448fcb97266da4815c63f">PAGE_GLOBAL</a>&#160;&#160;&#160;0x100</td></tr>
 <tr class="separator:a0d99c75e51b448fcb97266da4815c63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:afdaf000a5d176398a3ee25192b83f6b8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structs__pageTable.html">s_pageTable</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a></td></tr>
-<tr class="separator:afdaf000a5d176398a3ee25192b83f6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a28d4cda23959b6c3ab30f79bd9c295fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a28d4cda23959b6c3ab30f79bd9c295fc">paging_setTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nIndex, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> pAddress, <a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> <a class="el" href="pool_8h.html#a86a56fc43c9bd082c444add6dd20e230">nFlags</a>)</td></tr>
+<tr class="separator:a28d4cda23959b6c3ab30f79bd9c295fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af579ff391395114be87d35bd75a53c9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#af579ff391395114be87d35bd75a53c9e">paging_removeTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nIndex)</td></tr>
+<tr class="separator:af579ff391395114be87d35bd75a53c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae08a1f13687e0de2cb434f44b8d1a635"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#ae08a1f13687e0de2cb434f44b8d1a635">paging_cloneTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nOld, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nNew)</td></tr>
+<tr class="separator:ae08a1f13687e0de2cb434f44b8d1a635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a569adfd13ea3c63741f64108821b1712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#a569adfd13ea3c63741f64108821b1712">paging_init</a> ()</td></tr>
 <tr class="separator:a569adfd13ea3c63741f64108821b1712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec5e45f473072c6d16f92445f68279d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8h.html#aec5e45f473072c6d16f92445f68279d4">paging_initHigherHalf</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nOffset)</td></tr>
+<tr class="separator:aec5e45f473072c6d16f92445f68279d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="add0f255a15cf72f5b47251d19092c41d"></a>
@@ -171,6 +175,18 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae0b7dcd7795a4050399f4b1c2b594cb1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_EMPTY&#160;&#160;&#160;0x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a0d99c75e51b448fcb97266da4815c63f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,12 +199,36 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0f21bea671a96d716684da34f1095fc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_KERNELMODE&#160;&#160;&#160;0x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a122dfc414a40e260fd35dbe9743db26f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">#define PAGE_PRESENT&#160;&#160;&#160;0x1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a18b0db0efe8ab14630d5e2d252847df4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_READONLY&#160;&#160;&#160;0x0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -243,13 +283,28 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="afdaf000a5d176398a3ee25192b83f6b8"></a>
+<a class="anchor" id="aee9c862a778e5b4c5e6aa2c2fbd27c49"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="structs__pageTable.html">s_pageTable</a>** <a class="el" href="paging_8h.html#afdaf000a5d176398a3ee25192b83f6b8">s_pageDirectory</a></td>
+          <td class="memname">#define PAGING_ADDRESS_TO_ENTRY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(x / 0x400000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a35f5d5146b02753e873d58dd2f5fbc84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGING_KERNEL_OFFSET&#160;&#160;&#160;0xC0000000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -257,6 +312,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ae08a1f13687e0de2cb434f44b8d1a635"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_cloneTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nOld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nNew</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copies a table pointer into another directory entry </p>
+
+</div>
+</div>
 <a class="anchor" id="a569adfd13ea3c63741f64108821b1712"></a>
 <div class="memitem">
 <div class="memproto">
@@ -269,6 +351,74 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialize paging by identity mapping the first 4mb </p>
+
+</div>
+</div>
+<a class="anchor" id="aec5e45f473072c6d16f92445f68279d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_initHigherHalf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nOffset</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Jumps to the kernel offset and disables the 4mb identity mapping </p>
+
+</div>
+</div>
+<a class="anchor" id="af579ff391395114be87d35bd75a53c9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_removeTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remove a table in the paging directory </p>
+
+</div>
+</div>
+<a class="anchor" id="a28d4cda23959b6c3ab30f79bd9c295fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_setTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>pAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td>
+          <td class="paramname"><em>nFlags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a table in the paging directory </p>
 
 </div>
 </div>

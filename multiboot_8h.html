@@ -94,11 +94,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Multiboot interface.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="grub__multiboot_8h_source.html">grub_multiboot.h</a>&quot;</code><br />
+</div>
 <p><a href="multiboot_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a587ade3c6e05605454a89c4c5d0b8170"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a587ade3c6e05605454a89c4c5d0b8170">grub_uint16_t</a>&#160;&#160;&#160;<a class="el" href="base_8h.html#ac2a9e79eb120216f855626495b7bd18a">uint16</a></td></tr>
+<tr class="separator:a587ade3c6e05605454a89c4c5d0b8170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2912ce36a03cc10a5aa42fb7d7eb1e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#ab2912ce36a03cc10a5aa42fb7d7eb1e7">grub_uint32_t</a>&#160;&#160;&#160;<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></td></tr>
+<tr class="separator:ab2912ce36a03cc10a5aa42fb7d7eb1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe5b098c84a2b5e92e78b70d050db71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#abfe5b098c84a2b5e92e78b70d050db71">MULTIBOOT_MEMSIZE_PRESENT</a>&#160;&#160;&#160;0x1</td></tr>
 <tr class="separator:abfe5b098c84a2b5e92e78b70d050db71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6279da0f662f010bba72c378a72c679e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a6279da0f662f010bba72c378a72c679e">MULTIBOOT_BOOTDEV_PRESENT</a>&#160;&#160;&#160;0x2</td></tr>
@@ -172,8 +177,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9d092216c15db0dada45df63d9a80bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af01876cddc81a79739d85a835ab989b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#af01876cddc81a79739d85a835ab989b8">mboot_memmapLen</a> ()</td></tr>
 <tr class="separator:af01876cddc81a79739d85a835ab989b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb0daceef355ed7801f61de21ae73a1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#abb0daceef355ed7801f61de21ae73a1c">mboot_memmapPtr</a> ()</td></tr>
-<tr class="separator:abb0daceef355ed7801f61de21ae73a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8239ab6c2c32ab08049a139574bf1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="grub__multiboot_8h.html#a2aa16c58ceb6b9548aded205e46e8a3b">multiboot_memory_map_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a9e8239ab6c2c32ab08049a139574bf1d">mboot_memmap</a> ()</td></tr>
+<tr class="separator:a9e8239ab6c2c32ab08049a139574bf1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6741753f143c54eee8051a184598e4c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a6741753f143c54eee8051a184598e4c3">mboot_drivesLen</a> ()</td></tr>
 <tr class="separator:a6741753f143c54eee8051a184598e4c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a144f2eab7dcab164e650ba5bf5872ab1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a144f2eab7dcab164e650ba5bf5872ab1">mboot_drivesPtr</a> ()</td></tr>
@@ -182,11 +187,37 @@ Functions</h2></td></tr>
 <tr class="separator:a14594c32b062cf50324398bbecbaa8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8e2205be0e5017b111514364faf7284"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#ac8e2205be0e5017b111514364faf7284">mboot_apmTable</a> ()</td></tr>
 <tr class="separator:ac8e2205be0e5017b111514364faf7284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f48bbf38d641d37b9fb3d4ed406b656"><td class="memItemLeft" align="right" valign="top"><a class="el" href="grub__multiboot_8h.html#a8cb99862e8314c32c007eee9d2481ae1">multiboot_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="multiboot_8h.html#a8f48bbf38d641d37b9fb3d4ed406b656">mboot_info</a> ()</td></tr>
+<tr class="separator:a8f48bbf38d641d37b9fb3d4ed406b656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Multiboot interface. </p>
 <p>Interface for accessing information passed by the multiboot-compatible bootloader </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a587ade3c6e05605454a89c4c5d0b8170"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define grub_uint16_t&#160;&#160;&#160;<a class="el" href="base_8h.html#ac2a9e79eb120216f855626495b7bd18a">uint16</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab2912ce36a03cc10a5aa42fb7d7eb1e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define grub_uint32_t&#160;&#160;&#160;<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="af2486f119cdc9784418f94c62d9350af"></a>
 <div class="memitem">
 <div class="memproto">
@@ -512,7 +543,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns a pointer fo the APM table </p><dl class="section return"><dt>Returns</dt><dd>APM Table, if available </dd></dl>
+<p>Returns a pointer to the APM table </p><dl class="section return"><dt>Returns</dt><dd>APM Table, if available </dd></dl>
 
 </div>
 </div>
@@ -635,6 +666,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a8f48bbf38d641d37b9fb3d4ed406b656"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="grub__multiboot_8h.html#a8cb99862e8314c32c007eee9d2481ae1">multiboot_info_t</a>* mboot_info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns a pointer to the multiboot information struct </p>
+
+</div>
+</div>
 <a class="anchor" id="ade72d0bbdd56601401390ee9641b8fac"></a>
 <div class="memitem">
 <div class="memproto">
@@ -658,6 +705,22 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9e8239ab6c2c32ab08049a139574bf1d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="grub__multiboot_8h.html#a2aa16c58ceb6b9548aded205e46e8a3b">multiboot_memory_map_t</a>* mboot_memmap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns a pointer to the first entry in the memory map </p><dl class="section return"><dt>Returns</dt><dd>Pointer to memory map </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af01876cddc81a79739d85a835ab989b8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -671,22 +734,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Returns the length of the multiboot memory map </p><dl class="section return"><dt>Returns</dt><dd>Size in bytes </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="abb0daceef355ed7801f61de21ae73a1c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> mboot_memmapPtr </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Returns a pointer to the memory map </p><dl class="section return"><dt>Returns</dt><dd>Pointer to memory map </dd></dl>
 
 </div>
 </div>

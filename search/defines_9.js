@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['true',['true',['../base_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'base.h']]]
+  ['null',['NULL',['../base_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'base.h']]]
 ];

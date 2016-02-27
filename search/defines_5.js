@@ -1,29 +1,5 @@
 var searchData=
 [
-  ['multiboot_5fapmtab_5fpresent',['MULTIBOOT_APMTAB_PRESENT',['../multiboot_8h.html#af2486f119cdc9784418f94c62d9350af',1,'multiboot.h']]],
-  ['multiboot_5fapmtab_5fvalue',['MULTIBOOT_APMTAB_VALUE',['../multiboot_8h.html#a38ce79e7a8b411286ec9776b51bc0f22',1,'multiboot.h']]],
-  ['multiboot_5fbootdev_5fpresent',['MULTIBOOT_BOOTDEV_PRESENT',['../multiboot_8h.html#a6279da0f662f010bba72c378a72c679e',1,'multiboot.h']]],
-  ['multiboot_5fbootdev_5fvalue',['MULTIBOOT_BOOTDEV_VALUE',['../multiboot_8h.html#a690a8de54967d7c3443d5ec38e8fb160',1,'multiboot.h']]],
-  ['multiboot_5fbootloader_5fname_5fpresent',['MULTIBOOT_BOOTLOADER_NAME_PRESENT',['../multiboot_8h.html#a27d4ec63e84a8f5d369b322a3e122f42',1,'multiboot.h']]],
-  ['multiboot_5fbootloader_5fname_5fvalue',['MULTIBOOT_BOOTLOADER_NAME_VALUE',['../multiboot_8h.html#ac72dfdc53f44ae27fd2a9d30fd34c166',1,'multiboot.h']]],
-  ['multiboot_5fcmdline_5fpresent',['MULTIBOOT_CMDLINE_PRESENT',['../multiboot_8h.html#a504dbe24ae8a1ea012dc8f056ed42846',1,'multiboot.h']]],
-  ['multiboot_5fcmdline_5fvalue',['MULTIBOOT_CMDLINE_VALUE',['../multiboot_8h.html#a00b9f099168c57a90ea4f5ae73d0c167',1,'multiboot.h']]],
-  ['multiboot_5fconfigtab_5fpresent',['MULTIBOOT_CONFIGTAB_PRESENT',['../multiboot_8h.html#a0459533ebff2f038fb5e35e5ebbd5eb3',1,'multiboot.h']]],
-  ['multiboot_5fconfigtab_5fvalue',['MULTIBOOT_CONFIGTAB_VALUE',['../multiboot_8h.html#ab3206bd014cfa22db2b637c8769a4885',1,'multiboot.h']]],
-  ['multiboot_5fdrives_5faddress_5fvalue',['MULTIBOOT_DRIVES_ADDRESS_VALUE',['../multiboot_8h.html#aa7f4ef93de42b070bbed1b212b3293af',1,'multiboot.h']]],
-  ['multiboot_5fdrives_5flength_5fvalue',['MULTIBOOT_DRIVES_LENGTH_VALUE',['../multiboot_8h.html#a20dc5a693aa969f5132e90e3cfb3a1d0',1,'multiboot.h']]],
-  ['multiboot_5fdrives_5fpresent',['MULTIBOOT_DRIVES_PRESENT',['../multiboot_8h.html#aadbb5b2c6974cf39c20237ce27e6feaf',1,'multiboot.h']]],
-  ['multiboot_5fmem1_5fvalue',['MULTIBOOT_MEM1_VALUE',['../multiboot_8h.html#af13e3ef63cfc5f0548a2c6e2fc8b2485',1,'multiboot.h']]],
-  ['multiboot_5fmem2_5fvalue',['MULTIBOOT_MEM2_VALUE',['../multiboot_8h.html#a72002f78eda4b895d8b4ea98fa405d84',1,'multiboot.h']]],
-  ['multiboot_5fmemsize_5fpresent',['MULTIBOOT_MEMSIZE_PRESENT',['../multiboot_8h.html#abfe5b098c84a2b5e92e78b70d050db71',1,'multiboot.h']]],
-  ['multiboot_5fmmap_5faddress_5fvalue',['MULTIBOOT_MMAP_ADDRESS_VALUE',['../multiboot_8h.html#afb3a68e48ca3a0464257f9577e85a099',1,'multiboot.h']]],
-  ['multiboot_5fmmap_5flength_5fvalue',['MULTIBOOT_MMAP_LENGTH_VALUE',['../multiboot_8h.html#ae5ed85e0000a53c4fc207efe8e7e68ae',1,'multiboot.h']]],
-  ['multiboot_5fmmap_5fpresent',['MULTIBOOT_MMAP_PRESENT',['../multiboot_8h.html#a25af54f98a38ea1e8e86f86106958665',1,'multiboot.h']]],
-  ['multiboot_5fmods_5faddress_5fvalue',['MULTIBOOT_MODS_ADDRESS_VALUE',['../multiboot_8h.html#a0ef515658e1a6c09501f43166a6a8cd8',1,'multiboot.h']]],
-  ['multiboot_5fmods_5fnum_5fvalue',['MULTIBOOT_MODS_NUM_VALUE',['../multiboot_8h.html#a7398ddb1998ef0d7bc6f7f4b1ba07bbd',1,'multiboot.h']]],
-  ['multiboot_5fmods_5fpresent',['MULTIBOOT_MODS_PRESENT',['../multiboot_8h.html#af28091aa0800344ef55814833e4f750e',1,'multiboot.h']]],
-  ['multiboot_5fsyms2_5fpresent',['MULTIBOOT_SYMS2_PRESENT',['../multiboot_8h.html#a252b0b9b13aa9a2ac634116a0ba703d5',1,'multiboot.h']]],
-  ['multiboot_5fsyms_5fpresent',['MULTIBOOT_SYMS_PRESENT',['../multiboot_8h.html#afb6f75d46da5cb06eabed06b5b0f27c6',1,'multiboot.h']]],
-  ['multiboot_5fvbe_5foffset',['MULTIBOOT_VBE_OFFSET',['../multiboot_8h.html#ab110693580c4ef20f25e426228312472',1,'multiboot.h']]],
-  ['multiboot_5fvbe_5fpresent',['MULTIBOOT_VBE_PRESENT',['../multiboot_8h.html#aa82d8ccdbcaabc71b7ff0e5c55c322f6',1,'multiboot.h']]]
+  ['grub_5fuint16_5ft',['grub_uint16_t',['../multiboot_8h.html#a587ade3c6e05605454a89c4c5d0b8170',1,'multiboot.h']]],
+  ['grub_5fuint32_5ft',['grub_uint32_t',['../multiboot_8h.html#ab2912ce36a03cc10a5aa42fb7d7eb1e7',1,'multiboot.h']]]
 ];

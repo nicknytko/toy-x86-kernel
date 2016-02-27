@@ -234,6 +234,14 @@ Functions</h2></td></tr>
 <tr class="separator:ae9798d6bc50818fad651cc43d0cfd481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f79e2a904c03e05fcca245897b8adc3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#a0ecf26b576b9a54eca656b9be7ba6a06">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpuid_8h.html#a2f79e2a904c03e05fcca245897b8adc3">cpuid_existsEDX</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nFeature)</td></tr>
 <tr class="separator:a2f79e2a904c03e05fcca245897b8adc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b1950ae1961327e037af95830733e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpuid_8h.html#a33b1950ae1961327e037af95830733e1">cpuid_getStepping</a> ()</td></tr>
+<tr class="separator:a33b1950ae1961327e037af95830733e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b23f8cf9669e1b5f833dbb796c52a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpuid_8h.html#a01b23f8cf9669e1b5f833dbb796c52a4">cpuid_getModel</a> ()</td></tr>
+<tr class="separator:a01b23f8cf9669e1b5f833dbb796c52a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53d2ae0b231c22abc91bc5aa27e2963"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpuid_8h.html#af53d2ae0b231c22abc91bc5aa27e2963">cpuid_getFamily</a> ()</td></tr>
+<tr class="separator:af53d2ae0b231c22abc91bc5aa27e2963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a758daa2dfb5a4dae96ed8d4fdab710dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpuid_8h.html#a758daa2dfb5a4dae96ed8d4fdab710dd">cpuid_getType</a> ()</td></tr>
+<tr class="separator:a758daa2dfb5a4dae96ed8d4fdab710dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CPUID abstraction Provides miscellaneous information about processor. </p>
@@ -1034,6 +1042,66 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Returns all CPU features listed in the EDX register </p>
+
+</div>
+</div>
+<a class="anchor" id="af53d2ae0b231c22abc91bc5aa27e2963"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> cpuid_getFamily </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a01b23f8cf9669e1b5f833dbb796c52a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> cpuid_getModel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a33b1950ae1961327e037af95830733e1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> cpuid_getStepping </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a758daa2dfb5a4dae96ed8d4fdab710dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> cpuid_getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

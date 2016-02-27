@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">panic.h File Reference</div>  </div>
@@ -96,6 +97,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="panic_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a393091e1319f0dd9967d4aaf935489f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="panic_8h.html#a393091e1319f0dd9967d4aaf935489f7">PANIC_STR1</a>(x)&#160;&#160;&#160;#x</td></tr>
+<tr class="separator:a393091e1319f0dd9967d4aaf935489f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a058f5fa79cb57b5d1777f035bd98357c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="panic_8h.html#a058f5fa79cb57b5d1777f035bd98357c">PANIC_STR2</a>(x)&#160;&#160;&#160;<a class="el" href="panic_8h.html#a393091e1319f0dd9967d4aaf935489f7">PANIC_STR1</a>( x )</td></tr>
+<tr class="separator:a058f5fa79cb57b5d1777f035bd98357c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a989b3cb2d90490770f9c9c030acb1ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="panic_8h.html#a989b3cb2d90490770f9c9c030acb1ba5">PANIC</a>(x)&#160;&#160;&#160;<a class="el" href="panic_8h.html#a45b6411f277ea044aa9738d7cfde4dd0">kpanic</a>( __FILE__ &quot;:&quot; <a class="el" href="panic_8h.html#a058f5fa79cb57b5d1777f035bd98357c">PANIC_STR2</a>(__LINE__) &quot;\n&quot; x )</td></tr>
+<tr class="separator:a989b3cb2d90490770f9c9c030acb1ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca68c0d4ac8df0838e209fb5300f7be3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="panic_8h.html#aca68c0d4ac8df0838e209fb5300f7be3">ASSERT</a>(x)&#160;&#160;&#160;if (!(x)){ <a class="el" href="panic_8h.html#a989b3cb2d90490770f9c9c030acb1ba5">PANIC</a>( &quot;Assert failed: &quot; #x ); }</td></tr>
+<tr class="separator:aca68c0d4ac8df0838e209fb5300f7be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a45b6411f277ea044aa9738d7cfde4dd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="panic_8h.html#a45b6411f277ea044aa9738d7cfde4dd0">kpanic</a> (char *szError)</td></tr>
@@ -104,7 +116,72 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Kernel panic. </p>
 <p>Kernel panic function </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="aca68c0d4ac8df0838e209fb5300f7be3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ASSERT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;if (!(x)){ <a class="el" href="panic_8h.html#a989b3cb2d90490770f9c9c030acb1ba5">PANIC</a>( &quot;Assert failed: &quot; #x ); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a989b3cb2d90490770f9c9c030acb1ba5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PANIC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="panic_8h.html#a45b6411f277ea044aa9738d7cfde4dd0">kpanic</a>( __FILE__ &quot;:&quot; <a class="el" href="panic_8h.html#a058f5fa79cb57b5d1777f035bd98357c">PANIC_STR2</a>(__LINE__) &quot;\n&quot; x )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a393091e1319f0dd9967d4aaf935489f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PANIC_STR1</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;#x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a058f5fa79cb57b5d1777f035bd98357c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PANIC_STR2</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="panic_8h.html#a393091e1319f0dd9967d4aaf935489f7">PANIC_STR1</a>( x )</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a45b6411f277ea044aa9738d7cfde4dd0"></a>
 <div class="memitem">
 <div class="memproto">

@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['word_5fhbyte',['word_hbyte',['../base_8h.html#a977aafec09a20fc1b3eb9b15067be4ff',1,'base.h']]],
-  ['word_5flbyte',['word_lbyte',['../base_8h.html#aa36d406d7610d7bc62cc4127d0a96c47',1,'base.h']]]
+  ['u',['u',['../structmultiboot__info.html#a61dc20144c958a07801f479c74e5867e',1,'multiboot_info']]],
+  ['uint16',['uint16',['../base_8h.html#ac2a9e79eb120216f855626495b7bd18a',1,'base.h']]],
+  ['uint32',['uint32',['../base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2',1,'base.h']]],
+  ['uint8',['uint8',['../base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365',1,'base.h']]],
+  ['user_5fesp',['user_esp',['../structs__irqStack.html#a81f6f78cf80de8fb335803b759fba3bd',1,'s_irqStack']]]
 ];

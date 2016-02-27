@@ -93,7 +93,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="panic_8h.html#a45b6411f277ea044aa9738d7cfde4dd0">kpanic</a>( <span class="keywordtype">char</span>* szError );</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="panic_8h.html#a393091e1319f0dd9967d4aaf935489f7">   16</a></span>&#160;<span class="preprocessor">#define PANIC_STR1( x ) #x</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="panic_8h.html#a058f5fa79cb57b5d1777f035bd98357c">   17</a></span>&#160;<span class="preprocessor">#define PANIC_STR2( x ) PANIC_STR1( x )</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="panic_8h.html#a989b3cb2d90490770f9c9c030acb1ba5">   18</a></span>&#160;<span class="preprocessor">#define PANIC( x ) kpanic( __FILE__ &quot;:&quot; PANIC_STR2(__LINE__) &quot;\n&quot; x )</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="panic_8h.html#aca68c0d4ac8df0838e209fb5300f7be3">   19</a></span>&#160;<span class="preprocessor">#define ASSERT( x ) if (!(x)){ PANIC( &quot;Assert failed: &quot; #x ); }</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="panic_8h_html_a45b6411f277ea044aa9738d7cfde4dd0"><div class="ttname"><a href="panic_8h.html#a45b6411f277ea044aa9738d7cfde4dd0">kpanic</a></div><div class="ttdeci">void kpanic(char *szError)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

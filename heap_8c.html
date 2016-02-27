@@ -85,29 +85,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">heap.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="base_8h_source.html">base.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="paging_8h_source.html">paging.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pool_8h_source.html">pool.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="heap_8h_source.html">heap.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2b1dfac6a6600d5c1f80ada5b64cc8e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a2b1dfac6a6600d5c1f80ada5b64cc8e8">kheap_init</a> ()</td></tr>
 <tr class="separator:a2b1dfac6a6600d5c1f80ada5b64cc8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7944505fd18ed9200df0233ea7c3916"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#ac7944505fd18ed9200df0233ea7c3916">kmalloc</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize)</td></tr>
-<tr class="separator:ac7944505fd18ed9200df0233ea7c3916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bc049ac6c9354e5e5c29e3397969c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a4bc049ac6c9354e5e5c29e3397969c48">kmalloc_a</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize)</td></tr>
-<tr class="separator:a4bc049ac6c9354e5e5c29e3397969c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a30ec0e1a04edb5e980f26fbc98d3cd38"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a30ec0e1a04edb5e980f26fbc98d3cd38">end</a></td></tr>
-<tr class="separator:a30ec0e1a04edb5e980f26fbc98d3cd38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac16d23fec3c1c40214f351a473bc9a69"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#ac16d23fec3c1c40214f351a473bc9a69">kmalloc</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize)</td></tr>
+<tr class="separator:ac16d23fec3c1c40214f351a473bc9a69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7318fdf931842eccfc7ef404cfdc21b5"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a7318fdf931842eccfc7ef404cfdc21b5">kmalloc_a</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nSize, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nAlignment)</td></tr>
+<tr class="separator:a7318fdf931842eccfc7ef404cfdc21b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14c37cf47f52b540c2735d78d63b28f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a14c37cf47f52b540c2735d78d63b28f4">kfree</a> (void *pBlock)</td></tr>
+<tr class="separator:a14c37cf47f52b540c2735d78d63b28f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de98ab5f11e3b5eec653d12971ecd7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heap_8c.html#a6de98ab5f11e3b5eec653d12971ecd7c">kheap_debugPrint</a> ()</td></tr>
+<tr class="separator:a6de98ab5f11e3b5eec653d12971ecd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a14c37cf47f52b540c2735d78d63b28f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kfree </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pBlock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Frees a block of memory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pBlock</td><td>The block of memory to free </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6de98ab5f11e3b5eec653d12971ecd7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kheap_debugPrint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prints a debug map of the kernel heap to serial 0 </p>
+
+</div>
+</div>
 <a class="anchor" id="a2b1dfac6a6600d5c1f80ada5b64cc8e8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -120,16 +159,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a very simple "dumb" allocator </p>
+<p>Sets up dynamic memory allocation for the kernel </p>
 
 </div>
 </div>
-<a class="anchor" id="ac7944505fd18ed9200df0233ea7c3916"></a>
+<a class="anchor" id="ac16d23fec3c1c40214f351a473bc9a69"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> kmalloc </td>
+          <td class="memname">void* kmalloc </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
           <td class="paramname"><em>nSize</em></td><td>)</td>
@@ -137,35 +176,47 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates a block of memory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nSize</td><td>Size in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the memory </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a4bc049ac6c9354e5e5c29e3397969c48"></a>
+<a class="anchor" id="a7318fdf931842eccfc7ef404cfdc21b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> kmalloc_a </td>
+          <td class="memname">void* kmalloc_a </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
-          <td class="paramname"><em>nSize</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"><em>nSize</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a30ec0e1a04edb5e980f26fbc98d3cd38"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> end</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nAlignment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Allocates an aligned block of memory </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nSize</td><td>Size in bytes </td></tr>
+    <tr><td class="paramname">nAlignment</td><td>Byte size to align to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the memory </dd></dl>
 
 </div>
 </div>

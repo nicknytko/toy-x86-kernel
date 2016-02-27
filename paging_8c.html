@@ -85,22 +85,132 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">paging.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="base_8h_source.html">base.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="paging_8h_source.html">paging.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="heap_8h_source.html">heap.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="panic_8h_source.html">panic/panic.h</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abcca8e7301f49ceb4a11f936de408126"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#abcca8e7301f49ceb4a11f936de408126">PAGING_PAE_ENABLED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:abcca8e7301f49ceb4a11f936de408126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d483fa9137f3ab8a9995ad986c1dc8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a1d483fa9137f3ab8a9995ad986c1dc8a">PAGE_DIR_ENTRIES</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a1d483fa9137f3ab8a9995ad986c1dc8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aed53ddc3aaa1a714b3884b84d19fe823"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#aed53ddc3aaa1a714b3884b84d19fe823">paging_setDirectory</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> pDirectory)</td></tr>
-<tr class="separator:aed53ddc3aaa1a714b3884b84d19fe823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86af7a432bb89b82cc01af1540be07e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a86af7a432bb89b82cc01af1540be07e4">paging_setDirectory</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> *pDirectory)</td></tr>
+<tr class="separator:a86af7a432bb89b82cc01af1540be07e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6bb1de39cf8ad19fb8d152d48232eb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#ae6bb1de39cf8ad19fb8d152d48232eb5">paging_enablePAE</a> ()</td></tr>
+<tr class="separator:ae6bb1de39cf8ad19fb8d152d48232eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d520f99ef8596febe3285e50e79880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#ad6d520f99ef8596febe3285e50e79880">paging_enable</a> ()</td></tr>
+<tr class="separator:ad6d520f99ef8596febe3285e50e79880"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28d4cda23959b6c3ab30f79bd9c295fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a28d4cda23959b6c3ab30f79bd9c295fc">paging_setTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nIndex, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> pAddress, <a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a> <a class="el" href="pool_8h.html#a86a56fc43c9bd082c444add6dd20e230">nFlags</a>)</td></tr>
+<tr class="separator:a28d4cda23959b6c3ab30f79bd9c295fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af579ff391395114be87d35bd75a53c9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#af579ff391395114be87d35bd75a53c9e">paging_removeTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nIndex)</td></tr>
+<tr class="separator:af579ff391395114be87d35bd75a53c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae08a1f13687e0de2cb434f44b8d1a635"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#ae08a1f13687e0de2cb434f44b8d1a635">paging_cloneTable</a> (<a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nOld, <a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> nNew)</td></tr>
+<tr class="separator:ae08a1f13687e0de2cb434f44b8d1a635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a569adfd13ea3c63741f64108821b1712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a569adfd13ea3c63741f64108821b1712">paging_init</a> ()</td></tr>
 <tr class="separator:a569adfd13ea3c63741f64108821b1712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a00437205eb51b931f4fe6583012bd730"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a00437205eb51b931f4fe6583012bd730">PAGE_DIRECTORY</a> []</td></tr>
+<tr class="separator:a00437205eb51b931f4fe6583012bd730"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eec10a4cc5bc5c44b864d89125a959b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="paging_8c.html#a8eec10a4cc5bc5c44b864d89125a959b">PAGE_TABLE_KERNEL</a> []</td></tr>
+<tr class="separator:a8eec10a4cc5bc5c44b864d89125a959b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a1d483fa9137f3ab8a9995ad986c1dc8a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGE_DIR_ENTRIES&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abcca8e7301f49ceb4a11f936de408126"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PAGING_PAE_ENABLED&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ae08a1f13687e0de2cb434f44b8d1a635"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_cloneTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nOld</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nNew</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copies a table pointer into another directory entry </p>
+
+</div>
+</div>
+<a class="anchor" id="ad6d520f99ef8596febe3285e50e79880"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_enable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae6bb1de39cf8ad19fb8d152d48232eb5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_enablePAE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a569adfd13ea3c63741f64108821b1712"></a>
 <div class="memitem">
 <div class="memproto">
@@ -113,19 +223,95 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Initialize paging by identity mapping the first 4mb </p>
 
 </div>
 </div>
-<a class="anchor" id="aed53ddc3aaa1a714b3884b84d19fe823"></a>
+<a class="anchor" id="af579ff391395114be87d35bd75a53c9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_removeTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remove a table in the paging directory </p>
+
+</div>
+</div>
+<a class="anchor" id="a86af7a432bb89b82cc01af1540be07e4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void paging_setDirectory </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> *&#160;</td>
           <td class="paramname"><em>pDirectory</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a28d4cda23959b6c3ab30f79bd9c295fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void paging_setTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>nIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a>&#160;</td>
+          <td class="paramname"><em>pAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="base_8h.html#a33a5e996e7a90acefb8b1c0bea47e365">uint8</a>&#160;</td>
+          <td class="paramname"><em>nFlags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set a table in the paging directory </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a00437205eb51b931f4fe6583012bd730"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> PAGE_DIRECTORY[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8eec10a4cc5bc5c44b864d89125a959b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="base_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2">uint32</a> PAGE_TABLE_KERNEL[]</td>
         </tr>
       </table>
 </div><div class="memdoc">
