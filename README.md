@@ -13,9 +13,10 @@ Partial documentation can be found [here](http://nickgn12.github.io/x86-thing/in
  - [x] serial driver
  - [x] PIT timer
  - [x] kernel panic
- - [ ] keyboard driver
- - [ ] memory paging
- - [ ] heap
+ - [x] memory paging
+ - [x] kmalloc
+ - [x] keyboard driver (somewhat)
+ - [ ] frame allocation
  - [ ] virtual file system
 
  will add more stuff as i think of it
