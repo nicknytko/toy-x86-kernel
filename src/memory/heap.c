@@ -1,27 +1,33 @@
 #include <base.h>
 
-extern uint32 end;
-static uint32 pHeapAddress = 0;
-static uint32 pHeapBase = 0;
+#include "paging.h"
+#include "pool.h"
+#include "heap.h"
+
+static s_poolHeader* pPool;
 
 void kheap_init( )
 {
-    pHeapAddress = end;
-    pHeapBase = end;
+    pPool = pool_init( KHEAP_PHYSICAL_START + PAGING_KERNEL_OFFSET,
+                       KHEAP_PHYSICAL_END + PAGING_KERNEL_OFFSET );
 }
 
-uint32 kmalloc( uint32 nSize )
+void* kmalloc( uint32 nSize )
 {
-    uint32 pTemp = pHeapAddress;
-    pHeapAddress += nSize;
-
-    return pTemp;
+    return pool_malloc( pPool, nSize );
 }
 
-uint32 kmalloc_a( uint32 nSize )
+void* kmalloc_a( uint32 nSize, uint32 nAlignment )
 {
-    uint32 pTemp = (pHeapAddress & 0xFFFFF000) + 0x1000;
-    pHeapAddress = pTemp + nSize;
+    return pool_malloca( pPool, nSize, nAlignment );
+}
 
-    return pTemp;
+void kfree( void* pBlock )
+{
+    pool_free( pPool, pBlock );
+}
+
+void kheap_debugPrint( )
+{
+    pool_debugPrint( pPool );
 }

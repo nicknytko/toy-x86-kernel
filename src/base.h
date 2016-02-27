@@ -32,7 +32,9 @@ uint8 inb( uint16 port );
 uint16 inw( uint16 port );
 void outb( uint16 port, uint8 value );
 
-// Memory setters and getters
+// Memory
+
+#define NULL 0
 
 void set_dword( uint32 nAddress, uint32 nValue );
 void set_word( uint32 nAddress, uint16 nValue );
