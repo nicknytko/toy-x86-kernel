@@ -12,6 +12,7 @@
 #define vgaoffset( x, y ) (uint8*)(VGA_OFFSET + ((y * VGA_WIDTH) + x) * 2);
 
 static uint16 nVGACursorX = 0, nVGACursorY = 0;
+static uint8 nForeColor = 0xF;
 
 void screen_clear( )
 {
@@ -20,11 +21,25 @@ void screen_clear( )
     while ((uint32)pData < VGA_END)
     {
 	pData[0] = 0;
-	pData[1] = 0xF;
+	pData[1] = 0;
 	pData += 2;
     }
 
     screen_setCursor( 0, 0 );
+}
+
+void screen_clearColor( uint8 nBackground )
+{
+    uint8* pData = (uint8*) VGA_OFFSET;
+    
+    while ((uint32)pData < VGA_END)
+    {
+	pData[0] = 0;
+	pData[1] = ( nBackground & 0xF ) << 4;
+	pData += 2;
+    }
+
+    screen_setCursor( 0, 0 );    
 }
 
 void screen_setCursor( uint32 nCursorX, uint32 nCursorY )
@@ -57,6 +72,11 @@ void screen_setCursor( uint32 nCursorX, uint32 nCursorY )
     outb( VGA_BASE + 1, word_lbyte( nCell ) );
 }
 
+void screen_setCursorColor( uint8 nColor )
+{
+    nForeColor = nColor & 0xF;
+}
+
 uint16 screen_getCursorX( )
 {
     return nVGACursorX;
@@ -65,6 +85,16 @@ uint16 screen_getCursorX( )
 uint16 screen_getCursorY( )
 {
     return nVGACursorY;
+}
+
+uint16 screen_getWidth( )
+{
+    return VGA_WIDTH;
+}
+
+uint16 screen_getHeight( )
+{
+    return VGA_HEIGHT;
 }
 
 void screen_scroll( )
@@ -86,7 +116,7 @@ void screen_scroll( )
     while ((uint32)pData < VGA_END)
     {
 	pData[0] = 0;
-	pData[1] = 0xF;
+	pData[1] = 0;
 	pData += 2;
     }
 
@@ -111,9 +141,9 @@ void screen_printHex( uint32 nHex )
     // prefix our number with '0x'
     
     pData[0] = '0';
-    pData[1] = 0xF;
+    pData[1] = ( pData[1] & 0xF0 ) | nForeColor;
     pData[2] = 'x';
-    pData[3] = 0xF;
+    pData[3] = ( pData[3] & 0xF0 ) | nForeColor;
 
     pData += 4;
 
@@ -126,13 +156,13 @@ void screen_printHex( uint32 nHex )
 	if (nDigit < 10)
 	{
 	    pData[0] = '0' + nDigit;
-	    pData[1] = 0xF;
+	    pData[1] = ( pData[1] & 0xF0 ) | nForeColor;
 	    pData += 2;
 	}
 	else
 	{
 	    pData[0] = 'A' + (nDigit - 10);
-	    pData[1] = 0xF;
+	    pData[1] = ( pData[1] & 0xF0 ) | nForeColor;
 	    pData += 2;
 	}
     }
@@ -145,7 +175,7 @@ void screen_printChar( uint8 c )
     uint8* pData = vgaoffset( nVGACursorX, nVGACursorY );
 
     pData[0] = c;
-    pData[1] = 0xF;
+    pData[1] = ( pData[1] & 0xF0 ) | nForeColor;
 
     screen_setCursor( nVGACursorX + 1, nVGACursorY );
 }
@@ -169,7 +199,7 @@ void screen_printDec( uint32 nDec )
     for (uint32 i = nDigits * 2;i > 0;i -= 2)
     {
 	pData[i-2] = '0' + (nDec % 10);
-	pData[i-1] = 0xF;
+	pData[i-1] = ( pData[i-1] & 0xF0 ) | nForeColor;
 
 	nDec /= 10;
     }
@@ -208,7 +238,7 @@ void screen_printString( const char* szStr )
 	{
 	    *pData = *szStr;
 	    pData++;
-	    *pData = 0xF;
+	    *pData = ( *pData & 0xF0 ) | nForeColor;
 	    pData++;
 	    break;
 	}

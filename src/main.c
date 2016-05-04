@@ -16,6 +16,8 @@
 #include <syscall/sys.h>
 #include <info/cpuid.h>
 
+#include <panic/panic.h>
+
 /** Demonstrate what we are capable of doing so far
  */
 
