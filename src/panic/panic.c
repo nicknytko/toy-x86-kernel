@@ -19,10 +19,10 @@ uint32 strlen( const char* szString )
     return szString - szStart;
 }
 
-void kpanic( const char* szError )
+void kpanic_c( const char* szError, pushad_t nRegisters )
 {
     uint32 nHalfWidth = screen_getWidth( )/2;
-    uint32 nHalfHeight = screen_getHeight( )/2 - 3;
+    uint32 nHalfHeight = screen_getHeight( )/2 - 5;
     
     screen_clearColor( VGA_COLOR_LBLUE );
     
@@ -37,4 +37,24 @@ void kpanic( const char* szError )
 
     screen_setCursor( nHalfWidth - strlen( szError )/2, nHalfHeight + 5 );
     screen_printString( szError );
+
+    screen_setCursor( nHalfWidth - 11, nHalfHeight + 7 );
+    screen_printHex( nRegisters.EAX );
+    screen_printChar( ' ' );
+    screen_printHex( nRegisters.EBX );
+    
+    screen_setCursor( nHalfWidth - 11, nHalfHeight + 8 );
+    screen_printHex( nRegisters.ECX );
+    screen_printChar( ' ' );
+    screen_printHex( nRegisters.EDX );
+
+    screen_setCursor( nHalfWidth - 11, nHalfHeight + 9 );
+    screen_printHex( nRegisters.ESP );
+    screen_printChar( ' ' );
+    screen_printHex( nRegisters.EBP );
+
+    screen_setCursor( nHalfWidth - 11, nHalfHeight + 10 );
+    screen_printHex( nRegisters.ESI );
+    screen_printChar( ' ' );
+    screen_printHex( nRegisters.EDI );
 }

@@ -15,6 +15,14 @@ typedef uint16_t uint16;
 typedef int32_t int32;
 typedef uint32_t uint32;
 
+/** Contents of the stack when pushad is called
+ */
+
+typedef struct
+{
+    int32 EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX, Unused;
+} pushad_t;
+
 // Boolean datatype
 
 typedef uint8_t bool;
