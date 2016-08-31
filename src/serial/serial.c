@@ -87,6 +87,9 @@ void serial_writeChar( uint8 nSerial, uint8 nByte )
     }
 
     outb( nPort, nByte );
+
+    if ( nByte == '\n' )
+        serial_writeChar( nSerial, '\r' );
 }
 
 void serial_writeString( uint8 nSerial, const char* szString )
